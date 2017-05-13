@@ -2,6 +2,8 @@ import React from 'react'
 import Category from 'components/Category'
 import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
+import Button from 'components/Button'
+import Link from 'components/Link'
 
 import './CustomerHomeView.scss'
 import CocktailImage from '../assets/Cocktail.svg'
@@ -39,11 +41,17 @@ export const CustomerHomeView = () => (
       </div>
     </div>
     <div className='list-section'>
-      <ListTitle number='2' type='type' count={8} />
+      <ListTitle number={2} type='type' count={8} />
+      <Link className='link-all-coctails' to='/counter'>Show all</Link>
       <div className='container conainer--left drinks-list--big drinks-list--big'>
-        <BigDrink name='Long island iced tea'
+        <BigDrink
+          name='Long island iced tea'
           img={long}
           description='Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola' />
+
+        <div className='btn-order-wraper'>
+          <Button fullWidth>Make order</Button>
+        </div>
       </div>
     </div>
   </div>
