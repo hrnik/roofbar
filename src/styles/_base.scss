@@ -1,12 +1,7 @@
-/*
-Application Settings Go Here
-------------------------------------
-This file acts as a bundler for all variables/mixins/themes, so they
-can easily be swapped out without `core.scss` ever having to know.
+$dark-color: #313131;
+$primary-color: #9dd745;
+$light-color:#d9d9d9;
+$gray-color:#c5c5c5;
 
-For example:
 
-@import './variables/colors';
-@import './variables/components';
-@import './themes/default';
-*/
+$container-padding-size: 20px;

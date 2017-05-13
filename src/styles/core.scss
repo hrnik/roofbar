@@ -12,6 +12,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #f8f9fa;
+  font-family: 'Archivo Narrow', sans-serif;
+  color: $gray-color;
 }
 
 *,
@@ -19,3 +22,20 @@ body {
 *:after {
   box-sizing: inherit;
 }
+
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: $dark-color;;
+}
+
+
+.container{
+  padding-left: $container-padding-size;
+  padding-right: $container-padding-size;
+  &.container--left{
+    padding-right: auto;
+  }
+}
+
