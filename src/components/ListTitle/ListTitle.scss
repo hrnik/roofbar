@@ -1,0 +1,34 @@
+@import 'base';
+
+.list-section{
+  position: relative;
+  padding-top: 50px;
+}
+
+.list-title{
+  position: absolute;
+  top: 0;
+  left:-5px;
+
+  .list-title__number{
+    font-size: 80px;
+    line-height: 1;
+    font-weight: bold;
+    color:#efefef;
+  }
+  .list-title__name,{
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    white-space: nowrap;
+  }
+  .list-title__name,  .list-title__count{
+    font-size:12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .list-title__count{
+    color:$primary-color;
+  }
+}

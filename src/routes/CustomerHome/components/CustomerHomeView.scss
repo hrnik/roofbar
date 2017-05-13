@@ -1,5 +1,15 @@
+@import 'base';
+
 .duck {
   display: block;
   width: 120px;
   margin: 1.5rem auto;
+}
+
+.category-list{
+  display: flex;
+}
+
+.category-list__item{
+  min-width: 70px;
 }

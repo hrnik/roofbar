@@ -1,0 +1,27 @@
+@import 'base';
+
+.category{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  font-size:14px;
+}
+
+
+.category__image-wrapper{
+  min-height: 45px;
+  max-height: 45px;
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.category__name{
+
+  font-weight: bold;
+  color:$dark-color;
+}
