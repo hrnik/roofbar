@@ -1,0 +1,25 @@
+@import 'base';
+.drink{
+  display: flex;
+}
+
+.drink__image{
+  max-width: 70px;
+  max-height: 140px;
+  margin-right: 8px;
+}
+
+.drink__text{
+  width: 170px;
+  line-height: normal;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.drink__name{
+  font-size: 32px;
+  font-weight: bold;
+  color:$dark-color;
+}

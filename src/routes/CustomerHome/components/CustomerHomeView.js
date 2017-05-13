@@ -1,11 +1,13 @@
 import React from 'react'
 import Category from 'components/Category'
 import ListTitle from 'components/ListTitle'
-import './CustomerHomeView.scss'
+import BigDrink from 'components/BigDrink'
 
+import './CustomerHomeView.scss'
 import CocktailImage from '../assets/Cocktail.svg'
 import JuiceImage from '../assets/Juice.svg'
 import MilkshakeImage from '../assets/Milkshake.svg'
+import long from '../assets/long.jpg'
 
 export const CustomerHomeView = () => (
   <div>
@@ -20,7 +22,7 @@ export const CustomerHomeView = () => (
           name='Fresh Juice'
           img={JuiceImage}
           limit={15}
-          active={true}
+          active
           drinked={10} />
         <Category
           className='category-list__item'
@@ -38,6 +40,11 @@ export const CustomerHomeView = () => (
     </div>
     <div className='list-section'>
       <ListTitle number='2' type='type' count={8} />
+      <div className='container conainer--left drinks-list--big drinks-list--big'>
+        <BigDrink name='Long island iced tea'
+          img={long}
+          description='Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola' />
+      </div>
     </div>
   </div>
 )

@@ -13,8 +13,9 @@ body {
   padding: 0;
   height: 100%;
   background-color: #f8f9fa;
+  font-size:14px;
   font-family: 'Archivo Narrow', sans-serif;
-  line-height: 1.43;
+  //line-height: 1.43;
   color: $gray-color;
 }
 
@@ -34,6 +35,8 @@ h2 {
 
 
 .container{
+  position: relative;
+  z-index: 10;
   padding-left: $container-padding-size;
   padding-right: $container-padding-size;
   &.container--left{
