@@ -26,5 +26,14 @@
 .link-all-coctails{
   position: absolute;
   top: 22px;
-  right: 20px;
+  right: $container-padding-size;
 }
+
+.orders__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 8px;
+}
+

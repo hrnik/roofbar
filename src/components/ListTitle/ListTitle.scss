@@ -20,7 +20,7 @@
   .list-title__name,{
     position: absolute;
     top: 25px;
-    left: 30px;
+    left: $container-padding-size + 10px;
     white-space: nowrap;
   }
   .list-title__name,  .list-title__count{

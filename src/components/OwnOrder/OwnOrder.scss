@@ -1,0 +1,41 @@
+@import 'base';
+
+.own-order{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 16px 0;
+}
+
+.own-order:not(:last-child){
+  border-bottom: 1px solid #d9d9d9;
+
+}
+
+.own-order__status{
+  font-size: 10px;
+  font-weight: bold;
+  padding-right: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  &.own-order__status--active{
+    color:$primary-color;
+  }
+}
+
+.own-order__info{
+  display: flex;
+}
+
+.own-order__image{
+  max-width: 25px;
+  max-height: 40px;
+  margin-right: 8px;
+}
+
+.own-order__name{
+  font-size: 16px;
+  margin-bottom: 4px;
+  font-weight: bold;
+  color:$dark-color;
+}
