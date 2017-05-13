@@ -1,5 +1,6 @@
 # Roofbar
 
+[docs](./BASE-README.md)
 
 ```bash
 $ yarn install    # Install project dependencies
