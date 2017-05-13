@@ -1,0 +1,33 @@
+{
+  "drinks": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Sambuka",
+        "category": "alcohol",
+        "photo": "",
+        "status": "AVALIBLE"
+      }
+    ]
+  },
+  "limits": {
+    "data": [
+      {
+        "category": "alcohol",
+        "daily_limit": 10,
+        "month_limit": 100,
+        "daily_done": 1,
+        "month_done": 10
+      }
+    ]
+  },
+  "orders": {
+    "data": {
+      "order_id": 12344,
+      "order_code": "HHBG",
+      "date": "2017-01-04 11:44",
+      "status": "PENDING",
+      "drink_id": 1235
+    }
+  }
+}
