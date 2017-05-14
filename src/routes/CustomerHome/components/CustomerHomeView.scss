@@ -1,4 +1,6 @@
 @import 'base';
+// @import "~slick-carousel/slick/slick.css";
+// @import "~slick-carousel/slick/slick-theme.css";
 
 .duck {
   display: block;
@@ -7,7 +9,9 @@
 }
 
 .category-list{
-  display: flex;
+  //display: flex;
+  position: relative;
+  z-index: 10;
 }
 
 .category-list__item{
@@ -37,3 +41,7 @@
   margin-bottom: 8px;
 }
 
+.drinks-list--big{
+    position: relative;
+  z-index: 10;
+}

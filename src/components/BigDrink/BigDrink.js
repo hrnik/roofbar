@@ -7,7 +7,6 @@ import './BigDrink.scss'
 const BigDrink = ({ name, description, img }) => {
   return (
     <div>
-
       <div className='drink'>
         <img className='drink__image' src={img} alt={name} />
         <div className='drink__text'>

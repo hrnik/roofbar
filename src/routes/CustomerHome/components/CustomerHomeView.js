@@ -1,4 +1,6 @@
 import React from 'react'
+import Slider from 'react-slick'
+
 import Category from 'components/Category'
 import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
@@ -20,6 +22,22 @@ const mapCategoryImage = {
 }
 const getImageForCategory = (category) => mapCategoryImage[category] || CocktailImage
 
+const sliderCategoriesSettings = {
+  infinite: false,
+  centerPadding: '20px',
+  slidesToShow: 4,
+  swipeToSlide: true
+}
+const sliderDrinksSettings = {
+  arrows:false,
+  autoplay:false,
+  dots:false,
+  infinite: false,
+  slidesToShow: 1,
+  centerMode:true,
+  centerPadding:'20px'
+}
+
 export const CustomerHomeView = ({ categories, drinks, limits, activeCategoryName, setActiveCategory }) => (
   <div>
     <div className='container container--left'>
@@ -27,34 +45,40 @@ export const CustomerHomeView = ({ categories, drinks, limits, activeCategoryNam
     </div>
     <div className='list-section'>
       <ListTitle number={1} type='category' count={6} />
-      <div className='container container--left category-list'>
-        {categories.map(category => {
-          return (<Category
-            key={category}
-            className='category-list__item'
-            name={category}
-            img={getImageForCategory(category)}
-            limit={15}
-            onClick={setActiveCategory.bind(null, category)}
-            active={activeCategoryName === category}
-            drinked={10} />)
-        })}
+      <div className='category-list'>
+        {categories.length > 0 ? <Slider {...sliderCategoriesSettings}>{categories.map((category, index) => {
+          return (<div
+            data-index={index}
+            key={index}>
+            <Category
+              className='category-list__item'
+              name={category}
+              img={getImageForCategory(category)}
+              limit={15}
+              onClick={() => setActiveCategory(category)}
+              active={activeCategoryName === category}
+              drinked={10} /></div>)
+        })}</Slider> : null }
       </div>
     </div>
     <div className='list-section'>
       <ListTitle number={2} type='type' count={8} />
       <Link className='link-all-coctails' to='/counter'>Show all</Link>
-      <div className='container conainer--left drinks-list--big drinks-list--big'>
-        {drinks
-            .filter(drink => drink.category === activeCategoryName)
-            .map(drink => {
-              return (<BigDrink
-                key={drink.id}
-                name={drink.name}
-                img={long}
-                description={drink.description} />
-              )
-            })}
+      <div className='drinks-list--big drinks-list--big'>
+        {drinks.length > 0 ? <Slider {...sliderDrinksSettings}>
+          {drinks
+              .filter(drink => drink.category === activeCategoryName)
+              .map((drink, index) => {
+                return (<div data-index={index}
+                  key={index}>
+                  <BigDrink
+                    name={drink.name}
+                    img={long}
+                    description={drink.description} />
+                </div>)
+              })}
+        </Slider> : null}
+
       </div>
 
       <div className='container orders'>
