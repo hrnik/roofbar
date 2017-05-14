@@ -20,7 +20,7 @@ const mapCategoryImage = {
 }
 const getImageForCategory = (category) => mapCategoryImage[category] || CocktailImage
 
-export const CustomerHomeView = ({ categories, drinks, limits }) => (
+export const CustomerHomeView = ({ categories, drinks, limits, activeCategoryName, setActiveCategory }) => (
   <div>
     <div className='container container--left'>
       <h2>Order</h2>
@@ -30,11 +30,13 @@ export const CustomerHomeView = ({ categories, drinks, limits }) => (
       <div className='container container--left category-list'>
         {categories.map(category => {
           return (<Category
+            key={category}
             className='category-list__item'
             name={category}
             img={getImageForCategory(category)}
             limit={15}
-            active
+            onClick={setActiveCategory.bind(null, category)}
+            active={activeCategoryName === category}
             drinked={10} />)
         })}
       </div>
@@ -43,16 +45,16 @@ export const CustomerHomeView = ({ categories, drinks, limits }) => (
       <ListTitle number={2} type='type' count={8} />
       <Link className='link-all-coctails' to='/counter'>Show all</Link>
       <div className='container conainer--left drinks-list--big drinks-list--big'>
-        {drinks.map(drink => {
-          return (<BigDrink
-            name={drink.name}
-            img={long}
-            description={drink.description} />
-          )
-        })}
-        <div className='btn-order-wraper'>
-          <Button fullWidth>Make order</Button>
-        </div>
+        {drinks
+            .filter(drink => drink.category === activeCategoryName)
+            .map(drink => {
+              return (<BigDrink
+                key={drink.id}
+                name={drink.name}
+                img={long}
+                description={drink.description} />
+              )
+            })}
       </div>
 
       <div className='container orders'>

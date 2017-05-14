@@ -25,9 +25,9 @@
         "status": "AVALIBLE"
       } ,{
         "id": 4,
-        "name": "Milkshake",
+        "name": "Vanila Milkshake",
         "description":"Vanila Milk, and some shake",
-        "category": "Vanila Milkshake",
+        "category": "Milkshake",
         "photo": "",
         "status": "AVALIBLE"
       }

@@ -11,6 +11,8 @@ export const FETCH_LIMITS_START = 'FETCH_LIMITS_START'
 export const FETCH_LIMITS_SUCCESS = 'FETCH_LIMITS_SUCCESS'
 export const FETCH_LIMITS_ERROR = 'FETCH_LIMITS_ERROR'
 
+export const SET_ACTIVE_CATEGORY = 'SET_ACTIVE_CATEGORY'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -49,9 +51,16 @@ export const fetchLimits = () => (dispatch, getState) => {
     })
   })
 }
+
+export const setActiveCategory = (category) => ({
+  type:SET_ACTIVE_CATEGORY,
+  payload:category
+})
+
 export const actions = {
   fetchDrinks,
-  fetchLimits
+  fetchLimits,
+  setActiveCategory
 }
 
 const ACTION_HANDLERS = {
@@ -67,11 +76,26 @@ const ACTION_HANDLERS = {
     const newState = { ...state }
     newState.drinks = drinks
     newState.categories = categories
+
+    if (!newState.activeCategoryName) {
+      newState.activeCategoryName = newState.categories[0]
+    }
+
+    if (!newState.activeDrinkID && newState.drinks) {
+      newState.activeDrinkID = newState.drinks[0].id
+    }
+    return newState
+  },
+  [SET_ACTIVE_CATEGORY] : (state, action) => {
+    const newState = { ...state }
+    newState.activeCategoryName = action.payload
     return newState
   }
 }
 
 const initialState = {
+  activeCategoryName:'',
+  activeDrinkID:undefined,
   categories:[],
   drinks:[],
   limits:{}

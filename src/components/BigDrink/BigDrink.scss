@@ -13,14 +13,11 @@
 .drink__text{
   width: 170px;
   line-height: normal;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-
 }
 
 .drink__name{
   font-size: 32px;
   font-weight: bold;
   color:$dark-color;
+  margin-bottom: 8px;
 }
