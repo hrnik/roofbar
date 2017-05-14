@@ -4,7 +4,30 @@
       {
         "id": 1,
         "name": "Sambuka",
-        "category": "alcohol",
+        "description":"Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola",
+        "category": "Alchocol",
+        "photo": "",
+        "status": "AVALIBLE"
+      },{
+        "id": 2,
+        "name": "Apple Juice",
+        "description":"Fresh apple juice for your brain",
+        "category": "Fresh Juice",
+        "photo": "",
+        "status": "AVALIBLE"
+      }
+      ,{
+        "id": 3,
+        "name": "Orange Juice",
+        "description":"ORANGE ORANGE ORANGE",
+        "category": "Fresh Juice",
+        "photo": "",
+        "status": "AVALIBLE"
+      } ,{
+        "id": 4,
+        "name": "Milkshake",
+        "description":"Vanila Milk, and some shake",
+        "category": "Vanila Milkshake",
         "photo": "",
         "status": "AVALIBLE"
       }
