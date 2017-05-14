@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router'
 
 export const Counter = (props) => (
   <div style={{ margin: '0 auto' }} >
@@ -11,6 +12,7 @@ export const Counter = (props) => (
     <button className='btn btn-default' onClick={props.doubleAsync}>
       Double (Async)
     </button>
+    <Link to='/'>Home</Link>
   </div>
 )
 

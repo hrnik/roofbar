@@ -9,7 +9,7 @@ import CounterRoute from './Counter'
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
-  indexRoute  : CustomerHome,
+  indexRoute  : CustomerHome(store),
   childRoutes : [
     CounterRoute(store)
   ]
