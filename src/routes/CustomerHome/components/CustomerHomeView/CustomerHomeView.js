@@ -1,10 +1,11 @@
 import React from 'react'
 import Slider from 'react-slick'
 
+import CustomerOrdersContainer from '../containers/CustomerOrdersContainer'
 import Category from 'components/Category'
 import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
-import OwnOrder from 'components/OwnOrder'
+
 
 import Button from 'components/Button'
 import Link from 'components/Link'
@@ -86,23 +87,7 @@ export const CustomerHomeView = ({ categories, drinks, limits, activeCategoryNam
           <h2 className='orders__title'>Your orders</h2>
           <Link to='/' clsasName='orders__link'>Show all</Link>
         </div>
-        <div className='order-list'>
-          <OwnOrder name='Long island iced tea'
-            img={long}
-            code='010'
-            status='prepared'
-            active
-             />
-          <OwnOrder name='Milky way'
-            img={long}
-            code='005'
-            status='done' />
-          <OwnOrder name='Apple juice'
-            img={long}
-            code='015'
-            status='3 day ago' />
-
-        </div>
+        <CustomerOrdersContainer></CustomerOrdersContainer>
       </div>
     </div>
   </div>

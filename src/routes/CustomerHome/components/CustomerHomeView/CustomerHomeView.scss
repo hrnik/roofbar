@@ -1,47 +1,43 @@
 @import 'base';
 // @import "~slick-carousel/slick/slick.css";
 // @import "~slick-carousel/slick/slick-theme.css";
-
 .duck {
   display: block;
   width: 120px;
   margin: 1.5rem auto;
 }
 
-.category-list{
+.category-list {
   //display: flex;
   position: relative;
   z-index: 10;
 }
 
-.category-list__item{
+.category-list__item {
   min-width: 70px;
 }
 
-
-.btn-order-wraper{
-  padding-top:36px;
+.btn-order-wraper {
+  padding-top: 36px;
   padding-left: 32px;
   padding-right: 32px;
-
   margin-bottom: 40px;
 }
 
-.link-all-coctails{
+.link-all-coctails {
   position: absolute;
   top: 22px;
   right: $container-padding-size;
 }
 
-.orders__header{
+.orders__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 8px;
 }
 
-.drinks-list--big{
-    position: relative;
+.drinks-list--big {
+  position: relative;
   z-index: 10;
 }
