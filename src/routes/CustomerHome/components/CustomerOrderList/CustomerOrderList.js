@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import OwnOrder from 'components/OwnOrder'
 
-import long from '../assets/long.jpg'
+import long from '../../assets/long.jpg'
 
 const CustomerOrderList = ({ orders }) => {
   return (
