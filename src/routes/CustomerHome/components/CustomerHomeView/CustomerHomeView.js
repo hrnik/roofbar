@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 
-import CustomerOrdersContainer from '../containers/CustomerOrdersContainer'
+import CustomerOrdersContainer from '../../containers/CustomerOrdersContainer'
 import Category from 'components/Category'
 import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
@@ -11,10 +11,10 @@ import Button from 'components/Button'
 import Link from 'components/Link'
 
 import './CustomerHomeView.scss'
-import CocktailImage from '../assets/Cocktail.svg'
-import JuiceImage from '../assets/Juice.svg'
-import MilkshakeImage from '../assets/Milkshake.svg'
-import long from '../assets/long.jpg'
+import CocktailImage from '../../assets/Cocktail.svg'
+import JuiceImage from '../../assets/Juice.svg'
+import MilkshakeImage from '../../assets/Milkshake.svg'
+import long from '../../assets/long.jpg'
 
 const mapCategoryImage = {
   'Alchocol' : CocktailImage,
