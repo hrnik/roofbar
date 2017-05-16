@@ -4,9 +4,9 @@ import classNames from 'classnames'
 
 import './Button.scss'
 
-const Button = ({ fullWidth, children }) => {
+const Button = ({ fullWidth, children, onClick }) => {
   return (
-    <button className={classNames('btn', {'btn--block':fullWidth})}>
+    <button onClick={onClick} className={classNames('btn', {'btn--block':fullWidth})}>
       {children}
     </button>
   )

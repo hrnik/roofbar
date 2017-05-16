@@ -4,7 +4,6 @@ import { makeOrder, fetchAllCustomerOrders } from '../modules/orders'
 import CustomerOrderList from '../components/CustomerOrderList'
 
 const mapDispathToProps = {
-  makeOrder,
   fetchAllCustomerOrders
 }
 

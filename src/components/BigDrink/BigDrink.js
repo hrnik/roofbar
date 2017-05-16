@@ -4,7 +4,7 @@ import Button from 'components/Button'
 
 import './BigDrink.scss'
 
-const BigDrink = ({ name, description, img }) => {
+const BigDrink = ({ name, drinkID, description, img, makeOrder }) => {
   return (
     <div>
       <div className='drink'>
@@ -15,7 +15,7 @@ const BigDrink = ({ name, description, img }) => {
         </div>
       </div>
       <div className='btn-order-wraper'>
-        <Button fullWidth>Make order</Button>
+        <Button onClick={() => makeOrder(drinkID)} fullWidth>Make order</Button>
       </div>
     </div>
   )

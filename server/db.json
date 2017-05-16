@@ -1,27 +1,31 @@
 {
   "drinks": {
-    "data": [{
+    "data": [
+      {
         "id": 1,
         "name": "Sambuka",
         "description": "Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola",
         "category": "Alchocol",
         "photo": "",
         "status": "AVALIBLE"
-      }, {
+      },
+      {
         "id": 2,
         "name": "Apple Juice",
         "description": "Fresh apple juice for your brain",
         "category": "Fresh Juice",
         "photo": "",
         "status": "AVALIBLE"
-      }, {
+      },
+      {
         "id": 3,
         "name": "Orange Juice",
         "description": "ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE",
         "category": "Fresh Juice",
         "photo": "",
         "status": "AVALIBLE"
-      }, {
+      },
+      {
         "id": 4,
         "name": "Vanila Milkshake",
         "description": "Vanila Milk, and some shake",
@@ -64,39 +68,15 @@
     ]
   },
   "limits": {
-    "data": [{
-      "category": "alcohol",
-      "daily_limit": 10,
-      "month_limit": 100,
-      "daily_done": 1,
-      "month_done": 10
-    }]
+    "data": [
+      {
+        "category": "alcohol",
+        "daily_limit": 10,
+        "month_limit": 100,
+        "daily_done": 1,
+        "month_done": 10
+      }
+    ]
   },
-  "orders": {
-    "data": [{
-      "order_id": 12344,
-      "order_code": "HHBG",
-      "date": "2017-01-04 11:44",
-      "status": "PENDING",
-      "drink_id": 1235
-    }, {
-      "order_id": 1234323,
-      "order_code": "HHBG",
-      "date": "2017-01-04 11:44",
-      "status": "PENDING",
-      "drink_id": 1235
-    }, {
-      "order_id": 122344,
-      "order_code": "HHBG",
-      "date": "2017-01-04 11:44",
-      "status": "PENDING",
-      "drink_id": 1235
-    }, {
-      "order_id": 1211344,
-      "order_code": "HHBG",
-      "date": "2017-01-04 11:44",
-      "status": "PENDING",
-      "drink_id": 1235
-    }]
-  }
+  "orders": {}
 }

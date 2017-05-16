@@ -2,19 +2,17 @@ import React from 'react'
 import Slider from 'react-slick'
 
 import CustomerOrdersContainer from '../../containers/CustomerOrdersContainer'
+import CustomerDrinksContainer from '../../containers/CustomerDrinksContainer'
 import Category from 'components/Category'
 import ListTitle from 'components/ListTitle'
-import BigDrink from 'components/BigDrink'
 
-
-import Button from 'components/Button'
 import Link from 'components/Link'
 
 import './CustomerHomeView.scss'
 import CocktailImage from '../../assets/Cocktail.svg'
 import JuiceImage from '../../assets/Juice.svg'
 import MilkshakeImage from '../../assets/Milkshake.svg'
-import long from '../../assets/long.jpg'
+
 
 const mapCategoryImage = {
   'Alchocol' : CocktailImage,
@@ -29,17 +27,8 @@ const sliderCategoriesSettings = {
   slidesToShow: 4,
   swipeToSlide: true
 }
-const sliderDrinksSettings = {
-  arrows:false,
-  autoplay:false,
-  dots:false,
-  infinite: false,
-  slidesToShow: 1,
-  centerMode:true,
-  centerPadding:'20px'
-}
 
-export const CustomerHomeView = ({ categories, drinks, limits, activeCategoryName, setActiveCategory }) => (
+export const CustomerHomeView = ({ categories, limits, activeCategoryName, setActiveCategory }) => (
   <div>
     <div className='container container--left'>
       <h2>Order</h2>
@@ -65,22 +54,7 @@ export const CustomerHomeView = ({ categories, drinks, limits, activeCategoryNam
     <div className='list-section'>
       <ListTitle number={2} type='type' count={8} />
       <Link className='link-all-coctails' to='/counter'>Show all</Link>
-      <div className='drinks-list--big drinks-list--big'>
-        {drinks.length > 0 ? <Slider {...sliderDrinksSettings}>
-          {drinks
-              .filter(drink => drink.category === activeCategoryName)
-              .map((drink, index) => {
-                return (<div data-index={index}
-                  key={index}>
-                  <BigDrink
-                    name={drink.name}
-                    img={long}
-                    description={drink.description} />
-                </div>)
-              })}
-        </Slider> : null}
-
-      </div>
+      <CustomerDrinksContainer></CustomerDrinksContainer>
 
       <div className='container orders'>
         <div className='orders__header'>

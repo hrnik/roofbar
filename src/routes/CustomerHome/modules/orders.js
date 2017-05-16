@@ -61,7 +61,7 @@ export const fetchOrder = ({ id: orderID }) => (dispatch, getState) => {
     })
 }
 
-export const makeOrder = ({ id: drinkID }) => (dispatch, getState) => {
+export const makeOrder = (drinkID) => (dispatch, getState) => {
   dispatch({ type: MAKE_ORDER_START })
 
   const clientAPI = API(getState())

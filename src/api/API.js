@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:3004'
 
 const handleResponse = response => response.json()
 const makeGetRequest = url => fetch(url).then(handleResponse)
-const makePostRequest = (url, data) => fetch(url, { type: 'POST', body: data }).then(handleResponse)
+const makePostRequest = (url, data) => fetch(url, { method: 'POST', body: data }).then(handleResponse)
 
 export default store => ({
   getDrinks: () => {
