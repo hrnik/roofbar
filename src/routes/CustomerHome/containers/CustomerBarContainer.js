@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setActiveCategory } from '../modules/customerBar'
+import { setActiveCategory } from 'store/bar'
 
 import CustomerHomeView from '../components/CustomerHomeView'
 

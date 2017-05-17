@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { makeOrder } from '../modules/orders'
+import { makeOrder } from 'store/orders'
 
 import CustomerBigDrinkList from '../components/CustomerBigDrinkList'
 

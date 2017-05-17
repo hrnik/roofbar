@@ -1,14 +1,14 @@
 import CustomerBarContainer from './containers/CustomerBarContainer'
 import { injectReducer } from 'store/reducers'
-import customerBarReducer, { fetchDrinks } from './modules/customerBar'
-import customerOrdersReducer, { fetchAllCustomerOrders } from './modules/orders'
+import customerBarReducer, { fetchDrinks } from 'store/bar'
+import customerOrdersReducer, { fetchAllCustomerOrders } from 'store/orders'
 
 // Sync route definition
 export default (store) => ({
   getComponent (nextState, cb) {
     const state = store.getState()
 
-    if (!state.customerBar || state.customerBar.drinks.length) {
+    if (!state.bar || state.bar.drinks.length) {
       store.dispatch(fetchDrinks())
     }
 

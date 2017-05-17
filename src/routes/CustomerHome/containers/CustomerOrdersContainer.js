@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { makeOrder, fetchAllCustomerOrders } from '../modules/orders'
+import { makeOrder, fetchAllCustomerOrders } from 'store/orders'
 
 import CustomerOrderList from '../components/CustomerOrderList'
 
