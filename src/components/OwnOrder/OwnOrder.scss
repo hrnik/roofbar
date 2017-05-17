@@ -15,9 +15,11 @@
 .own-order__status{
   font-size: 10px;
   font-weight: bold;
-  padding-right: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  padding-right: 18px;
+
+
   &.own-order__status--active{
     color:$primary-color;
   }
@@ -28,8 +30,8 @@
 }
 
 .own-order__image{
-  max-width: 25px;
-  max-height: 40px;
+  width: 25px;
+  max-height: 50px;
   margin-right: 8px;
 }
 

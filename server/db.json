@@ -87,13 +87,13 @@
       "drink_id": 2
     }, {
       "order_id": 122344,
-      "order_code": "HHBG",
+      "order_code": "124",
       "date": "2017-01-04 11:44",
       "status": "PENDING",
       "drink_id": 3
     }, {
       "order_id": 1211344,
-      "order_code": "HHBG",
+      "order_code": "123",
       "date": "2017-01-04 11:44",
       "status": "PENDING",
       "drink_id": 1
