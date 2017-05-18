@@ -1,16 +1,18 @@
 import { connect } from 'react-redux'
-import { fetchAllCustomerOrders } from 'store/orders'
+import { fetchAllCustomerOrders, completeOrder, canceledOrder } from 'store/orders'
 
 import BarOrdersView from '../components/BarOrdersView'
 
 const mapDispathToProps = {
-  fetchAllCustomerOrders
+  fetchAllCustomerOrders,
+  completeOrder,
+  canceledOrder
 }
 
 const mapStateToProps = state => ({
   ...state.customerOrders,
   getDrinkById: drinkID => {
-    const filteredDrinks = state.bar.drinks.filter(drink => drinkID === drink.id)
+    const filteredDrinks = state.bar.drinks.filter(drink => drinkID === drink.drink_id)
     return filteredDrinks[0]
   }
 })

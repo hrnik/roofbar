@@ -6,7 +6,7 @@ import long from '../assets/long.jpg'
 
 import './BarOrdersView.scss'
 
-export const BarOrdersView = ({ orders, getDrinkById }) => (
+export const BarOrdersView = ({ orders, getDrinkById, completeOrder, canceledOrder }) => (
   <div className='barmen-container'>
     <div className='container order-view-top'>
       <h2>Order</h2>
@@ -39,7 +39,7 @@ export const BarOrdersView = ({ orders, getDrinkById }) => (
                     <div className='order-card__code'>{order.order_code}</div>
                   </div>
                 </div>
-                <div className='order-card__actions'>
+                <div className='order-card__actions' onClick={() => completeOrder(order.order_id)}>
                   <div className='IconBtn'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'

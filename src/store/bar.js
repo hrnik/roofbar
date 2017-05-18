@@ -82,7 +82,7 @@ const ACTION_HANDLERS = {
     }
 
     if (!newState.activeDrinkID && newState.drinks) {
-      newState.activeDrinkID = newState.drinks[0].id
+      newState.activeDrinkID = newState.drinks[0].drink_id
     }
     return newState
   },

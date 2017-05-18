@@ -15,6 +15,14 @@ export const MAKE_ORDER_START = 'MAKE_ORDER_START'
 export const MAKE_ORDER_SUCCESS = 'MAKE_ORDER_SUCCESS'
 export const MAKE_ORDER_ERROR = 'MAKE_ORDER_ERROR'
 
+export const CHANGE_ORDER_STATUS_START = 'CHANGE_ORDER_STATUS_START'
+export const CHANGE_ORDER_STATUS_SUCCESS = 'CHANGE_ORDER_STATUS_SUCCESS'
+export const CHANGE_ORDER_STATUS_ERROR = 'CHANGE_ORDER_STATUS_ERROR'
+
+export const ORDER_STATUS_DONE = 'DONE'
+export const ORDER_STATUS_PENDING = 'PENDING'
+export const ORDER_STATUS_CANCELED = 'CANCELED'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -82,10 +90,36 @@ export const makeOrder = (drinkID) => (dispatch, getState) => {
     })
 }
 
+export const changeOrderStatus = (orderID, status) => (dispatch, getState) => {
+  dispatch({ type : CHANGE_ORDER_STATUS_START, payload: status})
+
+  const clientAPI = API(getState())
+
+  return clientAPI
+            .changeOrderStatus(orderID, status)
+            .then(response => {
+              dispatch({
+                type: CHANGE_ORDER_STATUS_SUCCESS,
+                payload: response
+              })
+            })
+            .catch(error => {
+              dispatch({
+                type: CHANGE_ORDER_STATUS_ERROR,
+                payload: error
+              })
+            })
+}
+
+export const completeOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_DONE)
+export const cancelOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_CANCELED)
+
 export const actions = {
   fetchAllCustomerOrders,
   fetchOrder,
-  makeOrder
+  makeOrder,
+  completeOrder,
+  cancelOrder
 }
 
 const ACTION_HANDLERS = {
