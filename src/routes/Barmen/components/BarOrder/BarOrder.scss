@@ -1,36 +1,5 @@
 @import 'base';
 
-.barmen-container{
-  width: 768px;
-  margin: auto;
-}
-.order-view-top{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.select{
-  padding-left: 24.5px;
-  padding-right: 24.5px;
-  padding-top: 15px;
-  padding-bottom:15px;
-
-  border-radius: 100px;
-  border: solid 1px #d9d9d9;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #313131;
-}
-
-.orders-workplace__titile{
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
 .order-card{
   display: flex;
   justify-content: space-between;
@@ -89,11 +58,12 @@
 }
 
 /*Ok icon by Icons8 */
-.icons8-Ok { /* Customizes Ok icon */
+.icon-btn { /* Customizes Ok icon */
+  display: inline-block;
   fill:$gray-color;
   width: 24px;
   height: 24px;
-}
-.icon { /* Customizes all icons at once */
-  display: inline-block;
+  &.icon-btn--active{
+    fill: $primary-color;
+  }
 }

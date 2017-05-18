@@ -18,7 +18,7 @@ export default (store) => ({
     }
 
     injectReducer(store, { key: 'bar', reducer:barReducer })
-    injectReducer(store, { key: 'customerOrders', reducer:BarmenOrdersReducer })
+    injectReducer(store, { key: 'barmenOrders', reducer:BarmenOrdersReducer })
 
     cb(null, BarmenOrdersContainer)
   }

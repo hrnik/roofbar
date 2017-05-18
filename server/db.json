@@ -97,6 +97,24 @@
       "date": "2017-01-04 11:44",
       "status": "PENDING",
       "drink_id": 1
+    }, {
+      "order_id": 114323,
+      "order_code": "HHBaG",
+      "date": "2017-01-04 11:44",
+      "status": "DONE",
+      "drink_id": 2
+    }, {
+      "order_id": 1223944,
+      "order_code": "12s4",
+      "date": "2017-01-04 11:44",
+      "status": "DONE",
+      "drink_id": 3
+    }, {
+      "order_id": 12411344,
+      "order_code": "1a23",
+      "date": "2017-01-04 11:44",
+      "status": "CANCELED",
+      "drink_id": 1
     }]
   }
 }
