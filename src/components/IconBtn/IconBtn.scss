@@ -1,0 +1,29 @@
+
+
+/*Ok icon by Icons8 */
+.icon-btn { /* Customizes Ok icon */
+  display: inline-block;
+  cursor:pointer;
+
+  width: 25px;
+  height: 25px;
+
+  &.icon-btn--active{
+    fill: $primary-color;
+    cursor:default;
+  }
+}
+
+.icon-btn--normal{
+  fill:$gray-color;
+  &:hover:not(.icon-btn--active){
+    fill:$dark-color;
+  }
+}
+
+.icon-btn--decline{
+  fill:#d76345;
+  &:hover:not(.icon-btn--active){
+    fill:#881d01;
+  }
+}

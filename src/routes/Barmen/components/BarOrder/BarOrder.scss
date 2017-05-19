@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items:center;
 
-  max-width: 232px;
+  width: 232px;
   margin-bottom: 10px;
   padding: 16px;
 
@@ -46,7 +46,7 @@
   &.order-card__status--done{
     color:$primary-color;
   }
-  &.order-card__status--cancel{
+  &.order-card__status- -cancel{
     color:#d7c445;
   }
 
@@ -61,14 +61,27 @@
 .icon-btn { /* Customizes Ok icon */
   display: inline-block;
   cursor:pointer;
-  fill:$gray-color;
-  width: 30px;
-  height: 30px;
-  &:hover:not(.icon-btn--active){
-    fill:$dark-color;
-  }
+
+  width: 25px;
+  height: 25px;
+
   &.icon-btn--active{
     fill: $primary-color;
     cursor:default;
   }
 }
+
+.icon-btn--normal{
+  fill:$gray-color;
+  &:hover:not(.icon-btn--active){
+    fill:$dark-color;
+  }
+}
+
+.icon-btn--decline{
+  fill:#d76345;
+  &:hover:not(.icon-btn--active){
+    fill:#881d01;
+  }
+}
+
