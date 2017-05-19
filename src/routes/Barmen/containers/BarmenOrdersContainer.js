@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchAllCustomerOrders, completeOrder, canceledOrder } from 'store/orders'
+import { fetchAllCustomerOrders, completeOrder, canceledOrder, toogleEditMode } from 'store/orders'
 
 import BarOrdersView from '../components/BarOrdersView'
 import {getCompetedOrders, getPednignOrders, getCanceledOrders} from 'selectors/orders'
@@ -7,7 +7,8 @@ import {getCompetedOrders, getPednignOrders, getCanceledOrders} from 'selectors/
 const mapDispathToProps = {
   fetchAllCustomerOrders,
   completeOrder,
-  canceledOrder
+  canceledOrder,
+  toogleEditMode
 }
 
 const mapStateToProps = state => ({

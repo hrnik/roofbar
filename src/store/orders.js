@@ -23,6 +23,9 @@ export const ORDER_STATUS_DONE = 'DONE'
 export const ORDER_STATUS_PENDING = 'PENDING'
 export const ORDER_STATUS_CANCELED = 'CANCELED'
 
+export const TOOGLE_ORDERS_MODE = 'TOOGLE_ORDERS_MODE'
+
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -100,7 +103,10 @@ export const changeOrderStatus = (orderID, status) => (dispatch, getState) => {
             .then(response => {
               dispatch({
                 type: CHANGE_ORDER_STATUS_SUCCESS,
-                payload: response
+                payload: {...response,
+                  status,
+                  order_id: orderID
+                }
               })
             })
             .catch(error => {
@@ -114,12 +120,19 @@ export const changeOrderStatus = (orderID, status) => (dispatch, getState) => {
 export const completeOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_DONE)
 export const cancelOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_CANCELED)
 
+export const toogleEditMode = () => (dispatch) => {
+  dispatch({
+    type:TOOGLE_ORDERS_MODE
+  })
+}
+
 export const actions = {
   fetchAllCustomerOrders,
   fetchOrder,
   makeOrder,
   completeOrder,
-  cancelOrder
+  cancelOrder,
+  toogleEditMode
 }
 
 const ACTION_HANDLERS = {
@@ -138,11 +151,25 @@ const ACTION_HANDLERS = {
   },
   [MAKE_ORDER_SUCCESS]: (state, action) => {
     return { ...state, activeOrderID: action.payload.id }
+  },
+  [CHANGE_ORDER_STATUS_SUCCESS]: (state, action) => {
+    const newOrders = state.orders.map(order => {
+      const newOrder = action.payload
+      if (order.order_id === newOrder.order_id) {
+        return { ...order, status: newOrder.status }
+      }
+      return order
+    })
+    return { ...state, orders: newOrders }
+  },
+  [TOOGLE_ORDERS_MODE]: (state, action) => {
+    return { ...state, normalMode: !state.normalMode }
   }
 }
 
 const initialState = {
   activeOrderID: undefined,
+  normalMode: true,
   orders: []
 }
 

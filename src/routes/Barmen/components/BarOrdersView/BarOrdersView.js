@@ -11,6 +11,8 @@ export const BarOrdersView = ({
   getDrinkById,
   completeOrder,
   canceledOrders,
+  toogleEditMode,
+  normalMode,
   orders
 }) => (
   <div className='barmen-container'>
@@ -20,7 +22,16 @@ export const BarOrdersView = ({
     </div>
     <div className='container orders-workplace'>
       <div className='orders-workplace__new'>
-        <h3 className='orders-workplace__titile'>New</h3>
+        <div>
+          <h3 className='orders-workplace__titile'>New</h3>
+          <div onClick={() => toogleEditMode() }>
+            {normalMode ? (
+              <span>Normal mode</span>
+            ) : (
+              <span>Decline mode</span>
+            )}
+          </div>
+        </div>
         {pendingOrders.length > 0 &&
           pendingOrders.map(order => (
             <div key={order.order_id}>

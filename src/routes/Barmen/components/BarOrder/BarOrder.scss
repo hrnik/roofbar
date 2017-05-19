@@ -60,10 +60,15 @@
 /*Ok icon by Icons8 */
 .icon-btn { /* Customizes Ok icon */
   display: inline-block;
+  cursor:pointer;
   fill:$gray-color;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+  &:hover:not(.icon-btn--active){
+    fill:$dark-color;
+  }
   &.icon-btn--active{
     fill: $primary-color;
+    cursor:default;
   }
 }
