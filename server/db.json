@@ -84,7 +84,12 @@
   ],
   "orders": [
     {
-      "id": 1
+      "id": 1,
+      "order_id": 1,
+      "order_code": "HHBG",
+      "date": "2017-01-04 11:44",
+      "status": "PEDNING",
+      "drink_id": 2
     },
     {
       "id": 2,
