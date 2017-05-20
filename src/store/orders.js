@@ -3,11 +3,11 @@ import API from 'api'
 // ------------------------------------ Constants
 // ------------------------------------
 
-export const FETCH_ORDERS_START = 'FETCH_DRINKS_START'
+export const FETCH_ORDERS_START = 'FETCH_ORDERS_START'
 export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS'
 export const FETCH_ORDERS_ERROR = 'FETCH_ORDERS_ERROR'
 
-export const FETCH_ORDER_START = 'FETCH_DRINK_START'
+export const FETCH_ORDER_START = 'FETCH_ORDER_START'
 export const FETCH_ORDER_SUCCESS = 'FETCH_ORDER_SUCCESS'
 export const FETCH_ORDER_ERROR = 'FETCH_ORDER_ERROR'
 
@@ -24,7 +24,6 @@ export const ORDER_STATUS_PENDING = 'PENDING'
 export const ORDER_STATUS_CANCELED = 'CANCELED'
 
 export const TOOGLE_ORDERS_MODE = 'TOOGLE_ORDERS_MODE'
-
 
 // ------------------------------------
 // Actions
@@ -51,7 +50,7 @@ export const fetchAllCustomerOrders = () => (dispatch, getState) => {
     })
 }
 
-export const fetchOrder = ({ id: orderID }) => (dispatch, getState) => {
+export const fetchOrder = orderID => (dispatch, getState) => {
   dispatch({ type: FETCH_ORDER_START })
 
   const clientAPI = API(getState())
@@ -72,7 +71,7 @@ export const fetchOrder = ({ id: orderID }) => (dispatch, getState) => {
     })
 }
 
-export const makeOrder = (drinkID) => (dispatch, getState) => {
+export const makeOrder = drinkID => (dispatch, getState) => {
   dispatch({ type: MAKE_ORDER_START })
 
   const clientAPI = API(getState())
@@ -94,35 +93,36 @@ export const makeOrder = (drinkID) => (dispatch, getState) => {
 }
 
 export const changeOrderStatus = (orderID, status) => (dispatch, getState) => {
-  dispatch({ type : CHANGE_ORDER_STATUS_START, payload: status})
+  dispatch({ type: CHANGE_ORDER_STATUS_START, payload: status })
 
   const clientAPI = API(getState())
 
   return clientAPI
-            .changeOrderStatus(orderID, status)
-            .then(response => {
-              dispatch({
-                type: CHANGE_ORDER_STATUS_SUCCESS,
-                payload: {...response,
-                  status,
-                  order_id: orderID
-                }
-              })
-            })
-            .catch(error => {
-              dispatch({
-                type: CHANGE_ORDER_STATUS_ERROR,
-                payload: error
-              })
-            })
+    .changeOrderStatus(orderID, status)
+    .then(response => {
+      dispatch({
+        type: CHANGE_ORDER_STATUS_SUCCESS,
+        payload: {
+          ...response,
+          status,
+          order_id: orderID
+        }
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: CHANGE_ORDER_STATUS_ERROR,
+        payload: error
+      })
+    })
 }
 
 export const completeOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_DONE)
 export const cancelOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_CANCELED)
 
-export const toogleEditMode = () => (dispatch) => {
+export const toogleEditMode = () => dispatch => {
   dispatch({
-    type:TOOGLE_ORDERS_MODE
+    type: TOOGLE_ORDERS_MODE
   })
 }
 
@@ -135,19 +135,39 @@ export const actions = {
   toogleEditMode
 }
 
+const proccesPendingList = (listID = [], order) => {
+  let newListID = [].concat(listID)
+  if (order.status === ORDER_STATUS_PENDING && !listID.includes(order.order_id)) {
+    newListID.push(order.order_id)
+  } else if (order.status !== ORDER_STATUS_PENDING && listID.includes(order.order_id)) {
+    newListID = newListID.filter(item => item != order.order_id)
+  }
+  return newListID
+}
 const ACTION_HANDLERS = {
   [FETCH_ORDERS_SUCCESS]: (state, action) => {
-    return { ...state, orders: action.payload }
+    const newOrders = action.payload
+    let newPendingOrdersID = state.pendingOrdersID
+
+    newOrders.forEach(item => {
+      newPendingOrdersID = proccesPendingList(newPendingOrdersID, item)
+    })
+
+    return { ...state, orders: action.payload, pendingOrdersID: newPendingOrdersID }
   },
   [FETCH_ORDER_SUCCESS]: (state, action) => {
     const order = action.payload
+    let newPendingOrdersID = state.pendingOrdersID
+
     const newOrders = state.orders.map(item => {
       if (item.order_id === order.order_id) {
         return order
       }
       return item
     })
-    return { ...state, orders: newOrders }
+
+    newPendingOrdersID = proccesPendingList(newPendingOrdersID, order)
+    return { ...state, orders: newOrders, pendingOrdersID: newPendingOrdersID }
   },
   [MAKE_ORDER_SUCCESS]: (state, action) => {
     return { ...state, activeOrderID: action.payload.id }
@@ -169,6 +189,7 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   activeOrderID: undefined,
+  pendingOrdersID: [],
   normalMode: true,
   orders: []
 }
