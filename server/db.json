@@ -1,120 +1,138 @@
 {
-  "drinks": {
-    "data": [{
-        "drink_id": 1,
-        "name": "Sambuka",
-        "description": "Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola",
-        "category": "Alchocol",
-        "photo": "",
-        "status": "AVALIBLE"
-      }, {
-        "drink_id": 2,
-        "name": "Apple Juice",
-        "description": "Fresh apple juice for your brain",
-        "category": "Fresh Juice",
-        "photo": "",
-        "status": "AVALIBLE"
-      }, {
-        "drink_id": 3,
-        "name": "Orange Juice",
-        "description": "ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE",
-        "category": "Fresh Juice",
-        "photo": "",
-        "status": "AVALIBLE"
-      }, {
-        "drink_id": 4,
-        "name": "Vanila Milkshake",
-        "description": "Vanila Milk, and some shake",
-        "category": "Milkshake",
-        "photo": "",
-        "status": "AVALIBLE"
-      },
-      {
-        "drink_id": 5,
-        "name": "Beer",
-        "description": "Cold beer, after hardk work",
-        "category": "Alchocol",
-        "photo": "",
-        "status": "AVALIBLE"
-      },
-      {
-        "drink_id": 6,
-        "name": "Russian Vodka",
-        "description": "Vodka, balalaika, matreshka, medeved",
-        "category": "Alchocol",
-        "photo": "",
-        "status": "AVALIBLE"
-      },
-      {
-        "drink_id": 7,
-        "name": "Earl Grey",
-        "description": "Earl Grey tea is a tea blend which has been flavoured with the addition of oil of bergamot.",
-        "category": "Tea",
-        "photo": "",
-        "status": "AVALIBLE"
-      },
-      {
-        "drink_id": 8,
-        "name": "Coffee",
-        "description": "WAKE UP!!",
-        "category": "Coffee",
-        "photo": "",
-        "status": "AVALIBLE"
-      }
-    ]
-  },
-  "limits": {
-    "data": [{
+  "drinks": [
+    {
+      "id": 1,
+      "drink_id": 1,
+      "name": "Sambuka",
+      "description": "Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola",
+      "category": "Alchocol",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 2,
+      "drink_id": 2,
+      "name": "Apple Juice",
+      "description": "Fresh apple juice for your brain",
+      "category": "Fresh Juice",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 3,
+      "drink_id": 3,
+      "name": "Orange Juice",
+      "description": "ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE ORANGE",
+      "category": "Fresh Juice",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 4,
+      "drink_id": 4,
+      "name": "Vanila Milkshake",
+      "description": "Vanila Milk, and some shake",
+      "category": "Milkshake",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 5,
+      "drink_id": 5,
+      "name": "Beer",
+      "description": "Cold beer, after hardk work",
+      "category": "Alchocol",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 6,
+      "drink_id": 6,
+      "name": "Russian Vodka",
+      "description": "Vodka, balalaika, matreshka, medeved",
+      "category": "Alchocol",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 7,
+      "drink_id": 7,
+      "name": "Earl Grey",
+      "description": "Earl Grey tea is a tea blend which has been flavoured with the addition of oil of bergamot.",
+      "category": "Tea",
+      "photo": "",
+      "status": "AVALIBLE"
+    },
+    {
+      "id": 8,
+      "drink_id": 8,
+      "name": "Coffee",
+      "description": "WAKE UP!!",
+      "category": "Coffee",
+      "photo": "",
+      "status": "AVALIBLE"
+    }
+  ],
+  "limits": [
+    {
       "category": "alcohol",
       "daily_limit": 10,
       "month_limit": 100,
       "daily_done": 1,
       "month_done": 10
-    }]
-  },
-  "orders": {
-    "data": [{
-      "order_id": 12344,
+    }
+  ],
+  "orders": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2,
+      "order_id": 2,
       "order_code": "HHBG",
       "date": "2017-01-04 11:44",
-      "status": "PENDING",
-      "drink_id": 1
-    }, {
-      "order_id": 1234323,
-      "order_code": "HHBG",
-      "date": "2017-01-04 11:44",
-      "status": "PENDING",
+      "status": "DONE",
       "drink_id": 2
-    }, {
-      "order_id": 122344,
+    },
+    {
+      "id": 3,
+      "order_id": 3,
       "order_code": "124",
       "date": "2017-01-04 11:44",
-      "status": "PENDING",
+      "status": "DONE",
       "drink_id": 3
-    }, {
-      "order_id": 1211344,
+    },
+    {
+      "id": 4,
+      "order_id": 4,
       "order_code": "123",
       "date": "2017-01-04 11:44",
-      "status": "PENDING",
+      "status": "DONE",
       "drink_id": 1
-    }, {
-      "order_id": 114323,
+    },
+    {
+      "id": 5,
+      "order_id": 5,
       "order_code": "HHBaG",
       "date": "2017-01-04 11:44",
       "status": "DONE",
       "drink_id": 2
-    }, {
-      "order_id": 1223944,
+    },
+    {
+      "id": 6,
+      "order_id": 6,
       "order_code": "12s4",
       "date": "2017-01-04 11:44",
       "status": "DONE",
       "drink_id": 3
-    }, {
-      "order_id": 12411344,
+    },
+    {
+      "id": 7,
+      "order_id": 7,
       "order_code": "1a23",
       "date": "2017-01-04 11:44",
       "status": "CANCELED",
       "drink_id": 1
-    }]
-  }
+    }
+  ]
 }

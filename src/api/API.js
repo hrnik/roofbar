@@ -1,6 +1,7 @@
 const API_URL = 'http://localhost:3004'
 
-const handleResponse = response => response.json()
+// const handleResponse = response => response.json()
+const handleResponse = response => response.json().then(data => ({data}))
 const makeGetRequest = url => fetch(url).then(handleResponse)
 const makeBodyRequest = (url, data, type) => fetch(url, { method: type, body: data }).then(handleResponse)
 const makePostRequest = (url, data) => makeBodyRequest(url, data, 'POST')
