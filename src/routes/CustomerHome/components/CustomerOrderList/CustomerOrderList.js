@@ -9,7 +9,7 @@ const CustomerOrderList = ({ orders }) => {
     <div className='order-list'>
       {orders.length > 0 &&
         orders.map(item => {
-          return <OwnOrder name='Long island iced tea' img={long} code={item.order_code} status={item.status} active={item.status === 'PENDING'} />
+          return <OwnOrder name='Long island iced tea' img={long} code={item.order_code} status={item.status} />
         })}
     </div>
   )

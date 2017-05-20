@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-const IconBtn = ({ ok, cancel, active, onAction }) => {
+const IconBtn = ({ ok, cancel, active, onAction, className }) => {
   const okIcon = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -38,7 +38,7 @@ const IconBtn = ({ ok, cancel, active, onAction }) => {
     </svg>
   )
   return (
-    <div onClick={() => onAction()}>
+    <div className={className}  onClick={() => onAction()}>
       {ok && okIcon}
       {cancel && cancelIcon}
     </div>

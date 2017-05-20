@@ -18,8 +18,12 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 
-  &.own-order__status--active{
+  &.own-order__status--completed{
     color:$primary-color;
+  }
+
+  &.own-order__status--canceled{
+    color:$wrong-color;
   }
 }
 

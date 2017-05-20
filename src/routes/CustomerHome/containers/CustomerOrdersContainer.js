@@ -1,12 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchOrder, fetchAllCustomerOrders, ORDER_STATUS_PENDING } from 'store/orders'
+import Notifications from 'react-notification-system-redux'
 
+import { fetchOrder, fetchAllCustomerOrders, ORDER_STATUS_PENDING, ORDER_STATUS_DONE, ORDER_STATUS_CANCELED } from 'store/orders'
+import { notifySuccess, notifyWarning } from 'store/notifications'
+import IconBtn from 'components/IconBtn'
 import CustomerOrderList from '../components/CustomerOrderList'
 
 const mapDispathToProps = {
   fetchAllCustomerOrders,
-  fetchOrder
+  fetchOrder,
+  notifySuccess,
+  notifyWarning
 }
 
 const mapStateToProps = state => ({
@@ -32,11 +37,36 @@ class CustomerOrdersContainer extends React.Component {
   }
 
   startPoll (listID) {
-    this.timeoutList = listID.map(id => setTimeout(() => this.props.fetchOrder(id).then(order => {
-      if(order.status !== ORDER_STATUS_PENDING) {
-        console.log('DONNNNNNEE', order.order_id)
-      }
-    }), 3000))
+    this.timeoutList = listID.map(id =>
+      setTimeout(
+        () =>
+          this.props.fetchOrder(id).then(order => {
+            if (order.status === ORDER_STATUS_DONE) {
+              this.props.notifySuccess({
+                // uid: 'once-please', // you can specify your own uid if required
+                title: 'Your cocktail is ready!!',
+                message: 'Cocktail is prepared and you can take him at the bar.',
+                position: 'tc',
+                autoDismiss: 0,
+                dismissible: true,
+                children: ( <IconBtn className='notification-msg' ok active></IconBtn>)
+              })
+            }
+            if (order.status === ORDER_STATUS_CANCELED) {
+              this.props.notifyWarning({
+                // uid: 'once-please', // you can specify your own uid if required
+                title: 'Your cocktail canot be prepared.',
+                message: 'Barmen don\'t have some ingredients, yoc can try order other coctail.',
+                position: 'tc',
+                autoDismiss: 0,
+                dismissible: true,
+                //children: ( <IconBtn className='notification-msg' ok active></IconBtn>   )
+              })
+            }
+          }),
+        5000
+      )
+    )
   }
 
   render () {

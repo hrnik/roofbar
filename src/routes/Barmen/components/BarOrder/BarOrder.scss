@@ -79,7 +79,7 @@
 }
 
 .icon-btn--decline{
-  fill:#d76345;
+  fill:$wrong-color;
   &:hover:not(.icon-btn--active){
     fill:#881d01;
   }

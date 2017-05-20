@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import {ORDER_STATUS_CANCELED, ORDER_STATUS_DONE } from 'store/orders'
+
 import './OwnOrder.scss'
 
 const OwnOrder = ({ name, img, code, status, active }) => {
@@ -14,7 +16,10 @@ const OwnOrder = ({ name, img, code, status, active }) => {
           <div className='own-order__code'>{code}</div>
         </div>
       </div>
-      <div className={classNames('own-order__status', { 'own-order__status--active':active })}>{status}</div>
+      <div className={classNames('own-order__status', {
+        'own-order__status--completed': status === ORDER_STATUS_DONE,
+        'own-order__status--canceled': status === ORDER_STATUS_CANCELED,
+       })}>{status}</div>
     </div>
   )
 }
