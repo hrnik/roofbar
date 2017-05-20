@@ -5,7 +5,7 @@
       "drink_id": 1,
       "name": "Sambuka",
       "description": "Gin, White rum, Silver tequila, Vodka, Triple sec, Simple syrup, Lemon juice, Cola",
-      "category": "Alchocol",
+      "category": "Coctails",
       "photo": "",
       "status": "AVALIBLE"
     },
@@ -32,7 +32,7 @@
       "drink_id": 4,
       "name": "Vanila Milkshake",
       "description": "Vanila Milk, and some shake",
-      "category": "Milkshake",
+      "category": "Fresh Juice",
       "photo": "",
       "status": "AVALIBLE"
     },
@@ -41,7 +41,7 @@
       "drink_id": 5,
       "name": "Beer",
       "description": "Cold beer, after hardk work",
-      "category": "Alchocol",
+      "category": "Smoothies",
       "photo": "",
       "status": "AVALIBLE"
     },
@@ -50,7 +50,7 @@
       "drink_id": 6,
       "name": "Russian Vodka",
       "description": "Vodka, balalaika, matreshka, medeved",
-      "category": "Alchocol",
+      "category": "Coctails",
       "photo": "",
       "status": "AVALIBLE"
     },
@@ -59,7 +59,7 @@
       "drink_id": 7,
       "name": "Earl Grey",
       "description": "Earl Grey tea is a tea blend which has been flavoured with the addition of oil of bergamot.",
-      "category": "Tea",
+      "category": "Smoothies",
       "photo": "",
       "status": "AVALIBLE"
     },
@@ -68,7 +68,7 @@
       "drink_id": 8,
       "name": "Coffee",
       "description": "WAKE UP!!",
-      "category": "Coffee",
+      "category": "Coctails",
       "photo": "",
       "status": "AVALIBLE"
     }

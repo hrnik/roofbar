@@ -35,8 +35,8 @@ export const CustomerHomeView = ({ categories, limits, activeCategoryName, setAc
     </div>
     <div className='list-section'>
       <ListTitle number={1} type='category' count={categories.length} />
-      <div className='category-list'>
-        {categories.length > 0 ? <Slider {...sliderCategoriesSettings}>{categories.map((category, index) => {
+      <div className='category-list container'>
+        {categories.length > 0 ? categories.map((category, index) => {
           return (<div
             data-index={index}
             key={index}>
@@ -48,7 +48,7 @@ export const CustomerHomeView = ({ categories, limits, activeCategoryName, setAc
               onClick={() => setActiveCategory(category)}
               active={activeCategoryName === category}
               drinked={10} /></div>)
-        })}</Slider> : null }
+        }) : null }
       </div>
     </div>
     <div className='list-section'>

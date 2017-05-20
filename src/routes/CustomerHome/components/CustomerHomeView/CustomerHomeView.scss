@@ -8,13 +8,14 @@
 }
 
 .category-list {
-  //display: flex;
+  display: flex;
   position: relative;
   z-index: 10;
 }
 
 .category-list__item {
   min-width: 70px;
+  margin-right: 24px;
 }
 
 .btn-order-wraper {
