@@ -28,13 +28,13 @@ const sliderCategoriesSettings = {
   swipeToSlide: true
 }
 
-export const CustomerHomeView = ({ categories, limits, activeCategoryName, setActiveCategory }) => (
+export const CustomerHomeView = ({ categories, limits, activeCategoryName, setActiveCategory, drinks }) => (
   <div>
     <div className='container container--left'>
       <h2>Order</h2>
     </div>
     <div className='list-section'>
-      <ListTitle number={1} type='category' count={6} />
+      <ListTitle number={1} type='category' count={categories.length} />
       <div className='category-list'>
         {categories.length > 0 ? <Slider {...sliderCategoriesSettings}>{categories.map((category, index) => {
           return (<div
@@ -52,7 +52,7 @@ export const CustomerHomeView = ({ categories, limits, activeCategoryName, setAc
       </div>
     </div>
     <div className='list-section'>
-      <ListTitle number={2} type='type' count={8} />
+      <ListTitle number={2} type='type' count={drinks.filter(drink => drink.category === activeCategoryName).length} />
       <Link className='link-all-coctails' to='/counter'>Show all</Link>
       <CustomerDrinksContainer></CustomerDrinksContainer>
 
