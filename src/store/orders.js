@@ -62,12 +62,14 @@ export const fetchOrder = orderID => (dispatch, getState) => {
         type: FETCH_ORDER_SUCCESS,
         payload: response.data
       })
+      return response.data
     })
     .catch(error => {
       dispatch({
         type: FETCH_ORDER_ERROR,
         payload: error
       })
+      return error
     })
 }
 

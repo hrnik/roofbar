@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchOrder, fetchAllCustomerOrders } from 'store/orders'
+import { fetchOrder, fetchAllCustomerOrders, ORDER_STATUS_PENDING } from 'store/orders'
 
 import CustomerOrderList from '../components/CustomerOrderList'
 
@@ -32,7 +32,11 @@ class CustomerOrdersContainer extends React.Component {
   }
 
   startPoll (listID) {
-    this.timeoutList = listID.map(id => setTimeout(() => this.props.fetchOrder(id), 2000))
+    this.timeoutList = listID.map(id => setTimeout(() => this.props.fetchOrder(id).then(order => {
+      if(order.status !== ORDER_STATUS_PENDING) {
+        console.log('DONNNNNNEE', order.order_id)
+      }
+    }), 3000))
   }
 
   render () {
