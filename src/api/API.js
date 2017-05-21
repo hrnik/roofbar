@@ -1,4 +1,5 @@
-const API_URL = 'http://192.168.0.13:3004'
+//const API_URL = 'http://localhost:3004'
+const API_URL = 'https://demo6478244.mockable.io'
 
 // const handleResponse = response => response.json()
 const handleResponse = response => response.json().then(data => ({data}))
