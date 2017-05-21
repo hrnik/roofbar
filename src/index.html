@@ -1,16 +1,42 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>React Redux Starter Kit</title>
   <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
-
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui"
+  />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+  />
   <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet">
-
 </head>
+
 <body>
   <div id="root" style="height: 100%"></div>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '1707671159533847',
+        xfbml: true,
+        version: 'v2.9'
+      });
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  </script>
 </body>
+
 </html>
