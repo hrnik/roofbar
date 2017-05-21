@@ -6,19 +6,39 @@
   background-color: $primary-color;
   border-radius: 100px;
   border: none;
-
   font-size: 12px;
   letter-spacing: 1px;
   color: #fff;
   text-transform: uppercase;
   text-align: center;
   vertical-align: middle;
-
   white-space: nowrap;
   user-select: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #a0e33b;
+  }
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: #9cd04e;
+  }
 }
 
 .btn--block {
   display: block;
   width: 100%;
+}
+
+.btn--blue {
+  background-color: #3b5998;
+  box-shadow: 0 2px 16px 0 rgba(59, 89, 152, 0.49);
+  &:hover {
+    background-color: #2a52a7;
+  }
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: #1a4cb7;
+  }
 }

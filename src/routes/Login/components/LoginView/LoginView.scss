@@ -1,0 +1,27 @@
+@import 'base';
+.login-container {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  max-width: 230px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.login__title {
+  margin-bottom: 8px;
+}
+
+.login__text {
+  line-height: 1.43;
+  margin-bottom: 32px;
+  color: $dark-color;
+}
+
+.login__text-wraper {
+  padding: 0 38px;
+}
