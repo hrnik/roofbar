@@ -11,15 +11,32 @@ const sliderDrinksSettings = {
   arrows: false,
   autoplay: false,
   dots: false,
-  infinite: false,
+  infinite: true,
   slidesToShow: 1,
   centerMode: true,
-  centerPadding: '20px'
+  centerPadding: '20px',
+  touchThreshold: 10
 }
 
 const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder }) => {
   return (
-    <div className='drinks-list--big drinks-list--big'>
+    <div
+      onTouchStart={() => {
+        {
+          /* document.body.classList.add('stop-scrolling')
+         document.body.on('touchmove', e => e.preventDefault) */
+        }
+      }}
+      onTouchEnd={() => {
+        {
+          /* document.body.classList.remove('stop-scrolling') */
+        }
+      }}
+      onTouchMove={e => {
+        e.preventDefault()
+      }}
+      className='drinks-list--big drinks-list--big'
+    >
       {drinks.length > 0
         ? <Slider {...sliderDrinksSettings}>
           {drinks.filter(drink => drink.category === activeCategoryName).map((drink, index) => {

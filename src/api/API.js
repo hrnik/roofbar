@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3004'
+const API_URL = 'http://192.168.0.13:3004'
 
 // const handleResponse = response => response.json()
 const handleResponse = response => response.json().then(data => ({data}))
