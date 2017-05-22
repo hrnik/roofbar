@@ -5,6 +5,7 @@ import customerOrdersReducer, { fetchAllCustomerOrders } from 'store/orders'
 
 // Sync route definition
 export default (store) => ({
+  path:'/bar',
   getComponent (nextState, cb) {
     const state = store.getState()
 

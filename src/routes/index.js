@@ -16,7 +16,14 @@ export const createRoutes = (store) => ({
   childRoutes : [
     CounterRoute(store),
     BarmenRoute(store),
-    LoginRoute(store)
+    LoginRoute(store),
+    {
+      path:'/login-result',
+      onEnter: (nextState) => {
+        console.log(nextState)
+      }
+
+    }
   ]
 })
 
