@@ -10,15 +10,17 @@ export const loginUser = creds => (dispatch, getState) => {
     type: LOGIN_START
   })
   const clientAPI = API(getState())
-
-  localStorage.setItem('auth_token', 'hello')
-  return dispatch({
-    type: LOGIN_SUCCESS,
-    payload: {
-      role:'user'
-    }
-  })
-
+  try {
+    localStorage.setItem('auth_token', 'hello')
+  } catch (error) {
+  } finally {
+    return dispatch({
+      type: LOGIN_SUCCESS,
+      payload: {
+        role: 'user'
+      }
+    })
+  }
 
   // return clientAPI
   //   .login(creds)

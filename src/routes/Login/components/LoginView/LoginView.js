@@ -9,20 +9,8 @@ const LoginView = ({ loginUser }) => {
     const id = '1707886086179021'
     const host = 'http://localhost:3000'
     // const id = '1707671159533847'
-    // const host = 'http//roofbar.surge.sh'
+    // const host = 'http://roofbar.surge.sh'
     window.location.href = `http://facebook.com/v2.9/dialog/oauth?client_id=${id}&redirect_uri=${host}/login-result?response_type=code`
-    // FB.getLoginStatus(function (response) {
-    //   if (response.status === 'connected') {
-    //     loginUser(response)
-    //     console.log('Logged in.', response)
-    //   } else {
-    //     FB.login(function (response) {
-    //       if (response.authResponse) {
-    //         loginUser(response)
-    //       }
-    //     })
-    //   }
-    // })
   }
   return (
     <div className='login-container'>
