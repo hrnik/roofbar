@@ -5,6 +5,8 @@ import CounterRoute from './Counter'
 import BarmenRoute from './Barmen'
 import LoginRoute from './Login'
 import Authenticated from './Authenticated'
+import AuthRouter from './AuthRouter'
+import { loginUser } from 'store/auth'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -19,10 +21,11 @@ export const createRoutes = (store) => ({
     LoginRoute(store),
     {
       path:'/login-result',
-      onEnter: (nextState) => {
-        console.log(nextState)
-      }
-
+      onEnter: ({ location }) => {
+        console.log(location)
+        store.dispatch(loginUser(location.query.code))
+      },
+      component: AuthRouter
     }
   ]
 })

@@ -6,7 +6,7 @@ import './LoginView.scss'
 
 const LoginView = ({ loginUser }) => {
   const handleLogin = () => {
-   window.location.href = `http://facebook.com/v2.9/dialog/oauth?client_id=1707886086179021&redirect_uri=http://localhost:3000/login-result`
+   window.location.href = `http://facebook.com/v2.9/dialog/oauth?client_id=1707671159533847&redirect_uri=http://roofbar.surge.sh/login-result?response_type=code`
     // FB.getLoginStatus(function (response) {
     //   if (response.status === 'connected') {
     //     loginUser(response)

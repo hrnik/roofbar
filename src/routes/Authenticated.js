@@ -13,6 +13,8 @@ export default (store, component) => {
 
     if (routeOnEnter) {
       routeOnEnter(nextState, replace, callback)
+    } else {
+      callback()
     }
   }
 
