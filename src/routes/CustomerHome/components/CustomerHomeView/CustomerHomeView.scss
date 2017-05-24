@@ -1,6 +1,25 @@
 @import 'base';
 // @import "~slick-carousel/slick/slick.css";
 // @import "~slick-carousel/slick/slick-theme.css";
+
+
+@media (min-width: 768px) {
+  .customer-bar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .customer-bar__main{
+    flex-grow: 1;
+  }
+
+   .customer-bar__orders{
+     flex-basis:300px;
+     width: 300px;
+   }
+
+}
+
+
 .duck {
   display: block;
   width: 120px;

@@ -6,10 +6,10 @@ import './LoginView.scss'
 
 const LoginView = ({ loginUser }) => {
   const handleLogin = () => {
-    const id = '1707886086179021'
-    const host = 'http://localhost:3000'
-    // const id = '1707671159533847'
-    // const host = 'http://roofbar.surge.sh'
+    // const id = '1707886086179021'
+    // const host = 'http://localhost:3000'
+    const id = '1707671159533847'
+    const host = 'http://roofbar.surge.sh'
     window.location.href = `http://facebook.com/v2.9/dialog/oauth?client_id=${id}&redirect_uri=${host}/login-result?response_type=code`
   }
   return (

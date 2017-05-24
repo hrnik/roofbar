@@ -1,6 +1,13 @@
 .core-layout__viewport {
   padding-top: 20px;
-  max-width: 580px;
+  //max-width: 580px;
   height: 100%;
   margin: 0 auto;
+}
+
+
+@media (min-width: 768px) {
+  .core-layout__viewport {
+    padding: 30px 60px 0 60px;
+  }
 }

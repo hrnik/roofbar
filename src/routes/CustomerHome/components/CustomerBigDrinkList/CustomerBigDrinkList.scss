@@ -2,3 +2,23 @@
   position: relative;
   z-index: 10;
 }
+
+
+.drinks-list{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.drinks-list__item{
+  margin-right: 24px;
+}
+
+
+
+@media (max-width: 768px) {
+  .drinks-list{
+    display: none;
+  }
+}
