@@ -3,6 +3,9 @@
 .drink{
   display: flex;
 }
+.drink--disable{
+  opacity: 0.3;
+}
 
 .drink__image{
   max-width: 70px;
