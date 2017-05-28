@@ -42,3 +42,22 @@
     background-color: #1a4cb7;
   }
 }
+
+
+.btn--black {
+  background-color: $dark-color;
+  box-shadow: 0 2px 16px 0 rgba(198, 198, 198, 0.49);
+  &:hover {
+    background-color: #4f4f4f;
+  }
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: #000;
+  }
+}
+
+.btn--disable{
+  opacity: 0.3;
+  cursor:default;
+}
