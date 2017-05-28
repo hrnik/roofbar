@@ -6,7 +6,6 @@ import BarmenRoute from './Barmen'
 import LoginRoute from './Login'
 import Authenticated from './Authenticated'
 import LoginResult from './LoginResult'
-import ManageRoute from './Manage'
 
 
 /*  Note: Instead of using JSX, we recommend using react-router
@@ -20,8 +19,7 @@ export const createRoutes = (store) => ({
     CounterRoute(store),
     BarmenRoute(store),
     LoginRoute(store),
-    LoginResult(store),
-    ManageRoute(store)
+    LoginResult(store)
   ]
 })
 

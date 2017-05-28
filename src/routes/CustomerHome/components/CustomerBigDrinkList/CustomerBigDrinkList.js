@@ -42,7 +42,6 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder }) => {
                           img={long}
                           description={drink.description}
                           makeOrder={makeOrder}
-                          status={drink.status}
                         />
                       </div>
                     )
@@ -64,7 +63,6 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder }) => {
                     img={long}
                     description={drink.description}
                     makeOrder={makeOrder}
-                    status={drink.status}
                   />
                 </div>
               )
