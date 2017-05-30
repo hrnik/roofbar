@@ -6,21 +6,28 @@ import BarmenRoute from './Barmen'
 import LoginRoute from './Login'
 import Authenticated from './Authenticated'
 import LoginResult from './LoginResult'
+import CustomerAllDrinks from './CustomerAllDrinks'
 
+import { injectReducer } from 'store/reducers'
+import customerBarReducer, { fetchDrinks } from 'store/bar'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
-export const createRoutes = (store) => ({
-  path        : '/',
-  component   : CoreLayout,
-  indexRoute  : Authenticated(store, CustomerHome),
-  childRoutes : [
-    CounterRoute(store),
-    BarmenRoute(store),
-    LoginRoute(store),
-    LoginResult(store)
-  ]
+export const createRoutes = store => ({
+  path: '/',
+  getComponent: (nextState, cb) => {
+    const state = store.getState()
+
+    if (!state.bar || state.bar.drinks.length) {
+      store.dispatch(fetchDrinks())
+    }
+
+    injectReducer(store, { key: 'bar', reducer: customerBarReducer })
+    cb(null, CoreLayout)
+  },
+  indexRoute: Authenticated(store, CustomerHome),
+  childRoutes: [CounterRoute(store), BarmenRoute(store), LoginRoute(store), LoginResult(store), CustomerAllDrinks(store)]
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically

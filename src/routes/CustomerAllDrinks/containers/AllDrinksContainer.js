@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 import { makeOrder } from 'store/orders'
 
-import CustomerBigDrinkList from '../components/CustomerBigDrinkList'
+import AllDrinks from '../components/AllDrinks'
 
 const mapDispathToProps = {
-  makeOrder,
+  makeOrder
 }
 
 const mapStateToProps = state => ({
   ...state.bar
 })
 
-export default connect(mapStateToProps, mapDispathToProps)(CustomerBigDrinkList)
+export default connect(mapStateToProps, mapDispathToProps)(AllDrinks)
