@@ -29,7 +29,7 @@ export const CustomerHomeView = ({ categories, limits, activeCategoryName, setAc
           type='type'
           count={drinks.filter(drink => drink.category === activeCategoryName).length}
         />
-        <Link className='link-all-coctails' to='/counter'>Show all</Link>
+        <Link className='link-all-coctails' to='/drinks'>Show all</Link>
         <CustomerDrinksContainer />
       </div>
     </div>

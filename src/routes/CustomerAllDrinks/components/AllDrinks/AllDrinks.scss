@@ -1,0 +1,17 @@
+@import 'base';
+
+.all-drinks__title{
+  margin: 24px 0;
+  color:$dark-color;
+}
+.small-drinks-list__item{
+  display: block;
+  max-width: 300px;
+}
+.small-drinks-list__item:after {
+  content: ' ';
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid $light-color;
+  margin: 16px 0;
+}

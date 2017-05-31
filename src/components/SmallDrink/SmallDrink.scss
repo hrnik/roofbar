@@ -1,0 +1,36 @@
+@import 'base';
+
+.small-drink{
+  display: flex;
+  align-items: center;
+}
+.small-drink--disable{
+  opacity: 0.3;
+}
+
+.small-drink__image{
+  max-width: 38px;
+  height: auto;
+  margin-right: 16px;
+}
+
+.small-drink__text{
+  width: 170px;
+  line-height: normal;
+  margin-right: 16px;
+}
+
+.small-drink__name{
+  font-size: 20px;
+  font-weight: bold;
+  color:$dark-color;
+  margin-bottom: 8px;
+}
+
+.small-drink-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: 0 2px 16px 0 rgba(154, 206, 78, 0.49);
+}

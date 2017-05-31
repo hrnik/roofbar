@@ -1,17 +1,18 @@
 import React from 'react'
 import Link from 'components/Link'
-import BigDrink from 'components/BigDrink'
-const long = {}
+import SmallDrink from 'components/SmallDrink'
+import long from 'routes/BarmenOrder/assets/long.jpg'
+import './AllDrinks.scss'
 
 const AllDrinks = ({ drinks, makeOrder }) => {
   return (
-    <div>
-      <Link>Back</Link>
-      <h1>Coctails</h1>
+    <div className='container'>
+      <Link to='/'>Back</Link>
+      <h1 className='all-drinks__title'>Coctails</h1>
       {drinks.map((drink, index) => {
         return (
-          <div data-index={index} key={index} className='drinks-list__item'>
-            <BigDrink
+          <div data-index={index} key={index} className='small-drinks-list__item'>
+            <SmallDrink
               drinkID={drink.drink_id}
               name={drink.name}
               img={long}
