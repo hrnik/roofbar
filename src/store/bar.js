@@ -103,6 +103,9 @@ export const actions = {
 }
 
 const ACTION_HANDLERS = {
+  [FETCH_DRINKS_START]: (state, action) => {
+    return { ...state, isFetchingDrinks: true }
+  },
   [FETCH_DRINKS_SUCCESS]: (state, action) => {
     const drinks = action.payload
     const categories = []
@@ -112,7 +115,7 @@ const ACTION_HANDLERS = {
         categories.push(category)
       }
     })
-    const newState = { ...state }
+    const newState = { ...state, isFetchingDrinks: false }
     newState.drinks = drinks
     newState.categories = categories
 
@@ -123,7 +126,11 @@ const ACTION_HANDLERS = {
     if (!newState.activeDrinkID && newState.drinks) {
       newState.activeDrinkID = newState.drinks[0].id
     }
+
     return newState
+  },
+  [FETCH_DRINKS_ERROR]: (state, action) => {
+    return { ...state, isFetchingDrinks: false }
   },
   [SET_ACTIVE_CATEGORY]: (state, action) => {
     const newState = { ...state }
@@ -133,6 +140,7 @@ const ACTION_HANDLERS = {
 }
 
 const initialState = {
+  isFetchingDrinks: true,
   activeCategoryName: '',
   activeDrinkID: undefined,
   categories: [],

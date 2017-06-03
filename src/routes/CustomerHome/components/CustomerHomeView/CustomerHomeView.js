@@ -10,36 +10,46 @@ import Link from 'components/Link'
 
 import './CustomerHomeView.scss'
 
-
-export const CustomerHomeView = ({ categories, limits, activeCategoryName, setActiveCategory, drinks }) => (
-  <div className='customer-bar'>
-    <div className='customer-bar__main'>
-      <div className='container container--left'>
-        <h2>Order</h2>
-      </div>
-      <CategorySection
-        categories={categories}
-        numberSection={1}
-        setActiveCategory={setActiveCategory}
-        activeCategoryName={activeCategoryName}
-      />
-      <div className='list-section list-section--drinks'>
-        <ListTitle
-          number={2}
-          type='type'
-          count={drinks.filter(drink => drink.category === activeCategoryName).length}
-        />
-        <Link className='link-all-coctails' to='/drinks'>Show all</Link>
-        <CustomerDrinksContainer />
-      </div>
-    </div>
-    <div className='container orders customer-bar__orders'>
-      <div className='orders__header'>
-        <h2 className='orders__title'>Your orders</h2>
-        <Link to='/' clsasName='orders__link'>Show all</Link>
-      </div>
-      <CustomerOrdersContainer />
-    </div>
+export const CustomerHomeView = ({
+  categories,
+  limits,
+  activeCategoryName,
+  setActiveCategory,
+  drinks,
+  isFetchingDrinks
+}) => (
+  <div>
+    {' '}{isFetchingDrinks
+      ? <div>Loading</div>
+      : <div className='customer-bar'>
+        <div className='customer-bar__main'>
+          <div className='container container--left'>
+            <h2>Order</h2>
+          </div>
+          <CategorySection
+            categories={categories}
+            numberSection={1}
+            setActiveCategory={setActiveCategory}
+            activeCategoryName={activeCategoryName}
+            />
+          <div className='list-section list-section--drinks'>
+            <ListTitle
+              number={2}
+              type='type'
+              count={drinks.filter(drink => drink.category === activeCategoryName).length}
+              />
+            <Link className='link-all-coctails' to='/drinks'>Show all</Link>
+            <CustomerDrinksContainer />
+          </div>
+        </div>
+        <div className='container orders customer-bar__orders'>
+          <div className='orders__header'>
+            <h2 className='orders__title'>Your orders</h2>
+            <Link to='/' clsasName='orders__link'>Show all</Link>
+          </div>
+          <CustomerOrdersContainer />
+        </div>
+      </div>}
   </div>
 )
 
