@@ -37,7 +37,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder }) => {
                     return (
                       <div data-index={index} key={index}>
                         <BigDrink
-                          drinkID={drink.drink_id}
+                          drinkID={drink.id}
                           name={drink.name}
                           img={long}
                           description={drink.description}
@@ -59,7 +59,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder }) => {
               return (
                 <div data-index={index} key={index} className='drinks-list__item'>
                   <BigDrink
-                    drinkID={drink.drink_id}
+                    drinkID={drink.id}
                     name={drink.name}
                     img={long}
                     description={drink.description}

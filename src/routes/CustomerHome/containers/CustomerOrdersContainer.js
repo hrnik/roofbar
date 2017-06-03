@@ -7,6 +7,7 @@ import { notifySuccess, notifyWarning } from 'store/notifications'
 import IconBtn from 'components/IconBtn'
 import CustomerOrderList from '../components/CustomerOrderList'
 
+
 const mapDispathToProps = {
   fetchAllCustomerOrders,
   fetchOrder,

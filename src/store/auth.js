@@ -10,34 +10,27 @@ export const loginUser = creds => (dispatch, getState) => {
     type: LOGIN_START
   })
   const clientAPI = API(getState())
-  try {
-    localStorage.setItem('auth_token', 'hello')
-  } catch (error) {
-  } finally {
-    return dispatch({
-      type: LOGIN_SUCCESS,
-      payload: {
-        role: 'user'
-      }
-    })
-  }
 
-  // return clientAPI
-  //   .login(creds)
-  //   .then(response => ({ user: response.data }))
-  //   .then(({ user }) => {
-  //     localStorage.setItem('auth_token', user.auth_token)
-  //     // Dispatch the success action
-  //     dispatch({
-  //       type: LOGIN_SUCCESS,
-  //       payload: user
-  //     })
-  //   })
-  //   .catch(() => {
-  //     dispatch({
-  //       type: LOGIN_ERROR
-  //     })
-  //   })
+  return clientAPI
+    .login(creds)
+    .then(response => {
+      console.log('LOGIN SUCCES', response)
+      try {
+        localStorage.setItem('access_token', response.data.access_token)
+      } catch (error) {}
+
+      // Dispatch the success action
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: response
+      })
+    })
+    .catch(error => {
+      console.log('LOGIN ERROR', error)
+      dispatch({
+        type: LOGIN_ERROR
+      })
+    })
 }
 
 const ACTION_HANDLERS = {
@@ -53,7 +46,7 @@ const ACTION_HANDLERS = {
 }
 
 const initialState = {
-  isAuthenticated: !!localStorage.getItem('auth_token'),
+  isAuthenticated: !!localStorage.getItem('access_token'),
   role: undefined
 }
 

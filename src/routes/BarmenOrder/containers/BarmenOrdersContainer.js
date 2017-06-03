@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
   canceledOrders : getCanceledOrders(state),
   pendingOrders: getPednignOrders(state),
   getDrinkById: drinkID => {
-    const filteredDrinks = state.bar.drinks.filter(drink => drinkID === drink.drink_id)
+    const filteredDrinks = state.bar.drinks.filter(drink => drinkID === drink.id)
     return filteredDrinks[0]
   }
 })
