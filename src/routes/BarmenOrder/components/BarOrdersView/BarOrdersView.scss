@@ -71,3 +71,22 @@
   }
 
 }
+
+
+.order-item-enter {
+  opacity: 0.01;
+}
+
+.order-item-enter.order-item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.order-item-leave {
+  opacity: 1;
+}
+
+.order-item-leave.order-item-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

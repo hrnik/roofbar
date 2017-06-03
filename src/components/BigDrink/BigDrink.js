@@ -11,6 +11,7 @@ const BigDrink = ({
   drinkID,
   description,
   img,
+  disable,
   makeOrder,
   status,
   disableDrink,
@@ -31,8 +32,11 @@ const BigDrink = ({
           <div className='drink__description'>{description}</div>
         </div>
       </div>
-      <div className='btn-order-wraper' >
-        {!disableMode ? <Button disable={isDisableDrink} onClick={() => makeOrder(drinkID)} fullWidth>Make order</Button> : editBtns}
+      <div className='btn-order-wraper'>
+        {!disableMode
+          ? <Button disable={isDisableDrink || disable} onClick={() => makeOrder(drinkID)} fullWidth>Make order</Button>
+          : editBtns}
+
       </div>
     </div>
   )

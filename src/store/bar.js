@@ -18,7 +18,7 @@ export const CHANGE_DRINK_STATUS_SUCCES = 'CHANGE_DRINK_STATUS_SUCCES'
 export const CHANGE_DRINK_STATUS_ERROR = 'CHANGE_DRINK_STATUS_ERROR'
 
 export const DRINK_STATUS_AVAILABLE = 'AVAILABLE'
-export const DRINK_STATUS_DISABLE = 'DISABLE'
+export const DRINK_STATUS_DISABLE = 'DISABLED'
 
 // ------------------------------------
 // Actions
@@ -50,7 +50,7 @@ export const changeDrinksStatus = (drinkID, status) => (dispatch, getState) => {
   const clientAPI = API(getState())
 
   return clientAPI
-    .changeDrinkStatus(drinkID)
+    .changeDrinkStatus(drinkID, status)
     .then(response => {
       dispatch({
         type: CHANGE_DRINK_STATUS_SUCCES,

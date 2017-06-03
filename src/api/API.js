@@ -44,7 +44,7 @@ export default store => ({
     return makeGetRequest(getUrl(`${API_URL}/drinks/`))
   },
   changeDrinkStatus: (drinkID, status) => {
-    return makePutRequest(getUrl(`${API_URL}/drinks/${drinkID}/`), { status })
+    return makePutRequest(getUrl(`${API_URL}/drinks/status/${drinkID}/`), { status, drink_id: drinkID })
   },
   getLimits: () => {
     return makeGetRequest(getUrl(`${API_URL}/limits/`))
@@ -59,7 +59,7 @@ export default store => ({
     return makePostRequest(getUrl(`${API_URL}/orders/`), { drink_id: drinkID })
   },
   changeOrderStatus: (orderID, status) => {
-    return makePutRequest(getUrl(`${API_URL}/orders/${orderID}/`), { status })
+    return makePutRequest(getUrl(`${API_URL}/orders/status/${orderID}/`), { status, order_id: orderID })
   },
   login: code => {
     return makeGetRequest(getUrl(`${API_URL}/login/`, { code }))

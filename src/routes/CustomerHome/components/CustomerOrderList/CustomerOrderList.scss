@@ -1,0 +1,17 @@
+.own-order-enter {
+  opacity: 0.01;
+}
+
+.own-order-enter.own-order-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.own-order-leave {
+  opacity: 1;
+}
+
+.own-order-leave.own-order-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

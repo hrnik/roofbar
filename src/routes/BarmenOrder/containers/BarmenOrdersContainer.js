@@ -3,6 +3,7 @@ import { fetchAllCustomerOrders, completeOrder, cancelOrder, toogleEditMode } fr
 
 import BarOrdersView from '../components/BarOrdersView'
 import {getCompetedOrders, getPednignOrders, getCanceledOrders} from 'selectors/orders'
+import {getDrinkById} from 'selectors/bar'
 
 const mapDispathToProps = {
   fetchAllCustomerOrders,
@@ -16,10 +17,7 @@ const mapStateToProps = state => ({
   completedOrders : getCompetedOrders(state),
   canceledOrders : getCanceledOrders(state),
   pendingOrders: getPednignOrders(state),
-  getDrinkById: drinkID => {
-    const filteredDrinks = state.bar.drinks.filter(drink => drinkID === drink.id)
-    return filteredDrinks[0]
-  }
+  getDrinkById: getDrinkById(state)
 })
 
 export default connect(mapStateToProps, mapDispathToProps)(BarOrdersView)

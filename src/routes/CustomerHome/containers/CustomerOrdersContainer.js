@@ -2,11 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Notifications from 'react-notification-system-redux'
 
-import { fetchOrder, fetchAllCustomerOrders, ORDER_STATUS_PENDING, ORDER_STATUS_DONE, ORDER_STATUS_CANCELED } from 'store/orders'
+import {
+  fetchOrder,
+  fetchAllCustomerOrders,
+  ORDER_STATUS_PENDING,
+  ORDER_STATUS_DONE,
+  ORDER_STATUS_CANCELED
+} from 'store/orders'
 import { notifySuccess, notifyWarning } from 'store/notifications'
 import IconBtn from 'components/IconBtn'
 import CustomerOrderList from '../components/CustomerOrderList'
-
+import { getDrinkById } from 'selectors/bar'
 
 const mapDispathToProps = {
   fetchAllCustomerOrders,
@@ -16,7 +22,8 @@ const mapDispathToProps = {
 }
 
 const mapStateToProps = state => ({
-  ...state.customerOrders
+  ...state.customerOrders,
+  getDrinkById: getDrinkById(state)
 })
 
 class CustomerOrdersContainer extends React.Component {
@@ -50,18 +57,18 @@ class CustomerOrdersContainer extends React.Component {
                 position: 'tc',
                 autoDismiss: 0,
                 dismissible: true,
-                children: ( <IconBtn className='notification-msg' ok active></IconBtn>)
+                children: <IconBtn className='notification-msg' ok active />
               })
             }
             if (order.status === ORDER_STATUS_CANCELED) {
               this.props.notifyWarning({
                 // uid: 'once-please', // you can specify your own uid if required
                 title: 'Your cocktail canot be prepared.',
-                message: 'Barmen don\'t have some ingredients, yoc can try order other coctail.',
+                message: "Barmen don't have some ingredients, yoc can try order other coctail.",
                 position: 'tc',
                 autoDismiss: 0,
-                dismissible: true,
-                //children: ( <IconBtn className='notification-msg' ok active></IconBtn>   )
+                dismissible: true
+                // children: ( <IconBtn className='notification-msg' ok active></IconBtn>   )
               })
             }
           }),
@@ -71,8 +78,8 @@ class CustomerOrdersContainer extends React.Component {
   }
 
   render () {
-    const { orders } = this.props
-    return <CustomerOrderList orders={orders} />
+    const { orders, getDrinkById } = this.props
+    return <CustomerOrderList orders={orders} getDrinkById={getDrinkById} />
   }
 }
 

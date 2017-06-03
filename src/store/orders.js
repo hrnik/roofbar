@@ -74,7 +74,7 @@ export const fetchOrder = orderID => (dispatch, getState) => {
 }
 
 export const makeOrder = drinkID => (dispatch, getState) => {
-  dispatch({ type: MAKE_ORDER_START })
+  dispatch({ type: MAKE_ORDER_START, payload: {drinkID} })
 
   const clientAPI = API(getState())
 
@@ -89,7 +89,7 @@ export const makeOrder = drinkID => (dispatch, getState) => {
     .catch(error => {
       dispatch({
         type: MAKE_ORDER_ERROR,
-        payload: error
+        payload: { error, drinkID }
       })
     })
 }
@@ -148,7 +148,7 @@ const proccesPendingList = (listID = [], order) => {
 }
 const ACTION_HANDLERS = {
   [FETCH_ORDERS_SUCCESS]: (state, action) => {
-    const newOrders = action.payload
+    const newOrders = action.payload.reverse()
     let newPendingOrdersID = state.pendingOrdersID
 
     newOrders.forEach(item => {
@@ -171,8 +171,19 @@ const ACTION_HANDLERS = {
     newPendingOrdersID = proccesPendingList(newPendingOrdersID, order)
     return { ...state, orders: newOrders, pendingOrdersID: newPendingOrdersID }
   },
+  [MAKE_ORDER_START]: (state, action) => {
+    return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkID]: true } }
+  },
   [MAKE_ORDER_SUCCESS]: (state, action) => {
-    return { ...state, activeOrderID: action.payload.id }
+    return {
+      ...state,
+      makingOrders: { ...state.makingOrders, [action.payload.drink_id]: false },
+      activeOrderID: action.payload.id,
+      orders: [action.payload, ...state.orders]
+    }
+  },
+  [MAKE_ORDER_ERROR]: (state, action) => {
+    return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkID]: false } }
   },
   [CHANGE_ORDER_STATUS_SUCCESS]: (state, action) => {
     const newOrders = state.orders.map(order => {
@@ -190,6 +201,7 @@ const ACTION_HANDLERS = {
 }
 
 const initialState = {
+  makingOrders: {},
   activeOrderID: undefined,
   pendingOrdersID: [],
   normalMode: true,
