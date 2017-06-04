@@ -3,14 +3,14 @@ import { enableDrink, disableDrink, setActiveCategory } from 'store/bar'
 
 import ManageView from '../components/ManageView'
 
-const mapDispathToProps = {
+const mapDispatchToProps = {
   disableDrink,
   enableDrink,
-  setActiveCategory
+  setActiveCategory,
 }
 
 const mapStateToProps = state => ({
-  ...state.bar
+  ...state.bar,
 })
 
-export default connect(mapStateToProps, mapDispathToProps)(ManageView)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageView)

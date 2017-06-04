@@ -9,7 +9,7 @@ export const makeRootReducer = asyncReducers => {
     notifications,
     location: locationReducer,
     auth:authReducer,
-    ...asyncReducers
+    ...asyncReducers,
   })
 }
 

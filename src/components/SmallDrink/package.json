@@ -1,0 +1,5 @@
+{
+  "name": "SmallDrink",
+  "private": true,
+  "main": "./SmallDrink.js"
+}

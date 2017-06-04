@@ -1,0 +1,5 @@
+{
+  "name": "BarOrdersView",
+  "private": true,
+  "main": "./BarOrdersView.js"
+}

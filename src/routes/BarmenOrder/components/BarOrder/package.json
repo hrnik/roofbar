@@ -1,0 +1,5 @@
+{
+  "name": "BarOrder",
+  "private": true,
+  "main": "./BarOrder.js"
+}

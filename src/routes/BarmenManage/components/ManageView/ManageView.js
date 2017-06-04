@@ -4,7 +4,7 @@ import CategorySection from 'components/CategorySection'
 import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
 
-import long from '../assets/long.jpg'
+import long from '../../assets/long.jpg'
 
 export const ManageView = ({
   categories,
@@ -13,7 +13,7 @@ export const ManageView = ({
   setActiveCategory,
   disableDrink,
   enableDrink,
-  drinks
+  drinks,
 }) => (
   <div>
     <CategorySection

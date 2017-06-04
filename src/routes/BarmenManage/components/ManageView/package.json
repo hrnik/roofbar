@@ -1,0 +1,5 @@
+{
+  "name": "ManageView",
+  "private": true,
+  "main": "./ManageView.js"
+}
