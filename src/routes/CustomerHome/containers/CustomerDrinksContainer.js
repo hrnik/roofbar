@@ -4,7 +4,7 @@ import { makeOrder } from 'store/orders'
 import CustomerBigDrinkList from '../components/CustomerBigDrinkList'
 
 const mapDispathToProps = {
-  makeOrder,
+  makeOrder
 }
 
 const mapStateToProps = state => ({

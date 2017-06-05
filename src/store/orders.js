@@ -154,7 +154,7 @@ const ACTION_HANDLERS = {
     return { ...state, isFetchingOrders: false }
   },
   [FETCH_ORDERS_SUCCESS]: (state, action) => {
-    const newOrders = action.payload.reverse()
+    const newOrders = action.payload
     let newPendingOrdersID = state.pendingOrdersID
 
     newOrders.forEach(item => {
