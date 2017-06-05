@@ -104,11 +104,7 @@ export const changeOrderStatus = (orderId, status) => (dispatch, getState) => {
     .then(response => {
       dispatch({
         type: CHANGE_ORDER_STATUS_SUCCESS,
-        payload: {
-          ...response,
-          status,
-          order_id: orderId
-        }
+        payload: response.data
       })
     })
     .catch(error => {
@@ -154,7 +150,7 @@ const ACTION_HANDLERS = {
     return { ...state, isFetchingOrders: false }
   },
   [FETCH_ORDERS_SUCCESS]: (state, action) => {
-    const newOrders = action.payload
+    const newOrders = action.payload.reverse()
     let newPendingOrdersID = state.pendingOrdersID
 
     newOrders.forEach(item => {
@@ -219,7 +215,7 @@ const ACTION_HANDLERS = {
     const newOrders = state.orders.map(order => {
       const newOrder = action.payload
       if (order.order_id === newOrder.order_id) {
-        return { ...order, status: newOrder.status, isProcessing: false }
+        return { ...order,  ...newOrder, isProcessing: false }
       }
       return order
     })

@@ -22,7 +22,7 @@ const CategorySection = ({ categories, numberSection, setActiveCategory, activeC
       <ListTitle number={numberSection} type='category' count={categories.length} />
       <div className='category-list container'>
         {categories.length > 0
-          ? categories.map((category, index) => {
+          ? categories.sort().map((category, index) => {
             return (
               <div data-index={index} key={index}>
                 <Category
