@@ -8,7 +8,10 @@ export default store => ({
   onEnter: ({ location }) => {
     const parsedLoaction = queryString.parse(location.search)
     console.log(parsedLoaction)
-    store.dispatch(loginUser(parsedLoaction.code))
+    const code = parsedLoaction.code
+    if (code) {
+      store.dispatch(loginUser(code))
+    }
   },
   component: AuthRouter
 })
