@@ -37,7 +37,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
                     return (
                       <div data-index={index} key={index}>
                         <BigDrink
-                          disable={makingOrders[drink.id]}
+                          processing={makingOrders[drink.id]}
                           drinkId={drink.id}
                           name={drink.name}
                           img={long}
@@ -60,7 +60,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
               return (
                 <div data-index={index} key={index} className='drinks-list__item'>
                   <BigDrink
-                    disable={makingOrders[drink.id]}
+                    processing={makingOrders[drink.id]}
                     drinkId={drink.id}
                     name={drink.name}
                     img={long}

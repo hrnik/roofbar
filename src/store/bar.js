@@ -45,7 +45,7 @@ export const fetchDrinks = () => (dispatch, getState) => {
 }
 
 export const changeDrinksStatus = (drinkId, status) => (dispatch, getState) => {
-  dispatch({ type: CHANGE_DRINK_STATUS_START, payload: status })
+  dispatch({ type: CHANGE_DRINK_STATUS_START, payload: { status, id: drinkId } })
 
   const clientAPI = API(getState())
 
@@ -61,7 +61,7 @@ export const changeDrinksStatus = (drinkId, status) => (dispatch, getState) => {
     .catch(error => {
       dispatch({
         type: CHANGE_DRINK_STATUS_ERROR,
-        payload: error
+        payload: { error, id: drinkId }
       })
       return error
     })
@@ -137,11 +137,31 @@ const ACTION_HANDLERS = {
     newState.activeCategoryName = action.payload
     return newState
   },
+  [CHANGE_DRINK_STATUS_START]: (state, action) => {
+    const drink = action.payload
+    const newDrinks = state.drinks.map(item => {
+      if (item.id === drink.id) {
+        return { ...item, isProcessing: true }
+      }
+      return item
+    })
+    return { ...state, drinks: newDrinks }
+  },
+  [CHANGE_DRINK_STATUS_ERROR]: (state, action) => {
+    const drink = action.payload
+    const newDrinks = state.drinks.map(item => {
+      if (item.id === drink.id) {
+        return { ...item,  isProcessing: false }
+      }
+      return item
+    })
+    return { ...state, drinks: newDrinks }
+  },
   [CHANGE_DRINK_STATUS_SUCCES]: (state, action) => {
     const drink = action.payload
     const newDrinks = state.drinks.map(item => {
       if (item.id === drink.id) {
-        return drink
+        return { ...drink, isProcessing: false }
       }
       return item
     })

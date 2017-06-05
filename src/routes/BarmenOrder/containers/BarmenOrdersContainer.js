@@ -3,7 +3,7 @@ import { fetchAllCustomerOrders, completeOrder, cancelOrder, toogleEditMode } fr
 
 import BarOrdersView from '../components/BarOrdersView'
 import { getCompetedOrders, getPednignOrders, getCanceledOrders } from 'selectors/orders'
-import { getNameDrinkById } from 'selectors/bar'
+import { getDrinkById } from 'selectors/bar'
 
 const mapDispatchToProps = {
   fetchAllCustomerOrders,
@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
   completedOrders : getCompetedOrders(state),
   canceledOrders : getCanceledOrders(state),
   pendingOrders: getPednignOrders(state),
-  getNameDrinkById: getNameDrinkById(state)
+  getDrinkById: getDrinkById(state)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarOrdersView)

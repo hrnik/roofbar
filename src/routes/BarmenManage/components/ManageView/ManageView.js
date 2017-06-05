@@ -37,6 +37,7 @@ export const ManageView = ({
                   drinkId={drink.id}
                   name={drink.name}
                   img={long}
+                  processing={drink.isProcessing}
                   description={drink.description}
                   disableDrink={disableDrink}
                   enableDrink={enableDrink}

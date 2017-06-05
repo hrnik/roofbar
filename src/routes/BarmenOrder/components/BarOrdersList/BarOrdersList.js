@@ -1,5 +1,4 @@
 import React from 'react'
-import { getDrinkById } from 'selectors/bar'
 import { CSSTransitionGroup } from 'react-transition-group'
 import BarOrder from '../BarOrder'
 

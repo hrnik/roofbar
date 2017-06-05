@@ -11,17 +11,18 @@ const BigDrink = ({
   drinkId,
   description,
   img,
-  disable,
+  processing,
   makeOrder,
   status,
   disableDrink,
   enableDrink,
   disableMode = false
 }) => {
+  console.log('procesing', processing)
   const isDisableDrink = status !== DRINK_STATUS_AVAILABLE
   const editBtns = !isDisableDrink
-    ? <Button black onClick={() => disableDrink(drinkId)} fullWidth>Decline</Button>
-    : <Button onClick={() => enableDrink(drinkId)} fullWidth>Enable</Button>
+    ? <Button disable={processing} black onClick={() => disableDrink(drinkId)} fullWidth>Decline</Button>
+    : <Button disable={processing} onClick={() => enableDrink(drinkId)} fullWidth>Enable</Button>
 
   return (
     <div>
@@ -34,9 +35,10 @@ const BigDrink = ({
       </div>
       <div className='btn-order-wraper'>
         {!disableMode
-          ? <Button disable={isDisableDrink || disable} onClick={() => makeOrder(drinkId)} fullWidth>Make order</Button>
+          ? <Button disable={isDisableDrink || processing} onClick={() => makeOrder(drinkId)} fullWidth>
+              Make order
+            </Button>
           : editBtns}
-
       </div>
     </div>
   )
