@@ -1,7 +1,6 @@
+@import 'base';
 
-
-/*Ok icon by Icons8 */
-.icon-btn { /* Customizes Ok icon */
+.icon-btn {
   display: inline-block;
   cursor:pointer;
 
@@ -16,7 +15,7 @@
 
 .icon-btn--normal{
   fill:$gray-color;
-  &:hover:not(.icon-btn--active){
+  &:hover:not(.icon-btn--active):not(.icon-btn--active){
     fill:$dark-color;
   }
 }
@@ -26,4 +25,8 @@
   &:hover:not(.icon-btn--active){
     fill:#881d01;
   }
+}
+
+.icon-btn--disable{
+  opacity: 0.3;
 }

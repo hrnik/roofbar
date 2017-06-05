@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Notifications from 'react-notification-system-redux'
 
 import {
   fetchOrder,
   fetchAllCustomerOrders,
-  ORDER_STATUS_PENDING,
   ORDER_STATUS_DONE,
-  ORDER_STATUS_CANCELED
+  ORDER_STATUS_CANCELED,
+  ORDER_STATUS_PENDING
 } from 'store/orders'
 import { notifySuccess, notifyWarning } from 'store/notifications'
 import IconBtn from 'components/IconBtn'
@@ -27,62 +26,81 @@ const mapStateToProps = state => ({
 })
 
 class CustomerOrdersContainer extends React.Component {
+  timeoutList = []
+  pollingOrders = []
+
   componentWillMount () {
     this.checkProps(this.props)
   }
 
   componentWillReceiveProps (nextProps) {
-    this.checkProps(nextProps)
+    const isEqualArray =
+      this.props.pendingOrdersID.length === nextProps.pendingOrdersID.length &&
+      this.props.pendingOrdersID.every(item => nextProps.pendingOrdersID.includes(item))
+    if (!isEqualArray) {
+      this.checkProps(nextProps)
+    }
   }
 
   componentWillUnmount () {
-    clearTimeout(this.timeout)
+    clearTimeout(this.timeoutList)
   }
 
   checkProps (props) {
     if (props.pendingOrdersID.length > 0) {
-      console.log('allo', new Date())
-
-      if (this.timeoutList) {
-        this.timeoutList.map(timeout => clearTimeout(timeout))
-      }
+      // if (this.timeoutList) {
+      //   this.timeoutList.map(timeout => clearTimeout(timeout))
+      // }
+      console.log('this.timeoutList', this.timeoutList)
+      console.log('props.pendingOrdersID', props.pendingOrdersID)
       // Optionally do something with data
 
-      this.startPoll(props.pendingOrdersID)
+      const needPolling = props.pendingOrdersID.filter(item => !this.pollingOrders.includes(item))
+      this.startPoll(needPolling)
     }
   }
 
   startPoll (listID) {
-    this.timeoutList = listID.map(id =>
-      setTimeout(
-        () =>
-          this.props.fetchOrder(id).then(order => {
-            if (order.status === ORDER_STATUS_DONE) {
-              this.props.notifySuccess({
-                // uid: 'once-please', // you can specify your own uid if required
-                title: 'Your cocktail is ready!!',
-                message: 'Cocktail is prepared and you can take him at the bar.',
-                position: 'tc',
-                autoDismiss: 0,
-                dismissible: true,
-                children: <IconBtn className='notification-msg' ok active />
-              })
-            }
-            if (order.status === ORDER_STATUS_CANCELED) {
-              this.props.notifyWarning({
-                // uid: 'once-please', // you can specify your own uid if required
-                title: 'Your cocktail canot be prepared.',
-                message: "Barmen don't have some ingredients, yoc can try order other coctail.",
-                position: 'tc',
-                autoDismiss: 0,
-                dismissible: true
-                // children: ( <IconBtn className='notification-msg' ok active></IconBtn>   )
-              })
-            }
-          }),
-        5000
-      )
-    )
+    let self = this
+    listID.map(id => {
+      self.pollingOrders.push(id)
+      const poll = () => {
+        return setTimeout(
+          () =>
+            this.props.fetchOrder(id).then(order => {
+              if (order.status === ORDER_STATUS_DONE) {
+                this.props.notifySuccess({
+                  // uid: 'once-please', // you can specify your own uid if required
+                  title: 'Your cocktail is ready!!',
+                  message: 'Cocktail is prepared and you can take him at the bar.',
+                  position: 'tc',
+                  autoDismiss: 0,
+                  dismissible: true,
+                  children: <IconBtn className='notification-msg' ok active />
+                })
+              }
+              if (order.status === ORDER_STATUS_CANCELED) {
+                this.props.notifyWarning({
+                  // uid: 'once-please', // you can specify your own uid if required
+                  title: 'Your cocktail canot be prepared.',
+                  message: "Barmen don't have some ingredients, yoc can try order other coctail.",
+                  position: 'tc',
+                  autoDismiss: 0,
+                  dismissible: true
+                  // children: ( <IconBtn className='notification-msg' ok active></IconBtn>   )
+                })
+              }
+              if (order.status === ORDER_STATUS_PENDING) {
+                const timeoutId = poll()
+                self.timeoutList.push(timeoutId)
+              }
+            }),
+          2000
+        )
+      }
+      const timeoutId = poll()
+      self.timeoutList.push(timeoutId)
+    })
   }
 
   render () {

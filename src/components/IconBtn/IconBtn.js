@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
+import './IconBtn.scss'
 
-const IconBtn = ({ ok, cancel, active, onAction, className }) => {
+const IconBtn = ({ ok, cancel, active, onAction, className, disable = false }) => {
   const okIcon = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -10,7 +11,8 @@ const IconBtn = ({ ok, cancel, active, onAction, className }) => {
       y='0px'
       viewBox='0 0 50 50'
       className={classNames('icon-btn', 'icon-btn--normal', {
-        'icon-btn--active': active
+        'icon-btn--active': active,
+        'icon-btn--disable': disable
       })}
     >
       <path
@@ -38,7 +40,7 @@ const IconBtn = ({ ok, cancel, active, onAction, className }) => {
     </svg>
   )
   return (
-    <div className={className}  onClick={onAction}>
+    <div className={className} onClick={!disable && onAction}>
       {ok && okIcon}
       {cancel && cancelIcon}
     </div>

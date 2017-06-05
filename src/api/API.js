@@ -47,7 +47,6 @@ const execute = async (...params) => {
     const request = prepare(...params)
     const response = await fetch(request)
     const data = await response.json()
-    console.log('Response: ', data)
     if (data) handleKnownErrors(data.errors)
     return { data }
   } catch (error) {

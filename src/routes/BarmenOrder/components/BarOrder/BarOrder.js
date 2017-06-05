@@ -30,7 +30,7 @@ export const BarOrder = ({ order, drink, completeOrder, declineOrder, cancelOrde
       </div>
       <div className='order-card__actions'>
         {isNew && (normalMode
-          ? <IconBtn ok onAction={() => completeOrder(order.order_id)} />
+          ? <IconBtn disable={order.isProcessing} ok onAction={() => completeOrder(order.order_id)} />
           : <IconBtn cancel onAction={() => cancelOrder(order.order_id)} />)}
         {isCompleted && <IconBtn ok active />}
       </div>

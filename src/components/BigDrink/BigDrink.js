@@ -18,7 +18,6 @@ const BigDrink = ({
   enableDrink,
   disableMode = false
 }) => {
-  console.log('procesing', processing)
   const isDisableDrink = status !== DRINK_STATUS_AVAILABLE
   const editBtns = !isDisableDrink
     ? <Button disable={processing} black onClick={() => disableDrink(drinkId)} fullWidth>Decline</Button>

@@ -95,7 +95,7 @@ export const makeOrder = drinkId => (dispatch, getState) => {
 }
 
 export const changeOrderStatus = (orderId, status) => (dispatch, getState) => {
-  dispatch({ type: CHANGE_ORDER_STATUS_START, payload: status })
+  dispatch({ type: CHANGE_ORDER_STATUS_START, payload: { status, order_id: orderId } })
 
   const clientAPI = API(getState())
 
@@ -114,7 +114,7 @@ export const changeOrderStatus = (orderId, status) => (dispatch, getState) => {
     .catch(error => {
       dispatch({
         type: CHANGE_ORDER_STATUS_ERROR,
-        payload: error
+        payload: { error, order_id: orderId }
       })
     })
 }
@@ -195,11 +195,31 @@ const ACTION_HANDLERS = {
   [MAKE_ORDER_ERROR]: (state, action) => {
     return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkId]: false } }
   },
+  [CHANGE_ORDER_STATUS_START]: (state, action) => {
+    const newOrder = action.payload
+    const newOrders = state.orders.map(order => {
+      if (order.order_id === newOrder.order_id) {
+        return { ...order, isProcessing: true }
+      }
+      return order
+    })
+    return { ...state, orders: newOrders }
+  },
+  [CHANGE_ORDER_STATUS_ERROR]: (state, action) => {
+    const newOrder = action.payload
+    const newOrders = state.orders.map(order => {
+      if (order.order_id === newOrder.order_id) {
+        return { ...order, isProcessing: false }
+      }
+      return order
+    })
+    return { ...state, orders: newOrders }
+  },
   [CHANGE_ORDER_STATUS_SUCCESS]: (state, action) => {
     const newOrders = state.orders.map(order => {
       const newOrder = action.payload
       if (order.order_id === newOrder.order_id) {
-        return { ...order, status: newOrder.status }
+        return { ...order, status: newOrder.status, isProcessing: false }
       }
       return order
     })
