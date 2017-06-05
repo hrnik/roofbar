@@ -136,6 +136,16 @@ const ACTION_HANDLERS = {
     const newState = { ...state }
     newState.activeCategoryName = action.payload
     return newState
+  },
+  [CHANGE_DRINK_STATUS_SUCCES]: (state, action) => {
+    const drink = action.payload
+    const newDrinks = state.drinks.map(item => {
+      if (item.id === drink.id) {
+        return drink
+      }
+      return item
+    })
+    return { ...state, drinks: newDrinks }
   }
 }
 
