@@ -1,4 +1,4 @@
-export const getDrinkById = state => drinkID => {
-  const filteredDrinks = state.bar.drinks.filter(drink => drinkID === drink.id)
+export const getDrinkById = state => drinkId => {
+  const filteredDrinks = state.bar.drinks.filter(drink => drinkId === drink.id)
   return filteredDrinks[0]
 }

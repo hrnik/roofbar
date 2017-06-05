@@ -11,7 +11,7 @@ import './SmallDrink.scss'
 
 const SmallDrink = ({
   name,
-  drinkID,
+  drinkId,
   description,
   img,
   makeOrder,
@@ -45,7 +45,7 @@ SmallDrink.propTypes = {
 
 const enchance = compose(
   withHandlers({
-    onClick: props => () => props.makeOrder(props.drinkID)
+    onClick: props => () => props.makeOrder(props.drinkId)
   })
 )
 

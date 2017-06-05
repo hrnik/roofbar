@@ -8,7 +8,7 @@ import './BigDrink.scss'
 
 const BigDrink = ({
   name,
-  drinkID,
+  drinkId,
   description,
   img,
   disable,
@@ -20,8 +20,8 @@ const BigDrink = ({
 }) => {
   const isDisableDrink = status !== DRINK_STATUS_AVAILABLE
   const editBtns = !isDisableDrink
-    ? <Button black onClick={() => disableDrink(drinkID)} fullWidth>Decline</Button>
-    : <Button onClick={() => enableDrink(drinkID)} fullWidth>Enable</Button>
+    ? <Button black onClick={() => disableDrink(drinkId)} fullWidth>Decline</Button>
+    : <Button onClick={() => enableDrink(drinkId)} fullWidth>Enable</Button>
 
   return (
     <div>
@@ -34,7 +34,7 @@ const BigDrink = ({
       </div>
       <div className='btn-order-wraper'>
         {!disableMode
-          ? <Button disable={isDisableDrink || disable} onClick={() => makeOrder(drinkID)} fullWidth>Make order</Button>
+          ? <Button disable={isDisableDrink || disable} onClick={() => makeOrder(drinkId)} fullWidth>Make order</Button>
           : editBtns}
 
       </div>

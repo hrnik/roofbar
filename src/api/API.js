@@ -1,17 +1,15 @@
 // const API_URL = 'http://localhost:3004'
 // const API_URL = 'https://demo2625454.mockable.io'
 import queryString from 'query-string'
-const API_URL = 'https://roofbar.herokuapp.com/api'
+const API_URL = 'https://roofbar.herokuapp.com/'
 
 /**
  * camelCase to snake_case
  * Это плохое решение для прода внешних продуктов, но для внутреннего приложения в самый раз.
  */
 const camelToSnake = str => str.replace(/([A-Z])/g, g => `_${g[0].toLowerCase()}`)
-const snakeConvert = obj => Reflect.ownKeys(obj).reduce(
-  (memo, key) => Object.assign(memo, { [camelToSnake(key)] : obj[key] }),
-  {}
-)
+const snakeConvert = obj =>
+  Reflect.ownKeys(obj).reduce((memo, key) => Object.assign(memo, { [camelToSnake(key)]: obj[key] }), {})
 
 /**
  * Опции fetch по-умолчанию
@@ -26,15 +24,17 @@ const defaultRequestOptions = {
  */
 const prepare = (originalUrl, data, method) => {
   const isGET = method === 'GET'
-  const url = new URL(originalUrl, API_URL)
+  const url = new URL(`/api${originalUrl}`, API_URL)
   const options = Object.assign({}, defaultRequestOptions, { method })
+  let converted = {}
   if (data) {
-    const converted = snakeConvert(data)
-    if (isGET) {
-      url.search = `?${queryString.stringify({ format: 'json', ...converted })}`
-    } else {
+    converted = snakeConvert(data)
+    if (!isGET) {
       options.body = JSON.stringify(converted)
     }
+  }
+  if (isGET) {
+    url.search = `?${queryString.stringify({ format: 'json', ...converted })}`
   }
   return new Request(url, options)
 }
@@ -49,9 +49,9 @@ const execute = async (...params) => {
     const data = await response.json()
     console.log('Response: ', data)
     if (data) handleKnownErrors(data.errors)
-    return data
+    return { data }
   } catch (error) {
-    console.error('Go home, u\'re drunk', error)
+    console.error("Go home, u're drunk", error)
   }
 }
 
@@ -60,9 +60,9 @@ const handleKnownErrors = errors => {
   // if (errors.auth_required) console.log('Всё пропало, мы не авторизованы')
 }
 
-const GET  = (url, data) => execute(url, data, 'GET')
+const GET = (url, data) => execute(url, data, 'GET')
 const POST = (url, data) => execute(url, data, 'POST')
-const PUT  = (url, data) => execute(url, data, 'PUT')
+const PUT = (url, data) => execute(url, data, 'PUT')
 
 // TODO: привести к единому виду вызов апишных методов
 // всегда передавая один объект с параметрами (а не произвольный набор аргументов-параметров),
@@ -78,13 +78,13 @@ const PUT  = (url, data) => execute(url, data, 'PUT')
 // })
 //
 export default store => ({
-  getDrink          : id => GET(`/drinks/${id}/`),
-  getDrinks         : () => GET(`/drinks/`),
-  changeDrinkStatus : (drinkID, status) => PUT(`/drinks/status/${drinkID}/`, { status, drinkID }),
-  getLimits         : () => GET(`/limits/`),
-  getOrders         : () => GET(`/orders/list/`),
-  getOrder          : orderID => GET(`/orders/${orderID}/`),
-  makeOrder         : drinkID => POST(`/orders/`, { drinkID }),
-  changeOrderStatus : (orderID, status) => PUT(`/orders/status/${orderID}/`, { status, orderID }),
-  login             : code => GET(`/login/`, { code })
+  getDrink: id => GET(`/drinks/${id}/`),
+  getDrinks: () => GET(`/drinks/`),
+  changeDrinkStatus: (drinkId, status) => PUT(`/drinks/status/${drinkId}/`, { status, drinkId }),
+  getLimits: () => GET(`/limits/`),
+  getOrders: () => GET(`/orders/list/`),
+  getOrder: orderId => GET(`/orders/${orderId}/`),
+  makeOrder: drinkId => POST(`/orders/`, { drinkId }),
+  changeOrderStatus: (orderId, status) => PUT(`/orders/status/${orderId}/`, { status, orderId }),
+  login: code => GET(`/login/`, { code })
 })

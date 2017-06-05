@@ -44,13 +44,13 @@ export const fetchDrinks = () => (dispatch, getState) => {
     })
 }
 
-export const changeDrinksStatus = (drinkID, status) => (dispatch, getState) => {
+export const changeDrinksStatus = (drinkId, status) => (dispatch, getState) => {
   dispatch({ type: CHANGE_DRINK_STATUS_START, payload: status })
 
   const clientAPI = API(getState())
 
   return clientAPI
-    .changeDrinkStatus(drinkID, status)
+    .changeDrinkStatus(drinkId, status)
     .then(response => {
       dispatch({
         type: CHANGE_DRINK_STATUS_SUCCES,

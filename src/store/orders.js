@@ -50,13 +50,13 @@ export const fetchAllCustomerOrders = () => (dispatch, getState) => {
     })
 }
 
-export const fetchOrder = orderID => (dispatch, getState) => {
+export const fetchOrder = orderId => (dispatch, getState) => {
   dispatch({ type: FETCH_ORDER_START })
 
   const clientAPI = API(getState())
 
   return clientAPI
-    .getOrder(orderID)
+    .getOrder(orderId)
     .then(response => {
       dispatch({
         type: FETCH_ORDER_SUCCESS,
@@ -73,13 +73,13 @@ export const fetchOrder = orderID => (dispatch, getState) => {
     })
 }
 
-export const makeOrder = drinkID => (dispatch, getState) => {
-  dispatch({ type: MAKE_ORDER_START, payload: {drinkID} })
+export const makeOrder = drinkId => (dispatch, getState) => {
+  dispatch({ type: MAKE_ORDER_START, payload: {drinkId} })
 
   const clientAPI = API(getState())
 
   return clientAPI
-    .makeOrder(drinkID)
+    .makeOrder(drinkId)
     .then(response => {
       dispatch({
         type: MAKE_ORDER_SUCCESS,
@@ -89,25 +89,25 @@ export const makeOrder = drinkID => (dispatch, getState) => {
     .catch(error => {
       dispatch({
         type: MAKE_ORDER_ERROR,
-        payload: { error, drinkID }
+        payload: { error, drinkId }
       })
     })
 }
 
-export const changeOrderStatus = (orderID, status) => (dispatch, getState) => {
+export const changeOrderStatus = (orderId, status) => (dispatch, getState) => {
   dispatch({ type: CHANGE_ORDER_STATUS_START, payload: status })
 
   const clientAPI = API(getState())
 
   return clientAPI
-    .changeOrderStatus(orderID, status)
+    .changeOrderStatus(orderId, status)
     .then(response => {
       dispatch({
         type: CHANGE_ORDER_STATUS_SUCCESS,
         payload: {
           ...response,
           status,
-          order_id: orderID
+          order_id: orderId
         }
       })
     })
@@ -119,8 +119,8 @@ export const changeOrderStatus = (orderID, status) => (dispatch, getState) => {
     })
 }
 
-export const completeOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_DONE)
-export const cancelOrder = orderID => changeOrderStatus(orderID, ORDER_STATUS_CANCELED)
+export const completeOrder = orderId => changeOrderStatus(orderId, ORDER_STATUS_DONE)
+export const cancelOrder = orderId => changeOrderStatus(orderId, ORDER_STATUS_CANCELED)
 
 export const toogleEditMode = () => dispatch => {
   dispatch({
@@ -172,7 +172,7 @@ const ACTION_HANDLERS = {
     return { ...state, orders: newOrders, pendingOrdersID: newPendingOrdersID }
   },
   [MAKE_ORDER_START]: (state, action) => {
-    return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkID]: true } }
+    return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkId]: true } }
   },
   [MAKE_ORDER_SUCCESS]: (state, action) => {
     return {
@@ -183,7 +183,7 @@ const ACTION_HANDLERS = {
     }
   },
   [MAKE_ORDER_ERROR]: (state, action) => {
-    return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkID]: false } }
+    return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkId]: false } }
   },
   [CHANGE_ORDER_STATUS_SUCCESS]: (state, action) => {
     const newOrders = state.orders.map(order => {

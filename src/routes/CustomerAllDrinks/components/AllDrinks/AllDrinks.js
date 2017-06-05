@@ -13,7 +13,7 @@ const AllDrinks = ({ drinks, makeOrder }) => {
         return (
           <div data-index={index} key={index} className='small-drinks-list__item'>
             <SmallDrink
-              drinkID={drink.id}
+              drinkId={drink.id}
               name={drink.name}
               img={long}
               description={drink.description}
