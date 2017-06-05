@@ -140,7 +140,7 @@ const ACTION_HANDLERS = {
 }
 
 const initialState = {
-  isFetchingDrinks: true,
+  isFetchingDrinks: false,
   activeCategoryName: '',
   activeDrinkID: undefined,
   categories: [],

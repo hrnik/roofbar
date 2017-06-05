@@ -6,6 +6,8 @@ import CommonBarmenView from '../components/CommonBarmenView'
 
 const mapStateToProps = state => ({
   ...state.location,
+  isFetchingDrinks: state.bar.isFetchingDrinks,
+  isFetchingOrders: state.barmenOrders.isFetchingOrders
 })
 
 const enhance = compose(

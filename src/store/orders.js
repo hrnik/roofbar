@@ -74,7 +74,7 @@ export const fetchOrder = orderId => (dispatch, getState) => {
 }
 
 export const makeOrder = drinkId => (dispatch, getState) => {
-  dispatch({ type: MAKE_ORDER_START, payload: {drinkId} })
+  dispatch({ type: MAKE_ORDER_START, payload: { drinkId } })
 
   const clientAPI = API(getState())
 
@@ -147,6 +147,12 @@ const proccesPendingList = (listID = [], order) => {
   return newListID
 }
 const ACTION_HANDLERS = {
+  [FETCH_ORDER_START]: (state, action) => {
+    return { ...state, isFetchingOrders: true }
+  },
+  [FETCH_ORDERS_ERROR]: (state, action) => {
+    return { ...state, isFetchingOrders: false }
+  },
   [FETCH_ORDERS_SUCCESS]: (state, action) => {
     const newOrders = action.payload.reverse()
     let newPendingOrdersID = state.pendingOrdersID
@@ -155,7 +161,7 @@ const ACTION_HANDLERS = {
       newPendingOrdersID = proccesPendingList(newPendingOrdersID, item)
     })
 
-    return { ...state, orders: action.payload, pendingOrdersID: newPendingOrdersID }
+    return { ...state, orders: action.payload, pendingOrdersID: newPendingOrdersID, isFetchingOrders: false }
   },
   [FETCH_ORDER_SUCCESS]: (state, action) => {
     const order = action.payload
@@ -205,6 +211,7 @@ const ACTION_HANDLERS = {
 }
 
 const initialState = {
+  isFetchingOrders: false,
   makingOrders: {},
   activeOrderID: undefined,
   pendingOrdersID: [],
