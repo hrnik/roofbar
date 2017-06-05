@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'components/Button'
 import { browserHistory } from 'react-router'
+import logo from './logo.svg'
 
 import './LoginView.scss'
 
@@ -15,6 +16,11 @@ const LoginView = ({ loginUser }) => {
   return (
     <div className='login-container'>
       <div className='login'>
+        <div className='logo'>
+          <img src={logo} width='78px' height='49px' />
+          <div className='logo__text'>roofbar</div>
+        </div>
+
         <div className='login__text-wraper'>
           <h2 className='login__title'>Login</h2>
           <div className='login__text'>In order to get a drink you should authorise in app</div>

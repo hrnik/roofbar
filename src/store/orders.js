@@ -181,7 +181,7 @@ const ACTION_HANDLERS = {
       ...state,
       pendingOrdersID: newPendingOrdersID,
       makingOrders: { ...state.makingOrders, [order.drink_id]: false },
-      activeOrderID:order.id,
+      activeOrderID: order.id,
       orders: [action.payload, ...state.orders]
     }
     return newState
