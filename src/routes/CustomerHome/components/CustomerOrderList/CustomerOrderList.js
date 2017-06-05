@@ -6,7 +6,8 @@ import OwnOrder from 'components/OwnOrder'
 import './CustomerOrderList.scss'
 import long from '../../assets/long.jpg'
 
-const CustomerOrderList = ({ orders, getDrinkById }) => {
+
+const CustomerOrderList = ({ orders, getNameDrinkById }) => {
   return (
     <div className='order-list'>
       <CSSTransitionGroup transitionName='own-order' transitionEnterTimeout={500} transitionLeaveTimeout={300}>
@@ -15,7 +16,7 @@ const CustomerOrderList = ({ orders, getDrinkById }) => {
             return (
               <OwnOrder
                 key={item.order_id}
-                name={getDrinkById(item.drink_id).name}
+                name={getNameDrinkById(item.drink_id)}
                 img={long}
                 code={item.order_code}
                 status={item.status}
