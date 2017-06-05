@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
 })
 
 class CustomerOrdersContainer extends React.Component {
-  timeoutList = []
+  timeoutList = {}
   pollingOrders = []
 
   componentWillMount () {
@@ -43,7 +43,7 @@ class CustomerOrdersContainer extends React.Component {
   }
 
   componentWillUnmount () {
-    clearTimeout(this.timeoutList)
+    Object.values(this.timeoutList).map(value => clearTimeout(value))
   }
 
   checkProps (props) {
@@ -92,14 +92,14 @@ class CustomerOrdersContainer extends React.Component {
               }
               if (order.status === ORDER_STATUS_PENDING) {
                 const timeoutId = poll()
-                self.timeoutList.push(timeoutId)
+                self.timeoutList[id] = timeoutId
               }
             }),
           2000
         )
       }
       const timeoutId = poll()
-      self.timeoutList.push(timeoutId)
+      self.timeoutList[id] = timeoutId
     })
   }
 
