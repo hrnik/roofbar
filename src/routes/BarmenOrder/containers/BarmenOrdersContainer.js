@@ -2,10 +2,9 @@ import { connect } from 'react-redux'
 import { fetchAllCustomerOrders, completeOrder, cancelOrder, toogleEditMode } from 'store/orders'
 
 import BarOrdersView from '../components/BarOrdersView'
-import {getCompetedOrders, getPednignOrders, getCanceledOrders} from 'selectors/orders'
-import {getDrinkById} from 'selectors/bar'
+import { getCompetedOrders, getPednignOrders, getCanceledOrders } from 'selectors/orders'
 
-const mapDispathToProps = {
+const mapDispatchToProps = {
   fetchAllCustomerOrders,
   completeOrder,
   cancelOrder,
@@ -17,7 +16,6 @@ const mapStateToProps = state => ({
   completedOrders : getCompetedOrders(state),
   canceledOrders : getCanceledOrders(state),
   pendingOrders: getPednignOrders(state),
-  getDrinkById: getDrinkById(state)
 })
 
-export default connect(mapStateToProps, mapDispathToProps)(BarOrdersView)
+export default connect(mapStateToProps, mapDispatchToProps)(BarOrdersView)

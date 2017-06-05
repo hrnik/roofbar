@@ -38,7 +38,7 @@ const IconBtn = ({ ok, cancel, active, onAction, className }) => {
     </svg>
   )
   return (
-    <div className={className}  onClick={() => onAction()}>
+    <div className={className}  onClick={onAction}>
       {ok && okIcon}
       {cancel && cancelIcon}
     </div>

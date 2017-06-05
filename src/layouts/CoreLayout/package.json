@@ -1,0 +1,5 @@
+{
+  "name": "CoreLayout",
+  "private": true,
+  "main": "./CoreLayout.js"
+}

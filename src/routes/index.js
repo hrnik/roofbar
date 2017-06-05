@@ -27,7 +27,13 @@ export const createRoutes = store => ({
     cb(null, CoreLayout)
   },
   indexRoute: Authenticated(store, CustomerHome),
-  childRoutes: [CounterRoute(store), BarmenRoute(store), LoginRoute(store), LoginResult(store), CustomerAllDrinks(store)]
+  childRoutes: [
+    CounterRoute(store),
+    BarmenRoute(store),
+    LoginRoute(store),
+    LoginResult(store),
+    CustomerAllDrinks(store),
+  ]
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically

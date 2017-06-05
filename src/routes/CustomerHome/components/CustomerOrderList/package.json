@@ -1,0 +1,5 @@
+{
+  "name": "CustomerOrderList",
+  "private": true,
+  "main": "./CustomerOrderList.js"
+}

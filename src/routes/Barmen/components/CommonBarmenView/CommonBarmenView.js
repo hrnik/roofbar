@@ -1,15 +1,11 @@
 import React from 'react'
 import './CommonBarmenView.scss'
 import Dropdown from 'react-dropdown'
-import { browserHistory } from 'react-router'
 
 const defaultRoutes = [{ value: '/barmen', label: 'Orders' }, { value: '/manage', label: 'Manage' }]
 
 
-export const CommonBarmenView = ({ children, location }) => {
-  const onSelect = option => {
-    browserHistory.push(option.value)
-  }
+export const CommonBarmenView = ({ children, location, onSelect }) => {
   const options = defaultRoutes.filter(option => option.value !== location.pathname)
   const placeholderOption = defaultRoutes.filter(option => option.value === location.pathname)[0] || defaultRoutes[0]
   return (

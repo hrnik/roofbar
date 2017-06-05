@@ -1,0 +1,5 @@
+{
+  "name": "CategorySection",
+  "private": true,
+  "main": "./CategorySection.js"
+}

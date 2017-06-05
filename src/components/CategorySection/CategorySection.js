@@ -12,7 +12,7 @@ import './CategorySection.scss'
 const mapCategoryImage = {
   Alchocol: CocktailImage,
   Milkshake: MilkshakeImage,
-  'Fresh Juice': JuiceImage
+  'Fresh Juice': JuiceImage,
 }
 const getImageForCategory = category => mapCategoryImage[category] || CocktailImage
 
@@ -30,7 +30,7 @@ const CategorySection = ({ categories, numberSection, setActiveCategory, activeC
                   name={category}
                   img={getImageForCategory(category)}
                   limit={15}
-                  onClick={() => setActiveCategory(category)}
+                  setActiveCategory={setActiveCategory}
                   active={activeCategoryName === category}
                   drinked={10}
                   />

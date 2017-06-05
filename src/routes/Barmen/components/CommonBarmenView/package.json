@@ -1,0 +1,5 @@
+{
+  "name": "CommonBarmenView",
+  "private": true,
+  "main": "./CommonBarmenView.js"
+}
