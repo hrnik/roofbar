@@ -14,7 +14,8 @@ export const BarOrdersView = ({
   toogleEditMode,
   normalMode,
   orders,
-  children
+  children,
+  getDrinkById
 }) => (
   <div className='container orders-workplace'>
     <div className='orders-workplace__new'>
@@ -36,6 +37,7 @@ export const BarOrdersView = ({
         normalMode={normalMode}
         completeOrder={completeOrder}
         cancelOrder={cancelOrder}
+        getDrinkById={getDrinkById}
       />
     </div>
     <div className='orders-workplace__done'>
@@ -45,6 +47,7 @@ export const BarOrdersView = ({
         normalMode={normalMode}
         completeOrder={completeOrder}
         cancelOrder={cancelOrder}
+        getDrinkById={getDrinkById}
       />
     </div>
     <div className='orders-workplace__cancel'>
@@ -54,6 +57,7 @@ export const BarOrdersView = ({
         normalMode={normalMode}
         completeOrder={completeOrder}
         cancelOrder={cancelOrder}
+        getDrinkById={getDrinkById}
         component='div'
         className='canceled-order-list'
       />

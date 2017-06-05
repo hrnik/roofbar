@@ -175,12 +175,16 @@ const ACTION_HANDLERS = {
     return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkId]: true } }
   },
   [MAKE_ORDER_SUCCESS]: (state, action) => {
-    return {
+    const order = action.payload
+    const newPendingOrdersID = proccesPendingList(state.pendingOrdersID, order)
+    const newState = {
       ...state,
-      makingOrders: { ...state.makingOrders, [action.payload.drink_id]: false },
-      activeOrderID: action.payload.id,
+      pendingOrdersID: newPendingOrdersID,
+      makingOrders: { ...state.makingOrders, [order.drink_id]: false },
+      activeOrderID:order.id,
       orders: [action.payload, ...state.orders]
     }
+    return newState
   },
   [MAKE_ORDER_ERROR]: (state, action) => {
     return { ...state, makingOrders: { ...state.makingOrders, [action.payload.drinkId]: false } }

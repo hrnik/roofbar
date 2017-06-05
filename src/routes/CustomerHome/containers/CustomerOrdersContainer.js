@@ -27,8 +27,20 @@ const mapStateToProps = state => ({
 })
 
 class CustomerOrdersContainer extends React.Component {
+  componentWillMount () {
+    this.checkProps(this.props)
+  }
+
   componentWillReceiveProps (nextProps) {
-    if (nextProps.pendingOrdersID.length > 0) {
+    this.checkProps(nextProps)
+  }
+
+  componentWillUnmount () {
+    clearTimeout(this.timeout)
+  }
+
+  checkProps (props) {
+    if (props.pendingOrdersID.length > 0) {
       console.log('allo', new Date())
 
       if (this.timeoutList) {
@@ -36,12 +48,8 @@ class CustomerOrdersContainer extends React.Component {
       }
       // Optionally do something with data
 
-      this.startPoll(nextProps.pendingOrdersID)
+      this.startPoll(props.pendingOrdersID)
     }
-  }
-
-  componentWillUnmount () {
-    clearTimeout(this.timeout)
   }
 
   startPoll (listID) {
