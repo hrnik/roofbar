@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { fetchAllCustomerOrders, completeOrder, cancelOrder, toogleEditMode } from 'store/orders'
 
@@ -14,10 +15,34 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
   ...state.barmenOrders,
-  completedOrders : getCompetedOrders(state),
-  canceledOrders : getCanceledOrders(state),
+  completedOrders: getCompetedOrders(state),
+  canceledOrders: getCanceledOrders(state),
   pendingOrders: getPednignOrders(state),
   getDrinkById: getDrinkById(state)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BarOrdersView)
+class CustomerOrdersContainer extends React.Component {
+  pollTimeout = undefined
+
+  componentWillMount () {
+    const self = this
+    const poll = () => {
+      return setTimeout(() => {
+        self.props.fetchAllCustomerOrders().then(() => {
+          poll()
+        })
+      }, 5000)
+    }
+    this.pollTimeout = poll()
+  }
+
+  componentWillUnmount () {
+    clearTimeout(this.pollTimeout)
+  }
+
+  render () {
+    return <BarOrdersView {...this.props} />
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerOrdersContainer)
