@@ -34,7 +34,13 @@
 
 .category-list__item {
   min-width: 70px;
-  margin-right: 24px;
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .category-list__item {
+   margin-right: 24px;
+  }
 }
 
 .btn-order-wraper {
@@ -45,7 +51,7 @@
 }
 
 .link-all-coctails {
-  display:none;
+  display:block;
   position: absolute;
   top: 22px;
   right: $container-padding-size;

@@ -28,7 +28,7 @@ const SmallDrink = ({
         <div className='small-drink__name'>{name}</div>
         <div className='small-drink__description'>{description}</div>
       </div>
-      <div>
+      <div className='small-drink__btn-wrapper'>
         <Button className='small-drink-btn' disable={isDisabledDrink} onClick={onClick} fullWidth>
           <img src={CocktailImage} width='11' height='21' />
         </Button>

@@ -25,12 +25,13 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  min-height: 60vh;
 }
 .orders-workplace__new, .orders-workplace__done{
   flex-basis: 232px;
   flex-grow: 0;
   margin-right: 16px;
-  min-height: 60vh;
+
 }
 .orders-workplace__cancel{
   flex-grow: 1;

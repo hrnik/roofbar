@@ -29,7 +29,7 @@ export const ManageView = ({
         count={drinks && drinks.filter(drink => drink.category === activeCategoryName).length}
       />
       <div>
-        <div className='drinks-list'>
+        <div className='drinks-list-manage'>
           {drinks.filter(drink => drink.category === activeCategoryName).map((drink, index) => {
             return (
               <div data-index={index} key={index} className='drinks-list__item'>
