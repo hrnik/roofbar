@@ -7,7 +7,6 @@ export default store => ({
   path: '/login-result',
   onEnter: ({ location }) => {
     const parsedLoaction = queryString.parse(location.search)
-    console.log(parsedLoaction)
     const code = parsedLoaction.code
     if (code) {
       store.dispatch(loginUser(code))

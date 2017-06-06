@@ -2,20 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
-
 const mapStateToProps = state => ({
   ...state.auth
 })
 
 class AuthRouter extends React.Component {
-  componentWillMount() {
+  componentWillMount () {
     this.route(this.props)
   }
   componentWillReceiveProps (nextProps) {
     this.route(nextProps)
   }
 
-  route(props) {
+  route (props) {
     if (props.isAuthenticated) {
       browserHistory.push('/')
     }

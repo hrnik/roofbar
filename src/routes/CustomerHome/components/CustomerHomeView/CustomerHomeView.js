@@ -31,6 +31,7 @@ export const CustomerHomeView = ({
             numberSection={1}
             setActiveCategory={setActiveCategory}
             activeCategoryName={activeCategoryName}
+            limits={limits}
             />
           <div className='list-section list-section--drinks'>
             <ListTitle

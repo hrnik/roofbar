@@ -16,23 +16,23 @@ const mapCategoryImage = {
 }
 const getImageForCategory = category => mapCategoryImage[category] || CocktailImage
 
-const CategorySection = ({ categories, numberSection, setActiveCategory, activeCategoryName }) => {
+const CategorySection = ({ categories, numberSection, setActiveCategory, activeCategoryName, limits }) => {
   return (
     <div className='list-section'>
       <ListTitle number={numberSection} type='category' count={categories.length} />
       <div className='category-list container'>
         {categories.length > 0
           ? categories.sort().map((category, index) => {
+            const limit = limits ? limits[category] : undefined
             return (
               <div data-index={index} key={index}>
                 <Category
                   className='category-list__item'
                   name={category}
                   img={getImageForCategory(category)}
-                  limit={15}
+                  limit={limit}
                   setActiveCategory={setActiveCategory}
                   active={activeCategoryName === category}
-                  drinked={10}
                   />
               </div>
             )

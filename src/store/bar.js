@@ -151,7 +151,7 @@ const ACTION_HANDLERS = {
     const drink = action.payload
     const newDrinks = state.drinks.map(item => {
       if (item.id === drink.id) {
-        return { ...item,  isProcessing: false }
+        return { ...item, isProcessing: false }
       }
       return item
     })
@@ -166,6 +166,14 @@ const ACTION_HANDLERS = {
       return item
     })
     return { ...state, drinks: newDrinks }
+  },
+  [FETCH_LIMITS_SUCCESS]: (state, action) => {
+    const limits = action.payload
+    const limitObject = {}
+    limits.forEach(limit => {
+      limitObject[limit.category] = { ...limit }
+    })
+    return { ...state, limits: limitObject }
   }
 }
 
@@ -175,7 +183,7 @@ const initialState = {
   activeDrinkID: undefined,
   categories: [],
   drinks: [],
-  limits: {}
+  limits: undefined
 }
 
 export default function customerBarReducer (state = initialState, action) {

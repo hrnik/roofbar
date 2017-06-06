@@ -11,7 +11,7 @@ const Category = ({ active = false, name, img, limit, drinked, className, setAct
         <img className='category__image' src={img} alt={name} />
       </div>
       <div className='category__name'>{name}</div>
-      <div className='category__limits'>{drinked}/{limit}</div>
+      {limit && <div className='category__limits'>{limit.daily_done}/{limit.daily_limit}</div>}
     </div>
   )
 }
