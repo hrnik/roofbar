@@ -1,7 +1,10 @@
 // const API_URL = 'http://localhost:3004'
 // const API_URL = 'https://demo2625454.mockable.io'
 import queryString from 'query-string'
-const API_URL = 'https://roofbar.herokuapp.com/'
+let API_URL = 'https://roofbar-dev.herokuapp.com/'
+if (process.env.NODE_ENV === 'production') {
+  API_URL = 'https://roofbar.herokuapp.com/'
+}
 
 /**
  * camelCase to snake_case
