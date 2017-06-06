@@ -45,7 +45,6 @@ export const CustomerHomeView = ({
         <div className='container orders customer-bar__orders'>
           <div className='orders__header'>
             <h2 className='orders__title'>Your orders</h2>
-            <Link to='/' clsasName='orders__link'>Show all</Link>
           </div>
           <CustomerOrdersContainer />
         </div>

@@ -45,9 +45,16 @@
 }
 
 .link-all-coctails {
+  display:none;
   position: absolute;
   top: 22px;
   right: $container-padding-size;
+}
+
+@media (min-width: 768px) {
+  .link-all-coctails {
+    display: none;
+  }
 }
 
 .orders__header {
@@ -56,4 +63,5 @@
   align-items: center;
   margin-bottom: 8px;
 }
+
 

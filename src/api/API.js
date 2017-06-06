@@ -49,11 +49,14 @@ const execute = async (...params) => {
   try {
     const request = prepare(...params)
     const response = await fetch(request)
+    if (!response.ok || response.status !== 200) {
+      throw response
+    }
     const data = await response.json()
-    if (data) handleKnownErrors(data.errors)
     return { data }
   } catch (error) {
     console.error("Go home, u're drunk", error)
+    return error
   }
 }
 
