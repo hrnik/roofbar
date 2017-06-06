@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
+import Loader from 'components/Loader'
 
 const mapStateToProps = state => ({
   ...state.auth
@@ -21,7 +22,7 @@ class AuthRouter extends React.Component {
   }
 
   render () {
-    return null
+    return <Loader absoluteCenter />
   }
 }
 

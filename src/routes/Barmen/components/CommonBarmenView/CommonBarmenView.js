@@ -1,6 +1,9 @@
 import React from 'react'
-import './CommonBarmenView.scss'
 import Dropdown from 'react-dropdown'
+import Loader from 'components/Loader'
+import './CommonBarmenView.scss'
+
+
 
 const defaultRoutes = [{ value: '/barmen', label: 'Orders' }, { value: '/manage', label: 'Manage' }]
 
@@ -10,7 +13,7 @@ export const CommonBarmenView = ({ children, location, onSelect, isFetchingDrink
   return (
     <div>
       {isFetchingDrinks || isFetchingOrders
-        ? <div>Loading...</div>
+        ? <Loader absoluteCenter />
         : <div className='customer-bar'>
           <div className='customer-bar__main '>
             <div className='container container--left barmen-view-top'>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 
+import Loader from 'components/Loader'
 import CustomerOrdersContainer from '../../containers/CustomerOrdersContainer'
 import CustomerDrinksContainer from '../../containers/CustomerDrinksContainer'
 import CategorySection from 'components/CategorySection'
@@ -19,8 +20,8 @@ export const CustomerHomeView = ({
   isFetchingDrinks
 }) => (
   <div>
-    {' '}{isFetchingDrinks
-      ? <div>Loading</div>
+    {isFetchingDrinks
+      ? <Loader absoluteCenter />
       : <div className='customer-bar'>
         <div className='customer-bar__main'>
           <div className='container container--left'>
