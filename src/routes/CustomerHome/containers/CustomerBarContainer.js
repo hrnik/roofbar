@@ -8,7 +8,8 @@ const mapDispathToProps = {
 }
 
 const mapStateToProps = state => ({
-  ...state.bar
+  ...state.bar,
+  ...state.customerOrders
 })
 
 export default connect(mapStateToProps, mapDispathToProps)(CustomerHomeView)

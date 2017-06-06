@@ -17,10 +17,11 @@ export const CustomerHomeView = ({
   activeCategoryName,
   setActiveCategory,
   drinks,
-  isFetchingDrinks
+  isFetchingDrinks,
+  isFetchingOrders
 }) => (
   <div>
-    {isFetchingDrinks
+    {isFetchingDrinks || isFetchingOrders
       ? <Loader absoluteCenter />
       : <div className='customer-bar'>
         <div className='customer-bar__main'>
