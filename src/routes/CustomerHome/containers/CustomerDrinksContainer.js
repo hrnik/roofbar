@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { makeOrder } from 'store/orders'
+import { fetchLimits } from 'store/bar'
 import { notifySuccess, notifyWarning } from 'store/notifications'
 import IconBtn from 'components/IconBtn'
 
@@ -8,6 +9,7 @@ import CustomerBigDrinkList from '../components/CustomerBigDrinkList'
 
 const mapDispathToProps = {
   makeOrder,
+  fetchLimits,
   notifySuccess,
   notifyWarning
 }
@@ -23,6 +25,7 @@ class CustomerOrdersContainer extends React.Component {
     this.makeOrderWithNotify = drinkId => {
       return this.props.makeOrder(drinkId).then(
         success => {
+          this.props.fetchLimits()
           this.props.notifySuccess({
             // uid: 'once-please', // you can specify your own uid if required
             title: 'Your order created!',
