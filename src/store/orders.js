@@ -1,5 +1,5 @@
 import API from 'api'
-
+import { notifySuccess, notifyWarning } from 'store/notifications'
 // ------------------------------------ Constants
 // ------------------------------------
 
@@ -85,12 +85,14 @@ export const makeOrder = drinkId => (dispatch, getState) => {
         type: MAKE_ORDER_SUCCESS,
         payload: response.data
       })
+      return response.data
     })
     .catch(error => {
       dispatch({
         type: MAKE_ORDER_ERROR,
         payload: { error, drinkId }
       })
+      throw error
     })
 }
 

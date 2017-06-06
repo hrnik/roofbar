@@ -49,6 +49,7 @@ const execute = async (...params) => {
   try {
     const request = prepare(...params)
     const response = await fetch(request)
+    console.log(response)
     if (!response.ok || response.status !== 200) {
       throw response
     }
@@ -56,7 +57,7 @@ const execute = async (...params) => {
     return { data }
   } catch (error) {
     console.error("Go home, u're drunk", error)
-    return error
+    throw error
   }
 }
 
