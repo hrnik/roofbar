@@ -4,15 +4,16 @@ import Category from 'components/Category'
 
 import CocktailImage from './assets/Cocktail.svg'
 import JuiceImage from './assets/Juice.svg'
-import MilkshakeImage from './assets/Milkshake.svg'
+import SmoothieImage from './assets/Smoothie.svg'
 
 
 import './CategorySection.scss'
 
 const mapCategoryImage = {
   Alchocol: CocktailImage,
-  Milkshake: MilkshakeImage,
-  'Fresh Juice': JuiceImage,
+  Beer: CocktailImage,
+  Juice: JuiceImage,
+  Smoothie: SmoothieImage,
 }
 const getImageForCategory = category => mapCategoryImage[category] || CocktailImage
 
