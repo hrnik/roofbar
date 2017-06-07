@@ -28,8 +28,8 @@ export const TOOGLE_ORDERS_MODE = 'TOOGLE_ORDERS_MODE'
 // Actions
 // ------------------------------------
 
-export const fetchAllCustomerOrders = () => (dispatch, getState) => {
-  dispatch({ type: FETCH_ORDERS_START })
+export const fetchAllCustomerOrders = (notNeedLoading = false) => (dispatch, getState) => {
+  dispatch({ type: FETCH_ORDERS_START, payload:notNeedLoading })
 
   const clientAPI = API(getState())
 
@@ -144,8 +144,9 @@ const proccesPendingList = (listID = [], order) => {
   return newListID
 }
 const ACTION_HANDLERS = {
-  [FETCH_ORDER_START]: (state, action) => {
-    return { ...state, isFetchingOrders: true }
+  [FETCH_ORDERS_START]: (state, action) => {
+    const notNeedLoading = action.payload
+    return { ...state, isFetchingOrders: !notNeedLoading }
   },
   [FETCH_ORDERS_ERROR]: (state, action) => {
     return { ...state, isFetchingOrders: false }

@@ -1,5 +1,4 @@
-// const API_URL = 'http://localhost:3004'
-// const API_URL = 'https://demo2625454.mockable.io'
+import { browserHistory } from 'react-router'
 import queryString from 'query-string'
 let API_URL = 'https://roofbar-dev.herokuapp.com/'
 if (process.env.NODE_ENV === 'production') {
@@ -56,6 +55,10 @@ const execute = async (...params) => {
     const data = await response.json()
     return { data }
   } catch (error) {
+    if (error && error.status === 401) {
+      console.log('unauthorized')
+      browserHistory.push('/login')
+    }
     console.error("Go home, u're drunk", error)
     throw error
   }

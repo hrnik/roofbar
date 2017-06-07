@@ -38,7 +38,7 @@ const ACTION_HANDLERS = {
     return { ...state, isAuthenticated: false }
   },
   [LOGIN_SUCCESS]: (state, action) => {
-    return { ...state, ...action.payload, isAuthenticated: true }
+    return { ...state, ...action.payload.data, isAuthenticated: true }
   },
   [LOGIN_ERROR]: (state, action) => {
     return { ...state, isAuthenticated: false }

@@ -5,6 +5,7 @@ import CounterRoute from './Counter'
 import BarmenRoute from './Barmen'
 import LoginRoute from './Login'
 import Authenticated from './Authenticated'
+import HasRole from './HasRole'
 import LoginResult from './LoginResult'
 import CustomerAllDrinks from './CustomerAllDrinks'
 
@@ -19,7 +20,7 @@ export const createRoutes = store => ({
   indexRoute: Authenticated(store, CustomerHome),
   childRoutes: [
     CounterRoute(store),
-    BarmenRoute(store),
+    HasRole(store, BarmenRoute, ['Barmen']),
     LoginRoute(store),
     LoginResult(store),
     CustomerAllDrinks(store)

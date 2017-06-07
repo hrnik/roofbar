@@ -28,7 +28,7 @@ class CustomerOrdersContainer extends React.Component {
     const self = this
     const poll = () => {
       return setTimeout(() => {
-        self.props.fetchAllCustomerOrders().then(() => {
+        self.props.fetchAllCustomerOrders(true).then(() => {
           poll()
         })
       }, 5000)
