@@ -15,6 +15,7 @@ const SmallDrink = ({
   description,
   img,
   makeOrder,
+  processing,
   onClick,
   status,
   disableDrink,
@@ -29,7 +30,7 @@ const SmallDrink = ({
         <div className='small-drink__description'>{description}</div>
       </div>
       <div className='small-drink__btn-wrapper'>
-        <Button className='small-drink-btn' disable={isDisabledDrink} onClick={onClick} fullWidth>
+        <Button className='small-drink-btn' disable={isDisabledDrink || processing} onClick={onClick} fullWidth>
           <img src={CocktailImage} width='11' height='21' />
         </Button>
       </div>

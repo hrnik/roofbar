@@ -1,6 +1,5 @@
 import CustomerBarContainer from './containers/CustomerBarContainer'
-import { injectReducer } from 'store/reducers'
-import customerOrdersReducer, { fetchAllCustomerOrders } from 'store/orders'
+import { fetchAllCustomerOrders } from 'store/orders'
 import { fetchLimits, fetchDrinks } from 'store/bar'
 
 // Sync route definition
