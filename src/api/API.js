@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router'
 import queryString from 'query-string'
-let API_URL = 'https://roofbar-dev.herokuapp.com/'
+let API_URL = 'http://roofbar-dev.herokuapp.com/'
 if (process.env.NODE_ENV === 'production') {
   API_URL = 'https://roofbar.herokuapp.com/'
 }

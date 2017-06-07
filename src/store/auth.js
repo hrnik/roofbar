@@ -19,6 +19,7 @@ export const loginUser = creds => (dispatch, getState) => {
       console.log('LOGIN SUCCES', response)
       try {
         localStorage.setItem('access_token', response.data.access_token)
+        localStorage.setItem('role', response.data.role)
       } catch (error) {}
 
       // Dispatch the success action
@@ -38,18 +39,21 @@ export const loginUser = creds => (dispatch, getState) => {
 export const clearAuth = () => dispatch => {
   try {
     localStorage.removeItem('access_token')
+    localStorage.removeItem('role')
   } catch (error) {}
   dispatch({ type: CLEAR_AUTH })
 }
 
 const getInitialState = () => {
   let isAuthenticated = false
+  let role = undefined
   try {
     isAuthenticated = !!localStorage.getItem('access_token')
+    role = localStorage.getItem('role')
   } catch (error) {}
   return {
     isAuthenticated,
-    role: undefined
+    role
   }
 }
 
