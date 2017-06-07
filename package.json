@@ -21,7 +21,7 @@
     "deploy:prod": "better-npm-run deploy:prod",
     "codecov": "cat coverage/*/lcov.info | codecov",
     "db": "./node_modules/json-server/bin/index.js --watch server/db.json --port 3004",
-    "publish:prod": "yarn deploy:prod &&  cp dist/index.html dist/200.html && surge dist/ roofbar.surge.sh"
+    "publish:prod": "yarn deploy:prod &&  cp dist/index.html dist/200.html && surge dist/ https://roofbar.surge.sh"
   },
   "betterScripts": {
     "compile": {

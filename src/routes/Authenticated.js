@@ -6,9 +6,9 @@ export default (store, component) => {
 
   route.onEnter = (nextState, replace, callback) => {
     const auth = store.getState().auth
-    if (!auth.isAuthenticated) {
+    if (!auth.isAuthenticated || !auth.csrfToken) {
       //replace('/login')
-      browserHistory.push('/login')
+      browserHistory.push('/unauthorized')
     }
 
     if (routeOnEnter) {
