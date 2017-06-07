@@ -57,7 +57,7 @@ const execute = async (...params) => {
   } catch (error) {
     if (error && error.status === 401) {
       console.log('unauthorized')
-      browserHistory.push('/login')
+      browserHistory.push('/unauthorized')
     }
     console.error("Go home, u're drunk", error)
     throw error

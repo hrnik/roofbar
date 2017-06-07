@@ -8,6 +8,8 @@ import Authenticated from './Authenticated'
 import HasRole from './HasRole'
 import LoginResult from './LoginResult'
 import CustomerAllDrinks from './CustomerAllDrinks'
+import { clearAuth } from 'store/auth'
+import { browserHistory } from 'react-router'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -23,7 +25,14 @@ export const createRoutes = store => ({
     HasRole(store, BarmenRoute, ['Barmen']),
     LoginRoute(store),
     LoginResult(store),
-    CustomerAllDrinks(store)
+    CustomerAllDrinks(store),
+    {
+      path: '/unauthorized',
+      onEnter: ({ location }) => {
+        store.dispatch(clearAuth())
+        browserHistory.push('/login')
+      }
+    }
   ]
 })
 
