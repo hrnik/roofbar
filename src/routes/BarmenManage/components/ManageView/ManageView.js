@@ -5,6 +5,7 @@ import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
 
 import long from '../../assets/long.jpg'
+import './ManageView.scss'
 
 export const ManageView = ({
   categories,

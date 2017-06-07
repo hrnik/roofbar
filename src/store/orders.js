@@ -1,5 +1,4 @@
 import API from 'api'
-import { notifySuccess, notifyWarning } from 'store/notifications'
 // ------------------------------------ Constants
 // ------------------------------------
 

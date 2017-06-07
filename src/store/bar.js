@@ -24,13 +24,14 @@ export const DRINK_STATUS_DISABLE = 'DISABLED'
 // Actions
 // ------------------------------------
 export const fetchDrinks = () => (dispatch, getState) => {
-  dispatch({ type: FETCH_DRINKS_START })
-
+  dispatch({ type: FETCH_DRINKS_START, payload: new Date() })
+  console.log(FETCH_DRINKS_START)
   const clientAPI = API(getState())
 
   return clientAPI
     .getDrinks()
     .then(respone => {
+      console.log('FETCH DRINKS SUCCESS')
       dispatch({
         type: FETCH_DRINKS_SUCCESS,
         payload: respone.data

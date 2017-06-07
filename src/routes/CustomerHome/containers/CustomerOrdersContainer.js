@@ -21,8 +21,8 @@ const mapDispathToProps = {
 }
 
 const mapStateToProps = state => ({
-  ...state.customerOrders,
-  orders: state.customerOrders.orders.sort((a, b) => b.order_id - a.order_id),
+  ...state.ordersStore,
+  orders: state.ordersStore.orders.sort((a, b) => b.order_id - a.order_id),
   getNameDrinkById: getNameDrinkById(state)
 })
 

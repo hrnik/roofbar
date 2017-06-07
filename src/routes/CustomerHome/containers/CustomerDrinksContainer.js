@@ -16,7 +16,7 @@ const mapDispathToProps = {
 
 const mapStateToProps = state => ({
   ...state.bar,
-  ...state.customerOrders
+  ...state.ordersStore
 })
 
 class CustomerOrdersContainer extends React.Component {

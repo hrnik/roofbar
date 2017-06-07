@@ -14,7 +14,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = state => ({
-  ...state.barmenOrders,
+  ...state.ordersStore,
   completedOrders: getCompetedOrders(state),
   canceledOrders: getCanceledOrders(state),
   pendingOrders: getPednignOrders(state),

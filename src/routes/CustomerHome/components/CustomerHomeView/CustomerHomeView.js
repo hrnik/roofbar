@@ -21,9 +21,8 @@ export const CustomerHomeView = ({
   isFetchingOrders
 }) => (
   <div>
-    {isFetchingDrinks || isFetchingOrders
-      ? <Loader absoluteCenter />
-      : <div className='customer-bar'>
+    {!isFetchingDrinks && !isFetchingOrders
+      ? <div className='customer-bar'>
         <div className='customer-bar__main'>
           <div className='container container--left'>
             <h2>Order</h2>
@@ -51,7 +50,8 @@ export const CustomerHomeView = ({
           </div>
           <CustomerOrdersContainer />
         </div>
-      </div>}
+      </div>
+      : <Loader absoluteCenter />}
   </div>
 )
 

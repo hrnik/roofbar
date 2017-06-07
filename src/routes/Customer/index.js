@@ -16,12 +16,12 @@ export default store => ({
       store.dispatch(fetchLimits())
     }
 
-    if (!state.customerOrders || state.customerOrders.orders.length) {
+    if (!state.ordersStore || state.ordersStore.orders.length) {
       store.dispatch(fetchAllCustomerOrders())
     }
 
     injectReducer(store, { key: 'bar', reducer: customerBarReducer })
-    injectReducer(store, { key: 'customerOrders', reducer: customerOrdersReducer })
+    injectReducer(store, { key: 'ordersStore', reducer: customerOrdersReducer })
 
     cb(null, CustomerBarContainer)
   }
