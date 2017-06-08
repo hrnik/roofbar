@@ -3,10 +3,21 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import moment from 'moment'
 
-import { ORDER_STATUS_CANCELED, ORDER_STATUS_DONE } from 'store/orders'
+import { ORDER_STATUS_CANCELED, ORDER_STATUS_DONE, ORDER_STATUS_PENDING } from 'store/orders'
 
 import './OwnOrder.scss'
 
+const getStatusDisplay = (status, date) => {
+  if (status === ORDER_STATUS_PENDING) return status
+
+  const now = moment()
+  const statusChangeDate = moment(date)
+
+  if (now.diff(statusChangeDate, 'days') > 0) {
+    return statusChangeDate.fromNow()
+  }
+  return status
+}
 const OwnOrder = ({ name, img, code, status, active, date }) => {
   return (
     <div className='own-order'>
@@ -15,7 +26,6 @@ const OwnOrder = ({ name, img, code, status, active, date }) => {
         <div className='own-order__description'>
           <div className='own-order__name'>{name} </div>
           <div className='own-order__code'>{code}</div>
-          <div className='own-order__date'> { moment(date).fromNow() }</div>
         </div>
       </div>
 
@@ -25,7 +35,7 @@ const OwnOrder = ({ name, img, code, status, active, date }) => {
           'own-order__status--canceled': status === ORDER_STATUS_CANCELED
         })}
       >
-        {status}
+        { getStatusDisplay(status, date)}
       </div>
     </div>
   )
