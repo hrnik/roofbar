@@ -34,6 +34,9 @@ const prepare = (originalUrl, data, method, auth) => {
   if (auth.csrfToken) {
     defaultRequestOptions.headers['X-CSRFTOKEN'] = auth.csrfToken
   }
+  if (auth.jwtToken) {
+    defaultRequestOptions.headers['AUTHORIZATION'] = `JWT ${auth.jwtToken}`
+  }
   const options = Object.assign({}, defaultRequestOptions, { method })
   let converted = {}
   if (data) {

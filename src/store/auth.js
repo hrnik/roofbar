@@ -19,7 +19,7 @@ export const loginUser = creds => (dispatch, getState) => {
     .then(response => {
       console.log('LOGIN SUCCES', response)
       try {
-        localStorage.setItem('access_token', response.data.access_token)
+        localStorage.setItem('jwtToken', response.data.jwt_token)
         localStorage.setItem('role', response.data.role)
         localStorage.setItem('csrfToken', response.data.csrf_token)
       } catch (error) {}
@@ -40,7 +40,7 @@ export const loginUser = creds => (dispatch, getState) => {
 
 export const clearAuth = () => dispatch => {
   try {
-    localStorage.removeItem('access_token')
+    localStorage.removeItem('jwtToken')
     localStorage.removeItem('role')
     localStorage.removeItem('csrf_token')
   } catch (error) {}
@@ -57,15 +57,18 @@ export const checkAuth = () => (dispatch, getState) => {
 
 const getInitialState = () => {
   let isAuthenticated = false
+  let jwtToken = undefined
   let role = undefined
   let csrfToken = undefined
   try {
-    isAuthenticated = !!localStorage.getItem('access_token')
+    jwtToken = localStorage.getItem('jwtToken')
+    isAuthenticated = !!jwtToken
     role = localStorage.getItem('role')
     csrfToken = localStorage.getItem('csrfToken')
   } catch (error) {}
   return {
     isAuthenticated,
+    jwtToken,
     role,
     csrfToken
   }
@@ -76,7 +79,7 @@ const ACTION_HANDLERS = {
     return { ...state, isAuthenticated: false }
   },
   [LOGIN_SUCCESS]: (state, action) => {
-    return { ...state, ...action.payload.data, csrfToken : action.payload.data.csrf_token, isAuthenticated: true }
+    return { ...state, ...action.payload.data, csrfToken : action.payload.data.csrf_token, jwtToken: action.payload.data.jwt_token, isAuthenticated: true }
   },
   [LOGIN_ERROR]: (state, action) => {
     return { ...state, isAuthenticated: false }
