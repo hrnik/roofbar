@@ -5,6 +5,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 
 export const CLEAR_AUTH = 'CLEAR_AUTH'
+export const CHECK_AUTH = 'CHECK_AUTH'
 
 export const loginUser = creds => (dispatch, getState) => {
   // We dispatch requestLogin to kickoff the call to the API
@@ -44,6 +45,14 @@ export const clearAuth = () => dispatch => {
     localStorage.removeItem('csrf_token')
   } catch (error) {}
   dispatch({ type: CLEAR_AUTH })
+}
+
+export const checkAuth = () => (dispatch, getState) => {
+  const clientAPI = API(getState())
+  dispatch({
+    type: CHECK_AUTH
+  })
+  clientAPI.checkAuth()
 }
 
 const getInitialState = () => {

@@ -1,11 +1,9 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout'
 import CustomerHome from './CustomerHome'
-import CounterRoute from './Counter'
 import BarmenRoute from './Barmen'
 import LoginRoute from './Login'
 import Authenticated from './Authenticated'
-import HasRole from './HasRole'
 import LoginResult from './LoginResult'
 import CustomerAllDrinks from './CustomerAllDrinks'
 import { clearAuth } from 'store/auth'
@@ -16,16 +14,18 @@ import { browserHistory } from 'react-router'
 
 export const createRoutes = store => ({
   path: '/',
+  onEnter: () => {
+
+  },
   getComponent: (nextState, cb) => {
     cb(null, CoreLayout)
   },
   indexRoute: Authenticated(store, CustomerHome),
   childRoutes: [
-    CounterRoute(store),
-    HasRole(store, BarmenRoute, ['Barmen']),
+    Authenticated(store, BarmenRoute, ['Barmen']),
     LoginRoute(store),
     LoginResult(store),
-    CustomerAllDrinks(store),
+    Authenticated(store, CustomerAllDrinks),
     {
       path: '/unauthorized',
       onEnter: ({ location }) => {
