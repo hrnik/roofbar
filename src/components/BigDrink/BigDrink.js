@@ -25,7 +25,7 @@ const BigDrink = ({
     : <Button disable={processing} onClick={() => enableDrink(drinkId)} fullWidth>Enable</Button>
 
   return (
-    <div>
+    <div className='drink__wraper'>
       <div className={classNames('drink', { 'drink--disable': isDisableDrink })}>
         <img className='drink__image' src={img} alt={name} />
         <div className='drink__text'>

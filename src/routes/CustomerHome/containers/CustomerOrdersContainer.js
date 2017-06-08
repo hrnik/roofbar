@@ -17,6 +17,7 @@ import { getNameDrinkById } from 'selectors/bar'
 const mapDispathToProps = {
   fetchAllCustomerOrders,
   fetchOrder,
+  fetchLimits,
   notifySuccess,
   notifyWarning
 }
