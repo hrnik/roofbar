@@ -56,6 +56,10 @@ const execute = async (...params) => {
     const request = prepare(...params)
     const response = await fetch(request)
     console.log(response)
+    if (response && response.status === 401) {
+      console.log('unauthorized')
+      browserHistory.push('/unauthorized')
+    }
     if (!response.ok || response.status !== 200) {
       if (response.json) {
         const error = await response.json()
@@ -67,10 +71,6 @@ const execute = async (...params) => {
     const data = await response.json()
     return { data }
   } catch (error) {
-    if (error && error.status === 401) {
-      console.log('unauthorized')
-      browserHistory.push('/unauthorized')
-    }
     console.error("Go home, u're drunk", error)
     throw error
   }

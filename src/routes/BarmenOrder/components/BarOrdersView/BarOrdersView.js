@@ -24,12 +24,12 @@ export const BarOrdersView = ({
         {pendingOrders.length > 0 &&
           <h3
             className={classNames('orders-workplace__edit-mode', {
-              'orders-workplace__edit-mode--normal': normalMode,
-              'orders-workplace__edit-mode--decline': !normalMode
+              'orders-workplace__edit-mode--normal': !normalMode,
+              'orders-workplace__edit-mode--decline': normalMode
             })}
             onClick={toogleEditMode}
           >
-            {normalMode ? <span>Normal mode</span> : <span>Decline mode</span>}
+            {!normalMode ? <span>Normal mode</span> : <span>Decline mode</span>}
           </h3>}
       </div>
       <BarOrdersList

@@ -27,6 +27,15 @@
   }
 }
 
+.own-order__date{
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color:$gray-color;
+}
+
 .own-order__info{
   display: flex;
 }

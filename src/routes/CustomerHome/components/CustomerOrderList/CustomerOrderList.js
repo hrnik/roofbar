@@ -18,6 +18,7 @@ const CustomerOrderList = ({ orders, getNameDrinkById }) => {
                 key={item.order_id}
                 name={getNameDrinkById(item.drink_id)}
                 img={long}
+                date={item.date}
                 code={item.order_code}
                 status={item.status}
               />

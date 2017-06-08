@@ -33,13 +33,20 @@
   color:$dark-color;
 }
 
-.order-card__status{
+.order-card__top{
   font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+    margin-bottom: 4px;
+}
 
-  margin-bottom: 4px;
+.order-card__status{
+  display: inline-block;
+  margin-right: 4px;
+
+
+
   &.order-card__status--new{
     color:#d75945;
   }
@@ -53,8 +60,8 @@
 }
 
 
-.order-card__code{
-
+.order-card__time{
+  font-size:10px;
 }
 
 /*Ok icon by Icons8 */
