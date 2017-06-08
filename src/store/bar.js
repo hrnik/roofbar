@@ -171,10 +171,16 @@ const ACTION_HANDLERS = {
   [FETCH_LIMITS_SUCCESS]: (state, action) => {
     const limits = action.payload
     const limitObject = {}
+    const newDisabledCategories = { ...state.disabledCategories }
     limits.forEach(limit => {
       limitObject[limit.category] = { ...limit }
+      if (limit.daily_done >= limit.daily_limit) {
+        newDisabledCategories[limit.category] = true
+      } else {
+        newDisabledCategories[limit.category] = false
+      }
     })
-    return { ...state, limits: limitObject }
+    return { ...state, limits: limitObject, disabledCategories: { ...newDisabledCategories } }
   }
 }
 
@@ -184,7 +190,8 @@ const initialState = {
   activeDrinkID: undefined,
   categories: [],
   drinks: [],
-  limits: undefined
+  limits: undefined,
+  disabledCategories: {}
 }
 
 export default function customerBarReducer (state = initialState, action) {

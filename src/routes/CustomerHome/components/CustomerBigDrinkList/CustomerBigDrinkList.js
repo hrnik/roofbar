@@ -19,7 +19,8 @@ const sliderDrinksSettings = {
   touchThreshold: 10
 }
 
-const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrders }) => {
+const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrders, disabledCategories }) => {
+  const disableCategory = disabledCategories[activeCategoryName]
   return (
     <div>
       <MediaQuery query='(max-width: 768px)'>
@@ -40,6 +41,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
                           processing={makingOrders[drink.id]}
                           drinkId={drink.id}
                           name={drink.name}
+                          disable={disableCategory}
                           img={long}
                           description={drink.description}
                           makeOrder={makeOrder}
@@ -64,6 +66,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
                     drinkId={drink.id}
                     name={drink.name}
                     img={long}
+                    disable={disableCategory}
                     description={drink.description}
                     makeOrder={makeOrder}
                     status={drink.status}

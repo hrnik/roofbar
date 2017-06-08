@@ -14,11 +14,12 @@ const BigDrink = ({
   processing,
   makeOrder,
   status,
+  disable,
   disableDrink,
   enableDrink,
   disableMode = false
 }) => {
-  const isDisableDrink = status !== DRINK_STATUS_AVAILABLE
+  const isDisableDrink = disable || status !== DRINK_STATUS_AVAILABLE
   const editBtns = !isDisableDrink
     ? <Button disable={processing} black onClick={() => disableDrink(drinkId)} fullWidth>Decline</Button>
     : <Button disable={processing} onClick={() => enableDrink(drinkId)} fullWidth>Enable</Button>

@@ -10,7 +10,8 @@ const AllDrinks = ({
   makeOrder,
   makingOrders,
   isFetchingDrinks,
-  isFetchingOrders
+  isFetchingOrders,
+  disabledCategories
 }) => {
   return (
     <div>
@@ -29,6 +30,7 @@ const AllDrinks = ({
                   processing={makingOrders[drink.id]}
                   drinkId={drink.id}
                   name={drink.name}
+                  disable={disabledCategories[drink.category]}
                   img={long}
                   description={drink.description}
                   makeOrder={makeOrder}

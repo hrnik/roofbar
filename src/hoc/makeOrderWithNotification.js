@@ -19,11 +19,12 @@ export default WrapperComponent => {
               children: <IconBtn className='notification-msg' ok active />
             })
           },
-          () => {
+          error => {
+            const message = error && error.detail
             this.props.notifyWarning({
               // uid: 'once-please', // you can specify your own uid if required
               title: 'Was wrong(',
-              message: 'Your order not created.',
+              message: message || 'Your order not created.',
               position: 'tc',
               autoDismiss: 0,
               dismissible: true

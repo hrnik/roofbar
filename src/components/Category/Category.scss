@@ -29,6 +29,9 @@
     .category__name {
       color: $dark-color;
     }
+    .category__limits--wrong {
+      color: $wrong-color;
+    }
     .category__image-wrapper{
       opacity: 1;
       img {

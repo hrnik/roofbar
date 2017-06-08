@@ -9,6 +9,7 @@ import {
   ORDER_STATUS_PENDING
 } from 'store/orders'
 import { notifySuccess, notifyWarning } from 'store/notifications'
+import { fetchLimits } from 'store/bar'
 import IconBtn from 'components/IconBtn'
 import CustomerOrderList from '../components/CustomerOrderList'
 import { getNameDrinkById } from 'selectors/bar'
@@ -81,6 +82,7 @@ class CustomerOrdersContainer extends React.Component {
                 })
               }
               if (order.status === ORDER_STATUS_CANCELED) {
+                this.props.fetchLimits()
                 this.props.notifyWarning({
                   // uid: 'once-please', // you can specify your own uid if required
                   title: 'Your cocktail canot be prepared.',

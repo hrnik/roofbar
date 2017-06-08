@@ -57,7 +57,12 @@ const execute = async (...params) => {
     const response = await fetch(request)
     console.log(response)
     if (!response.ok || response.status !== 200) {
-      throw response
+      if (response.json) {
+        const error = await response.json()
+        throw error
+      } else {
+        throw response
+      }
     }
     const data = await response.json()
     return { data }

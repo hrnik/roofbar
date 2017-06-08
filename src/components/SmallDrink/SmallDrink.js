@@ -18,10 +18,11 @@ const SmallDrink = ({
   processing,
   onClick,
   status,
+  disable,
   disableDrink,
   enableDrink
 }) => {
-  const isDisabledDrink = status !== DRINK_STATUS_AVAILABLE
+  const isDisabledDrink = disable || status !== DRINK_STATUS_AVAILABLE
   return (
     <div className={classNames('small-drink', { 'small-drink--disable': isDisabledDrink })}>
       <img className='small-drink__image' src={img} alt={name} />
