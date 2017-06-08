@@ -23,7 +23,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
   const disableCategory = disabledCategories[activeCategoryName]
   return (
     <div>
-      <MediaQuery query='(max-width: 768px)'>
+      <MediaQuery query='(max-width: 767px)'>
         <div
           onTouchMove={e => {
             e.preventDefault()
@@ -54,7 +54,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
             : null}
         </div>
       </MediaQuery>
-      <MediaQuery query='(min-width: 768px)'>
+      <MediaQuery query='(min-width: 767px)'>
         <div className='drinks-list'>
           {drinks
             .filter(drink => drink.category === activeCategoryName)

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
+import './arrayinlcudespf.js'
 
 // ========================================================
 // Store Instantiation
@@ -52,7 +53,11 @@ if (__DEV__) {
       })
     )
   }
+} else {
+  Raven.config('https://6da2f7d95df94c1b958748563f2435bd@sentry.io/177640').install()
 }
+
+
 
 // ========================================================
 // Go!

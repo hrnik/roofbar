@@ -1,5 +1,7 @@
 import { browserHistory } from 'react-router'
 import queryString from 'query-string'
+import 'whatwg-fetch'
+
 let API_URL = 'http://roofbar-dev.herokuapp.com/'
 if (process.env.NODE_ENV === 'production') {
   API_URL = 'https://roofbar.herokuapp.com/'

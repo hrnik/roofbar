@@ -23,7 +23,6 @@ export const loginUser = creds => (dispatch, getState) => {
         localStorage.setItem('role', response.data.role)
         localStorage.setItem('csrfToken', response.data.csrf_token)
       } catch (error) {}
-
       // Dispatch the success action
       dispatch({
         type: LOGIN_SUCCESS,
