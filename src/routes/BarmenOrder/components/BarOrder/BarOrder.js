@@ -20,7 +20,7 @@ export const BarOrder = ({
   return (
     <div className='order-card'>
       <div className='order-card__info'>
-        <img src={long} className='order-card__image' />
+        <img src={drink.photo || long} className='order-card__image' />
         <div className='ordec-card__description'>
           <div className='order-card__top'>
             <span

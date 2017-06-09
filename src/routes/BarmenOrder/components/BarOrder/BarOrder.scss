@@ -22,8 +22,9 @@
 
 .order-card__image{
   width: 26px;
-  max-height: 50px;
+  height: 50px;
   margin-right: 8px;
+  object-fit: cover;
 }
 
 .order-card__name{

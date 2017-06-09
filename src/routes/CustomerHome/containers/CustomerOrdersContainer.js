@@ -12,7 +12,7 @@ import { notifySuccess, notifyWarning } from 'store/notifications'
 import { fetchLimits } from 'store/bar'
 import IconBtn from 'components/IconBtn'
 import CustomerOrderList from '../components/CustomerOrderList'
-import { getNameDrinkById } from 'selectors/bar'
+import { getNameDrinkById, getDrinkById } from 'selectors/bar'
 
 const mapDispathToProps = {
   fetchAllCustomerOrders,
@@ -25,7 +25,8 @@ const mapDispathToProps = {
 const mapStateToProps = state => ({
   ...state.ordersStore,
   orders: state.ordersStore.orders.sort((a, b) => b.order_id - a.order_id),
-  getNameDrinkById: getNameDrinkById(state)
+  getNameDrinkById: getNameDrinkById(state),
+  getDrinkById: getDrinkById(state)
 })
 
 class CustomerOrdersContainer extends React.Component {
@@ -108,8 +109,7 @@ class CustomerOrdersContainer extends React.Component {
   }
 
   render () {
-    const { orders, getNameDrinkById } = this.props
-    return <CustomerOrderList orders={orders} getNameDrinkById={getNameDrinkById} />
+    return <CustomerOrderList {...this.props} />
   }
 }
 

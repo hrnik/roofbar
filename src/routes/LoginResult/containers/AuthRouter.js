@@ -23,7 +23,6 @@ class AuthRouter extends React.Component {
         browserHistory.push('/')
       }
     }
-
   }
 
   render () {
