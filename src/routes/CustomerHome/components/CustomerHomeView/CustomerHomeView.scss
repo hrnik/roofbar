@@ -13,10 +13,18 @@
   }
 
    .customer-bar__orders{
-     flex-basis:300px;
-     width: 300px;
+     flex-basis:200px;
+     flex-grow:0;
+     flex-shrink: 0;
+
    }
 
+}
+
+@media (min-width: 1024px) {
+   .customer-bar__orders{
+     flex-basis:300px;
+   }
 }
 
 
@@ -28,6 +36,7 @@
 
 .category-list {
   display: flex;
+  flex-wrap:wrap;
   position: relative;
   z-index: 10;
 }
@@ -43,12 +52,6 @@
   }
 }
 
-.btn-order-wraper {
-  padding-top: 36px;
-  padding-left: 32px;
-  padding-right: 32px;
-  margin-bottom: 40px;
-}
 
 .link-all-coctails {
   display:block;

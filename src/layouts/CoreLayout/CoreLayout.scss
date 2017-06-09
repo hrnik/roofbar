@@ -9,6 +9,12 @@
 
 @media (min-width: 768px) {
   .core-layout__viewport {
+    padding: 30px 20px 0 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .core-layout__viewport {
     padding: 30px 60px 0 60px;
   }
 }
