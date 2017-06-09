@@ -17,8 +17,13 @@ class AuthRouter extends React.Component {
 
   route (props) {
     if (props.isAuthenticated) {
-      browserHistory.push('/')
+      if(props.role === 'Barmen') {
+        browserHistory.push('/barmen')
+      } else {
+        browserHistory.push('/')
+      }
     }
+
   }
 
   render () {
