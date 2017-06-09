@@ -3,14 +3,15 @@
   display: flex;
 }
 
-.drink__wraper{
+.drink__wraper {
   margin-bottom: 40px;
   position: relative;
 }
+
 .drink__wraper--processing {
-    .drink {
-      opacity: 0.3;
-    }
+  .drink {
+    opacity: 0.3;
+  }
 }
 
 .drink--disable {
@@ -61,7 +62,7 @@
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .drink__loader {
     display: block;
   }
@@ -80,7 +81,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    visibility: none;
+    display: none;
     opacity: 0;
   }
   .drink__wraper {
@@ -88,16 +89,16 @@
     margin-bottom: 48px;
     position: relative;
   }
-  .drink__wraper:hover, .drink__wraper--processing {
+  .drink__wraper:hover,
+  .drink__wraper--processing {
     .drink {
       opacity: 0.3;
     }
   }
-
-  .drink__wraper:hover:not(.drink__wraper--processing ),
+  .drink__wraper:hover:not(.drink__wraper--processing),
   {
     .btn-order-wraper {
-      visibility: visible;
+      display: block;
       opacity: 1;
       padding: 0;
       margin: 0;
@@ -106,9 +107,9 @@
   }
   .drink__wraper--processing {
     .btn-order-wraper {
-      visibility: none;
+      display: none;
       opacity: 0;
-     transition:none;
+      transition: none;
     }
   }
 }

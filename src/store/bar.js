@@ -121,11 +121,11 @@ const ACTION_HANDLERS = {
     newState.categories = categories
 
     if (!newState.activeCategoryName) {
-      newState.activeCategoryName = newState.categories[0]
+      newState.activeCategoryName = newState.categories.sort()[0]
     }
 
     if (!newState.activeDrinkID && newState.drinks) {
-      newState.activeDrinkID = newState.drinks[0].id
+      newState.activeDrinkID = newState.drinks.filter(drink => drink.category === newState.activeCategoryName)[0].id
     }
 
     return newState
