@@ -119,7 +119,7 @@ export default store => {
     makeOrder: drinkId => POST(`/orders/`, { drinkId }),
     changeOrderStatus: (orderId, status) =>
       PUT(`/orders/status/${orderId}/`, { status, orderId }),
-    login: code => GET(`/login/`, { code }),
+    login: code => getRequest(false)(`/login/`, { code }),
     checkAuth: () => GET(`/check_auth/`),
   }
 }
