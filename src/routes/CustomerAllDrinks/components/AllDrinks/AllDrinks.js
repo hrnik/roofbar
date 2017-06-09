@@ -11,15 +11,17 @@ const AllDrinks = ({
   makingOrders,
   isFetchingDrinks,
   isFetchingOrders,
-  disabledCategories
+  disabledCategories,
+  activeCategoryName
 }) => {
   return (
     <div>
       {!isFetchingDrinks && !isFetchingOrders
         ? <div className='container'>
           <Link to='/'>Back</Link>
-          <h1 className='all-drinks__title'>Coctails</h1>
-          {drinks.map((drink, index) => {
+          <h1 className='all-drinks__title'>{activeCategoryName}</h1>
+          {drinks.filter(drink => drink.category === activeCategoryName)
+          .map((drink, index) => {
             return (
               <div
                 data-index={index}
