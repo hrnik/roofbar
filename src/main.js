@@ -18,10 +18,7 @@ const MOUNT_NODE = document.getElementById('root')
 let render = () => {
   const routes = require('./routes/index').default(store)
 
-  ReactDOM.render(
-    <AppContainer store={store} routes={routes} />,
-    MOUNT_NODE
-  )
+  ReactDOM.render(<AppContainer store={store} routes={routes} />, MOUNT_NODE)
 }
 
 // This code is excluded from production bundle
@@ -29,7 +26,7 @@ if (__DEV__) {
   if (module.hot) {
     // Development render functions
     const renderApp = render
-    const renderError = (error) => {
+    const renderError = error => {
       const RedBox = require('redbox-react').default
 
       ReactDOM.render(<RedBox error={error} />, MOUNT_NODE)
@@ -54,26 +51,28 @@ if (__DEV__) {
     )
   }
 } else {
-  Raven.config('https://6da2f7d95df94c1b958748563f2435bd@sentry.io/177640').install()
+  Raven.config(
+    'https://6da2f7d95df94c1b958748563f2435bd@sentry.io/177640'
+  ).install()
 }
 
+// This is the "Offline page" service worker
 
-
-//This is the "Offline page" service worker
-
-//Add this below content to your HTML page, or add the js file to your page at the very top to register sercie worker
-if (navigator.serviceWorker.controller) {
-  console.log('SW active service worker found, no need to register')
+// Add this below content to your HTML page, or add the js file to your page at the very top to register sercie worker
+if (
+  navigator && navigator.serviceWorker && navigator.serviceWorker.controller
+) {
+  // Register the ServiceWorker
+  navigator.serviceWorker
+    .register('service-worker.js', {
+      scope: './'
+    })
+    .then(function (reg) {
+      console.log('Service worker has been registered for scope:' + reg.scope)
+    })
 } else {
-  //Register the ServiceWorker
-  navigator.serviceWorker.register('service-worker.js', {
-    scope: './'
-  }).then(function(reg) {
-    console.log('Service worker has been registered for scope:'+ reg.scope);
-  });
+  console.log('SW active service worker found, no need to register')
 }
-
-
 
 // ========================================================
 // Go!
