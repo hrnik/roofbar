@@ -28,17 +28,17 @@ export const TOOGLE_ORDERS_MODE = 'TOOGLE_ORDERS_MODE'
 // Actions
 // ------------------------------------
 
-export const fetchAllCustomerOrders = (notNeedLoading = false) => (dispatch, getState) => {
+export const fetchAllCustomerOrders = ({ notNeedLoading = false, limit = 50 } = {}) => (dispatch, getState) => {
   dispatch({ type: FETCH_ORDERS_START, payload:notNeedLoading })
 
   const clientAPI = API(getState())
 
   return clientAPI
-    .getOrders()
+    .getOrders(limit)
     .then(response => {
       dispatch({
         type: FETCH_ORDERS_SUCCESS,
-        payload: response.data
+        payload: response.data.results
       })
     })
     .catch(error => {

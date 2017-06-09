@@ -114,7 +114,7 @@ export default store => {
     changeDrinkStatus: (drinkId, status) =>
       PUT(`/drinks/status/${drinkId}/`, { status, drinkId }),
     getLimits: () => GET(`/limits/`),
-    getOrders: () => GET(`/orders/list/`),
+    getOrders: (limit) => GET(`/orders/list/`, {limit}),
     getOrder: orderId => GET(`/orders/${orderId}/`),
     makeOrder: drinkId => POST(`/orders/`, { drinkId }),
     changeOrderStatus: (orderId, status) =>

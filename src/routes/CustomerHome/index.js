@@ -16,7 +16,7 @@ export default store => ({
     }
 
     if (!state.ordersStore || !state.ordersStore.orders.length) {
-      store.dispatch(fetchAllCustomerOrders())
+      store.dispatch(fetchAllCustomerOrders({limit: 25}))
     }
 
     cb(null, CustomerBarContainer)
