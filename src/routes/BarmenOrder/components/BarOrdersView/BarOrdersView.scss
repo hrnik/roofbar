@@ -28,8 +28,10 @@
   min-height: 60vh;
 }
 .orders-workplace__new, .orders-workplace__done{
-  flex-basis: 232px;
-  flex-grow: 0;
+  flex-basis: 300px;
+   max-width: 450px;
+  flex-grow: 1;
+  flex-shrink: 0;
   margin-right: 16px;
 
 }
@@ -91,3 +93,14 @@
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
+@media (min-width: 768px) {
+  .order-card__name{
+    font-size:18px;
+  }
+  .orders-workplace .icon-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+

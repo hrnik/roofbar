@@ -15,7 +15,7 @@
 
 .icon-btn--normal{
   fill:$gray-color;
-  &:hover:not(.icon-btn--active):not(.icon-btn--active){
+  &:hover:not(.icon-btn--active):not(.icon-btn--disable){
     fill:$dark-color;
   }
 }

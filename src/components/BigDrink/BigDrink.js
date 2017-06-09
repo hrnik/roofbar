@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from 'components/Button'
 import { DRINK_STATUS_AVAILABLE } from 'store/bar'
+import Loader from 'components/Loader'
 import classNames from 'classnames'
 
 import './BigDrink.scss'
@@ -21,12 +22,31 @@ const BigDrink = ({
 }) => {
   const isDisableDrink = disable || status !== DRINK_STATUS_AVAILABLE
   const editBtns = !isDisableDrink
-    ? <Button disable={processing} black onClick={() => disableDrink(drinkId)} fullWidth>Decline</Button>
-    : <Button disable={processing} onClick={() => enableDrink(drinkId)} fullWidth>Enable</Button>
+    ? <Button
+      disable={processing}
+      black
+      onClick={() => disableDrink(drinkId)}
+      fullWidth
+      >
+        Decline
+      </Button>
+    : <Button
+      disable={processing}
+      onClick={() => enableDrink(drinkId)}
+      fullWidth
+      >
+        Enable
+      </Button>
 
   return (
-    <div className='drink__wraper'>
-      <div className={classNames('drink', { 'drink--disable': isDisableDrink })}>
+    <div
+      className={classNames('drink__wraper', {
+        'drink__wraper--processing': processing
+      })}
+    >
+      <div
+        className={classNames('drink', { 'drink--disable': isDisableDrink })}
+      >
         <img className='drink__image' src={img} alt={name} />
         <div className='drink__text'>
           <div className='drink__name'>{name}</div>
@@ -35,11 +55,16 @@ const BigDrink = ({
       </div>
       <div className='btn-order-wraper'>
         {!disableMode
-          ? <Button disable={isDisableDrink || processing} onClick={() => makeOrder(drinkId)} fullWidth>
+          ? <Button
+            disable={isDisableDrink || processing}
+            onClick={() => makeOrder(drinkId)}
+            fullWidth
+            >
               Make order
             </Button>
           : editBtns}
       </div>
+      {processing && <Loader className='drink__loader' absoluteCenter></Loader> }
     </div>
   )
 }

@@ -4,8 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items:center;
-
-  width: 232px;
   margin-bottom: 10px;
   padding: 16px;
 
@@ -66,6 +64,7 @@
   white-space: nowrap;
 }
 
+
 /*Ok icon by Icons8 */
 .icon-btn { /* Customizes Ok icon */
   display: inline-block;
@@ -82,15 +81,19 @@
 
 .icon-btn--normal{
   fill:$gray-color;
-  &:hover:not(.icon-btn--active){
+  &:hover:not(.icon-btn--active):not(.icon-btn--disable){
     fill:$dark-color;
   }
 }
 
 .icon-btn--decline{
   fill:$wrong-color;
-  &:hover:not(.icon-btn--active){
+  &:hover:not(.icon-btn--active):not(.icon-btn--disable){
     fill:#881d01;
   }
-}
 
+ .icon-btn--disable{
+    opacity: 0.3;
+ }
+
+}
