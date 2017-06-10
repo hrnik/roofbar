@@ -152,10 +152,13 @@
     "mocha": "^3.0.1",
     "nodemon": "^1.10.2",
     "phantomjs-prebuilt": "^2.1.12",
+    "react": "^15.5.4",
     "react-addons-test-utils": "^15.0.0",
+    "react-swipe": "^5.0.8",
     "redbox-react": "^1.2.10",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
+    "swipe-js-iso": "^2.0.3",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
   }

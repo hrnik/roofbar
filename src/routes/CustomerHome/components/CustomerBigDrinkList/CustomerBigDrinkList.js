@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import MediaQuery from 'react-responsive'
 import BigDrink from 'components/BigDrink'
+import ReactSwipe from 'react-swipe';
 
 import long from '../../assets/long.jpg'
 
 import './CustomerBigDrinkList.scss'
 
-const sliderDrinksSettings = {
+let sliderDrinksSettings = {
   arrows: false,
   autoplay: false,
   dots: false,
@@ -18,6 +19,9 @@ const sliderDrinksSettings = {
   centerPadding: '20px',
   touchThreshold: 10
 }
+sliderDrinksSettings = {
+
+}
 
 const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrders, disabledCategories }) => {
   const disableCategory = disabledCategories[activeCategoryName]
@@ -25,13 +29,10 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
     <div>
       <MediaQuery query='(max-width: 767px)'>
         <div
-          onTouchMove={e => {
-            e.preventDefault()
-          }}
           className='drinks-list--big'
         >
           {drinks.length > 0
-            ? <Slider {...sliderDrinksSettings}>
+            ? <ReactSwipe  className="carousel" key={activeCategoryName} {...sliderDrinksSettings}>
               {drinks
                   .filter(drink => drink.category === activeCategoryName)
                   .map((drink, index) => {
@@ -50,7 +51,7 @@ const CustomerBigDrinkList = ({ drinks, activeCategoryName, makeOrder, makingOrd
                       </div>
                     )
                   })}
-            </Slider>
+            </ReactSwipe>
             : null}
         </div>
       </MediaQuery>

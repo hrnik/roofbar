@@ -19,9 +19,11 @@ const mapCategoryImage = {
 
 const getSliderSettings = length => ({
   infinite: false,
-  centerPadding: '20px',
+  arrows: false,
+  swipe:true,
   slidesToShow: length,
   swipeToSlide: true,
+  mobileFirst:true,
   responsive: [
     {
       breakpoint: 768,
@@ -32,13 +34,19 @@ const getSliderSettings = length => ({
     {
       breakpoint: 680,
       settings: {
-        slidesToShow: 6
+        slidesToShow: 5
       }
     },
     {
-      breakpoint: 480,
+      breakpoint: 330,
       settings: {
-        slidesToShow: 5
+        slidesToShow: 4
+      }
+    },
+    {
+      breakpoint: 280,
+      settings: {
+        slidesToShow: 3
       }
     }
   ]
