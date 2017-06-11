@@ -14,5 +14,7 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
+    "short_name":"ROOFBAR",
+    "start_url":".",
     "display": "standalone"
 }
