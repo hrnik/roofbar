@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Delay from 'react-delay'
 import Button from 'components/Button'
 import { DRINK_STATUS_AVAILABLE } from 'store/bar'
 import Loader from 'components/Loader'
@@ -64,7 +65,7 @@ const BigDrink = ({
             </Button>
           : editBtns}
       </div>
-      {processing && <Loader className='drink__loader' absoluteCenter></Loader> }
+      {processing &&  <Delay wait={300}><Loader className='drink__loader' absoluteCenter /></Delay> }
     </div>
   )
 }
