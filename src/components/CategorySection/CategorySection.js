@@ -4,17 +4,26 @@ import Category from 'components/Category'
 import Slider from 'react-slick'
 import MediaQuery from 'react-responsive'
 
+import AlcoholImage from './assets/Alchohol.svg'
 import CocktailImage from './assets/Cocktail.svg'
-import JuiceImage from './assets/Juice.svg'
+import JuicesImage from './assets/Juice.svg'
 import SmoothieImage from './assets/Smoothie.svg'
+import BeerImage from './assets/Soda.svg'
+import SodaImage from './assets/Beer.svg'
+import SportsNutritionImage from './assets/SportsNutrition.svg'
+import WineImage from './assets/Wine.svg'
 
 import './CategorySection.scss'
 
 const mapCategoryImage = {
-  Alchocol: CocktailImage,
-  Beer: CocktailImage,
-  Juice: JuiceImage,
-  Smoothie: SmoothieImage
+  Alcohol: AlcoholImage,
+  Beer: BeerImage,
+  Cocktails: CocktailImage,
+  Juices: JuicesImage,
+  Smoothie: SmoothieImage,
+  Soda: SodaImage,
+  'Sports Nutrition': SportsNutritionImage,
+  Wine: WineImage
 }
 
 const getSliderSettings = length => ({
