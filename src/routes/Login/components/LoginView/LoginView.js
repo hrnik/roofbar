@@ -10,7 +10,7 @@ const LoginView = ({ loginUser }) => {
   let host = 'http://localhost:3000'
   if (process.env.NODE_ENV === 'production') {
     id = '1707671159533847'
-    host = 'https://roofbar.surge.sh'
+    host = 'https://exness.bar'
   }
 
   const handleLogin = () => {
