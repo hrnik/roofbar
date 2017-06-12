@@ -33,7 +33,7 @@ const CustomerBigDrinkList = ({
   return (
     <div>
       <MediaQuery query='(max-width: 767px)'>
-        <div className='drinks-list--big'>
+        <div className='container drinks-list--big'>
           {drinks.length > 0
             ? <ReactSwipe
               className='carousel'

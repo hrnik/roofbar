@@ -5,6 +5,7 @@ import { DRINK_STATUS_AVAILABLE } from 'store/bar'
 import classNames from 'classnames'
 import { withHandlers, compose } from 'recompose'
 import CocktailImage from './assets/Cocktail.svg'
+import Loader from 'components/Loader'
 
 import './SmallDrink.scss'
 
@@ -35,6 +36,7 @@ const SmallDrink = ({
           <img src={CocktailImage} width='11' height='21' />
         </Button>
       </div>
+      {processing && <Loader className='drink__loader' absoluteCenter></Loader> }
     </div>
   )
 }
