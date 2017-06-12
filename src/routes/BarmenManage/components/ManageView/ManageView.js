@@ -3,6 +3,7 @@ import React from 'react'
 import CategorySection from 'components/CategorySection'
 import ListTitle from 'components/ListTitle'
 import BigDrink from 'components/BigDrink'
+import { sortDrinkByCategory } from 'selectors/bar'
 
 import long from '../../assets/long.jpg'
 import './ManageView.scss'
@@ -14,7 +15,7 @@ export const ManageView = ({
   setActiveCategory,
   disableDrink,
   enableDrink,
-  drinks,
+  drinks
 }) => (
   <div>
     <CategorySection
@@ -27,11 +28,17 @@ export const ManageView = ({
       <ListTitle
         number={2}
         type='type'
-        count={drinks && drinks.filter(drink => drink.category === activeCategoryName).length}
+        count={
+          drinks &&
+            drinks.filter(drink => drink.category === activeCategoryName).length
+        }
       />
       <div>
         <div className='drinks-list-manage'>
-          {drinks.filter(drink => drink.category === activeCategoryName).map((drink, index) => {
+          {sortDrinkByCategory(
+            drinks,
+            activeCategoryName
+          ).map((drink, index) => {
             return (
               <div data-index={index} key={index} className='drinks-list__item'>
                 <BigDrink
