@@ -116,6 +116,6 @@ export default store => {
     login: code => getRequest(false)(`/login/`, { code }),
     checkAuth: () => GET(`/check_auth/`),
     getBarStatus: () => GET('/bar/'),
-    changeBarStatus: status => PUT('/bar/status', { status })
+    changeBarStatus: status => PUT('/bar/status/', { status })
   }
 }
