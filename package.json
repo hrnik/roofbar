@@ -108,6 +108,7 @@
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-dropdown": "^1.2.3",
+    "react-modal": "^2.2.1",
     "react-notification-system": "^0.2.14",
     "react-notification-system-redux": "^1.1.2",
     "react-redux": "^5.0.1",
