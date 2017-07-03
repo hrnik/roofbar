@@ -4,7 +4,7 @@ import 'whatwg-fetch'
 
 let API_URL = 'http://roofbar-dev.herokuapp.com/'
 if (process.env.NODE_ENV === 'production') {
-  API_URL = 'https://roofbar.herokuapp.com/'
+  API_URL = 'https://roof.exness.bar/'
 }
 
 /**
