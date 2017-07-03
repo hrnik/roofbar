@@ -7,6 +7,7 @@ import Authenticated from './Authenticated'
 import LoginResult from './LoginResult'
 import CustomerAllDrinks from './CustomerAllDrinks'
 import { clearAuth } from 'store/auth'
+import { fetchBarStatus } from 'store/bar'
 import { browserHistory } from 'react-router'
 
 /*  Note: Instead of using JSX, we recommend using react-router
@@ -15,7 +16,8 @@ import { browserHistory } from 'react-router'
 export const createRoutes = store => ({
   path: '/',
   onEnter: () => {
-
+    console.log('OnENter')
+    store.dispatch(fetchBarStatus())
   },
   getComponent: (nextState, cb) => {
     cb(null, CoreLayout)

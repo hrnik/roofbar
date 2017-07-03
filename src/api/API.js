@@ -11,13 +11,9 @@ if (process.env.NODE_ENV === 'production') {
  * camelCase to snake_case
  * Это плохое решение для прода внешних продуктов, но для внутреннего приложения в самый раз.
  */
-const camelToSnake = str =>
-  str.replace(/([A-Z])/g, g => `_${g[0].toLowerCase()}`)
+const camelToSnake = str => str.replace(/([A-Z])/g, g => `_${g[0].toLowerCase()}`)
 const snakeConvert = obj =>
-  Reflect.ownKeys(obj).reduce(
-    (memo, key) => Object.assign(memo, { [camelToSnake(key)]: obj[key] }),
-    {}
-  )
+  Reflect.ownKeys(obj).reduce((memo, key) => Object.assign(memo, { [camelToSnake(key)]: obj[key] }), {})
 
 /**
  * Опции fetch по-умолчанию
@@ -86,9 +82,9 @@ const handleKnownErrors = errors => {
   // if (errors.auth_required) console.log('Всё пропало, мы не авторизованы')
 }
 
-const getRequest = (auth) => (url, data) => execute(url, data, 'GET', auth)
-const postRequest = (auth) => (url, data) => execute(url, data, 'POST', auth)
-const putRequest = (auth) => (url, data) => execute(url, data, 'PUT', auth)
+const getRequest = auth => (url, data) => execute(url, data, 'GET', auth)
+const postRequest = auth => (url, data) => execute(url, data, 'POST', auth)
+const putRequest = auth => (url, data) => execute(url, data, 'PUT', auth)
 
 // TODO: привести к единому виду вызов апишных методов
 // всегда передавая один объект с параметрами (а не произвольный набор аргументов-параметров),
@@ -111,15 +107,15 @@ export default store => {
   return {
     getDrink: id => GET(`/drinks/${id}/`),
     getDrinks: () => GET(`/drinks/`),
-    changeDrinkStatus: (drinkId, status) =>
-      PUT(`/drinks/status/${drinkId}/`, { status, drinkId }),
+    changeDrinkStatus: (drinkId, status) => PUT(`/drinks/status/${drinkId}/`, { status, drinkId }),
     getLimits: () => GET(`/limits/`),
-    getOrders: (limit) => GET(`/orders/list/`, {limit}),
+    getOrders: limit => GET(`/orders/list/`, { limit }),
     getOrder: orderId => GET(`/orders/${orderId}/`),
     makeOrder: drinkId => POST(`/orders/`, { drinkId }),
-    changeOrderStatus: (orderId, status) =>
-      PUT(`/orders/status/${orderId}/`, { status, orderId }),
+    changeOrderStatus: (orderId, status) => PUT(`/orders/status/${orderId}/`, { status, orderId }),
     login: code => getRequest(false)(`/login/`, { code }),
     checkAuth: () => GET(`/check_auth/`),
+    getBarStatus: () => GET('/bar/'),
+    changeBarStatus: status => PUT('/bar/status', { status })
   }
 }

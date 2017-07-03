@@ -5046,6 +5046,10 @@ react-addons-test-utils@^15.0.0:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-delay@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-delay/-/react-delay-0.0.4.tgz#602046f99bd50bbb39be7b9d949ae05fc5ec56e1"
+
 react-dom@^15.0.0:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
