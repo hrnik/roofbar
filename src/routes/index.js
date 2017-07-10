@@ -18,8 +18,8 @@ export const createRoutes = store => ({
   onEnter: () => {
     console.log('OnENter')
     store.dispatch(fetchBarStatus())
-    if (Notification && Notification.requestPermission) {
-      Notification.requestPermission(permission => {
+    if (window.Notification && window.Notification.requestPermission) {
+      window.Notification.requestPermission(permission => {
         // переменная permission содержит результат запроса
         console.log('Результат запроса прав:', permission)
       })

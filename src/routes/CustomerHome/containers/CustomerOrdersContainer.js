@@ -17,7 +17,7 @@ import { getNameDrinkById, getDrinkById } from 'selectors/bar'
 const notificationIconTitle =
   'https://res.cloudinary.com/dpgsnafcu/image/upload/c_scale,h_40/v1497019138/fde5d8d7dccb07ce0ed79c96cc44218e_i22gva.jpg'
 const checkNotificationAvailable = () =>
-  Notification && Notification.permission === 'granted'
+  Boolean(window.Notification && window.Notification.permission === 'granted')
 
 const mapDispathToProps = {
   fetchAllCustomerOrders,
@@ -86,7 +86,7 @@ class CustomerOrdersContainer extends React.Component {
                 const goodMessage =
                   'Cocktail is prepared and you can take him at the bar.'
                 if (checkNotificationAvailable()) {
-                  const goodNotification = new Notification(goodTitle, {
+                  const goodNotification = new window.Notification(goodTitle, {
                     body: goodMessage,
                     icon: notificationIconTitle
                   })
@@ -108,7 +108,7 @@ class CustomerOrdersContainer extends React.Component {
                 const badTitle = 'Your cocktail canot be prepared.'
                 const badMessage = `Barmen don't have some ingredients, yoc can try order other coctail.`
                 if (checkNotificationAvailable()) {
-                  const badNotification = new Notification(badTitle, {
+                  const badNotification = new window.Notification(badTitle, {
                     body: badMessage,
                     icon: notificationIconTitle
                   })
