@@ -73,6 +73,9 @@ const execute = async (...params) => {
     return { data }
   } catch (error) {
     console.error("Go home, u're drunk", error)
+    if (error && error.detail === 'Signature has expired.') {
+       browserHistory.push('/unauthorized')
+    }
     throw error
   }
 }

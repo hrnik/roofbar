@@ -1,3 +1,4 @@
+import { browserHistory } from 'react-router'
 import API from 'api'
 
 export const LOGIN_START = 'LOGIN_START'
@@ -34,6 +35,7 @@ export const loginUser = creds => (dispatch, getState) => {
       dispatch({
         type: LOGIN_ERROR
       })
+      browserHistory.push('/unauthorized')
     })
 }
 

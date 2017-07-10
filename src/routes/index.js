@@ -18,6 +18,12 @@ export const createRoutes = store => ({
   onEnter: () => {
     console.log('OnENter')
     store.dispatch(fetchBarStatus())
+    if (Notification && Notification.requestPermission) {
+      Notification.requestPermission(permission => {
+        // переменная permission содержит результат запроса
+        console.log('Результат запроса прав:', permission)
+      })
+    }
   },
   getComponent: (nextState, cb) => {
     cb(null, CoreLayout)
