@@ -20,6 +20,17 @@ export const CHANGE_DRINK_STATUS_ERROR = 'CHANGE_DRINK_STATUS_ERROR'
 export const DRINK_STATUS_AVAILABLE = 'AVAILABLE'
 export const DRINK_STATUS_DISABLE = 'DISABLED'
 
+export const FETCH_BAR_STATUS_START = 'FETCH_BAR_STATUS_START'
+export const FETCH_BAR_STATUS_SUCCES = 'FETCH_BAR_STATUS_SUCCES'
+export const FETCH_BAR_STATUS_ERROR = 'FETCH_BAR_STATUS_ERROR'
+
+export const CHANGE_BAR_STATUS_START = 'CHANGE_BAR_STATUS_START'
+export const CHANGE_BAR_STATUS_SUCCES = 'CHANGE_BAR_STATUS_SUCCES'
+export const CHANGE_BAR_STATUS_ERROR = 'CHANGE_BAR_STATUS_ERROR'
+
+export const BAR_STATUS_OPENED = 'OPENED'
+export const BAR_STATUS_CLOSED = 'CLOSED'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -40,6 +51,27 @@ export const fetchDrinks = () => (dispatch, getState) => {
     .catch(error => {
       dispatch({
         type: FETCH_DRINKS_ERROR,
+        payload: error
+      })
+    })
+}
+
+export const fetchBarStatus = () => (dispatch, getState) => {
+  dispatch({ type: FETCH_BAR_STATUS_START })
+
+  const clientAPI = API(getState())
+
+  return clientAPI
+    .getBarStatus()
+    .then(respone => {
+      dispatch({
+        type: FETCH_BAR_STATUS_SUCCES,
+        payload: respone.data
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: FETCH_BAR_STATUS_ERROR,
         payload: error
       })
     })
@@ -70,6 +102,32 @@ export const changeDrinksStatus = (drinkId, status) => (dispatch, getState) => {
 
 export const disableDrink = drinkId => changeDrinksStatus(drinkId, DRINK_STATUS_DISABLE)
 export const enableDrink = drinkId => changeDrinksStatus(drinkId, DRINK_STATUS_AVAILABLE)
+
+export const changeBarStatus = status => (dispatch, getState) => {
+  dispatch({ type: CHANGE_BAR_STATUS_START, payload: { status } })
+
+  const clientAPI = API(getState())
+
+  return clientAPI
+    .changeBarStatus(status)
+    .then(response => {
+      dispatch({
+        type: CHANGE_BAR_STATUS_SUCCES,
+        payload: response.data
+      })
+      return response.data
+    })
+    .catch(error => {
+      dispatch({
+        type: CHANGE_BAR_STATUS_ERROR,
+        payload: { error }
+      })
+      return error
+    })
+}
+
+export const closeBar = () => changeBarStatus(BAR_STATUS_CLOSED)
+export const openBar = () => changeBarStatus(BAR_STATUS_OPENED)
 
 export const fetchLimits = () => (dispatch, getState) => {
   dispatch({ type: FETCH_LIMITS_START })
@@ -181,6 +239,14 @@ const ACTION_HANDLERS = {
       }
     })
     return { ...state, limits: limitObject, disabledCategories: { ...newDisabledCategories } }
+  },
+  [FETCH_BAR_STATUS_SUCCES]: (state, action) => {
+    const isClose = action.payload.status === BAR_STATUS_CLOSED
+    return { ...state, barClosed: isClose }
+  },
+  [CHANGE_BAR_STATUS_SUCCES]: (state, action) => {
+    const isClose = action.payload.status === BAR_STATUS_CLOSED
+    return { ...state, barClosed: isClose }
   }
 }
 
@@ -191,7 +257,8 @@ const initialState = {
   categories: [],
   drinks: [],
   limits: undefined,
-  disabledCategories: {}
+  disabledCategories: {},
+  barClosed: false
 }
 
 export default function customerBarReducer (state = initialState, action) {

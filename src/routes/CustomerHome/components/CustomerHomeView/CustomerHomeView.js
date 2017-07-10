@@ -6,6 +6,7 @@ import CustomerOrdersContainer from '../../containers/CustomerOrdersContainer'
 import CustomerDrinksContainer from '../../containers/CustomerDrinksContainer'
 import CategorySection from 'components/CategorySection'
 import ListTitle from 'components/ListTitle'
+import BarStatusContainer from 'containers/BarStatusContainer'
 
 import Link from 'components/Link'
 
@@ -52,7 +53,8 @@ export const CustomerHomeView = ({
         </div>
       </div>
       : <Loader absoluteCenter />}
-  </div>
+      <BarStatusContainer />
+    </div>
 )
 
 export default CustomerHomeView
