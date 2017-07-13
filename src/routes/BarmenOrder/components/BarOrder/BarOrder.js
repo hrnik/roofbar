@@ -1,7 +1,9 @@
 import React from 'react'
+import { withState } from 'recompose'
 import classNames from 'classnames'
 import IconBtn from 'components/IconBtn'
 import moment from 'moment'
+import BarConfirmCanelModal from '../BarConfirmCanelModal'
 import long from '../../assets/long.jpg'
 
 import './BarOrder.scss'
@@ -12,7 +14,9 @@ export const BarOrder = ({
   completeOrder,
   declineOrder,
   cancelOrder,
-  normalMode
+  normalMode,
+  setOpenModalConfirm,
+  isOpenModalConfirm
 }) => {
   const isNew = order.status === 'PENDING'
   const isCompleted = order.status === 'DONE'
@@ -48,11 +52,13 @@ export const BarOrder = ({
               ok
               onAction={() => completeOrder(order.order_id)}
               />
-            : <IconBtn cancel onAction={() => cancelOrder(order.order_id)} />)}
+            : <IconBtn cancel onAction={() => { setOpenModalConfirm(!isOpenModalConfirm) }} />)}
         {isCompleted && <IconBtn ok active />}
       </div>
+      <BarConfirmCanelModal confirm={() => cancelOrder(order.order_id)} close={() => setOpenModalConfirm(false)} isOpen={isOpenModalConfirm} />
     </div>
   )
 }
 
-export default BarOrder
+const enhance = withState('isOpenModalConfirm', 'setOpenModalConfirm', false)
+export default enhance(BarOrder)

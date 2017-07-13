@@ -1,0 +1,5 @@
+{
+  "name": "BarModal",
+  "private": true,
+  "main": "./BarModal.js"
+}
