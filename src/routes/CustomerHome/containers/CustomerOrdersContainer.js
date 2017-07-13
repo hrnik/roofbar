@@ -84,7 +84,7 @@ class CustomerOrdersContainer extends React.Component {
               if (order.status === ORDER_STATUS_DONE) {
                 const goodTitle = 'Your drink is ready!'
                 const goodMessage =
-                  'Cocktail is prepared and you can take him at the bar.'
+                  'Cocktail is prepared and you can take it at the bar.'
                 if (checkNotificationAvailable()) {
                   const goodNotification = new window.Notification(goodTitle, {
                     body: goodMessage,
