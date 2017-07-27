@@ -27,12 +27,14 @@
 }
 
 .barStatus__workHours {
-  margin-top: 14px;
+  text-align: center;
   font-size: 14px;
   line-height: 1.57;
   color: #313131;
 }
-
+.barStatus__workHour-container {
+ margin-top: 14px;
+}
 @media (min-width: 768px) {
   .barStatus {
     max-width: 400px;
