@@ -15,8 +15,22 @@ export class BarOrdersView extends React.Component {
     } = nextProps
     if (isNeedDingDong) {
       console.log('DING DONG', notNeedDingDong)
+      setTimeout(()=>{
+        const audio = document.querySelector('#audiobtn')
+        if (audio) {
+          audio.click()
+        }
+      })
+
       notNeedDingDong()
     }
+  }
+
+  playSound () {
+    const audio = document.querySelector(`#dingdong`)
+    if (!audio) return // stop the function from running all together
+    audio.currentTime = 0 // rewind to the start
+    audio.play()
   }
 
   render () {
@@ -33,6 +47,8 @@ export class BarOrdersView extends React.Component {
     } = this.props
     return (
       <div className='container orders-workplace'>
+        <button  className={'btnSound'} id='audiobtn' onClick={this.playSound} />
+        <audio id='dingdong'  src='/dingdong.mp3' />
         <div className='orders-workplace__new'>
           <div className='orders-workplace__title-wrapper'>
             <h3 className='orders-workplace__titile'>New</h3>
@@ -77,6 +93,7 @@ export class BarOrdersView extends React.Component {
             className='canceled-order-list'
         />
         </div>
+
       </div>
     )
   }
