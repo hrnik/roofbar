@@ -26,11 +26,14 @@ export class BarOrdersView extends React.Component {
     }
   }
 
-  playSound () {
+  playSound (stop) {
     const audio = document.querySelector(`#dingdong`)
     if (!audio) return // stop the function from running all together
     audio.currentTime = 0 // rewind to the start
     audio.play()
+    if (stop) {
+      audio.pause()
+    }
   }
 
   render () {
@@ -47,7 +50,7 @@ export class BarOrdersView extends React.Component {
     } = this.props
     return (
       <div className='container orders-workplace'>
-        <button  className={'btnSound'} id='audiobtn' onClick={this.playSound} />
+        <button  className={'btnSound'} id='audiobtn' onClick={() => { this.playSound() }} />
         <audio id='dingdong'  src='/dingdong.mp3' />
         <div className='orders-workplace__new'>
           <div className='orders-workplace__title-wrapper'>
@@ -66,7 +69,10 @@ export class BarOrdersView extends React.Component {
           <BarOrdersList
             list={pendingOrders}
             normalMode={normalMode}
-            completeOrder={completeOrder}
+            completeOrder={(id) => {
+              this.playSound(true)
+              completeOrder(id)
+            }}
             cancelOrder={cancelOrder}
             getDrinkById={getDrinkById}
         />
