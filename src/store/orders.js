@@ -23,6 +23,7 @@ export const ORDER_STATUS_PENDING = 'PENDING'
 export const ORDER_STATUS_CANCELED = 'CANCELED'
 
 export const TOOGLE_ORDERS_MODE = 'TOOGLE_ORDERS_MODE'
+export const NOT_NEED_DING_DONG = 'NOT_NEED_DING_DONG'
 
 // ------------------------------------
 // Actions
@@ -125,13 +126,20 @@ export const toogleEditMode = () => dispatch => {
   })
 }
 
+export const notNeedDingDong = () => dispatch => {
+  dispatch({
+    type: NOT_NEED_DING_DONG
+  })
+}
+
 export const actions = {
   fetchAllCustomerOrders,
   fetchOrder,
   makeOrder,
   completeOrder,
   cancelOrder,
-  toogleEditMode
+  toogleEditMode,
+  isNeedDingDong: false
 }
 
 const proccesPendingList = (listID = [], order) => {
@@ -154,12 +162,17 @@ const ACTION_HANDLERS = {
   [FETCH_ORDERS_SUCCESS]: (state, action) => {
     const newOrders = action.payload.reverse()
     let newPendingOrdersID = state.pendingOrdersID
+    let isNeedDingDong = false
 
     newOrders.forEach(item => {
       newPendingOrdersID = proccesPendingList(newPendingOrdersID, item)
     })
 
-    return { ...state, orders: action.payload, pendingOrdersID: newPendingOrdersID, isFetchingOrders: false }
+    if (newPendingOrdersID && newPendingOrdersID.length) {
+      isNeedDingDong = Boolean(newPendingOrdersID.filter(item => !state.pendingOrdersID.includes(item)).length)
+    }
+
+    return { ...state, orders: action.payload, pendingOrdersID: newPendingOrdersID, isFetchingOrders: false, isNeedDingDong }
   },
   [FETCH_ORDER_SUCCESS]: (state, action) => {
     const order = action.payload
@@ -225,6 +238,9 @@ const ACTION_HANDLERS = {
   },
   [TOOGLE_ORDERS_MODE]: (state, action) => {
     return { ...state, normalMode: !state.normalMode }
+  },
+  [NOT_NEED_DING_DONG]: (state, action) => {
+    return { ...state, isNeedDingDong: false }
   }
 }
 
