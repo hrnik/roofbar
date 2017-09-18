@@ -5,6 +5,7 @@ import MediaQuery from 'react-responsive'
 import BigDrink from 'components/BigDrink'
 import ReactSwipe from 'react-swipe'
 import { sortDrinkByCategory } from 'selectors/bar'
+import { DRINK_STATUS_DISABLE } from 'store/bar'
 
 import long from '../../assets/long.jpg'
 
@@ -43,7 +44,7 @@ const CustomerBigDrinkList = ({
               {sortDrinkByCategory(
                   drinks,
                   activeCategoryName
-                ).map((drink, index) => {
+                ).filter(drink => drink.status !== DRINK_STATUS_DISABLE).map((drink, index) => {
                   return (
                     <div data-index={index} key={index}>
                       <BigDrink
@@ -68,7 +69,7 @@ const CustomerBigDrinkList = ({
           {sortDrinkByCategory(
             drinks,
             activeCategoryName
-          ).map((drink, index) => {
+          ).filter(drink => drink.status !== DRINK_STATUS_DISABLE).map((drink, index) => {
             return (
               <div data-index={index} key={index} className='drinks-list__item'>
                 <BigDrink

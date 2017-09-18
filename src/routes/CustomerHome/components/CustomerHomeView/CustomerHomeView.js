@@ -7,6 +7,7 @@ import CustomerDrinksContainer from '../../containers/CustomerDrinksContainer'
 import CategorySection from 'components/CategorySection'
 import ListTitle from 'components/ListTitle'
 import BarStatusContainer from 'containers/BarStatusContainer'
+import { DRINK_STATUS_DISABLE } from 'store/bar'
 
 import Link from 'components/Link'
 
@@ -20,16 +21,17 @@ export const CustomerHomeView = ({
   drinks,
   isFetchingDrinks,
   isFetchingOrders
-}) => (
-  <div>
-    {!isFetchingDrinks && !isFetchingOrders
+}) => {
+  const newCategories = categories.filter(category => drinks.some(drink =>  drink.category === category && drink.status !== DRINK_STATUS_DISABLE))
+  return (<div>
+      {!isFetchingDrinks && !isFetchingOrders
       ? <div className='customer-bar'>
         <div className='customer-bar__main'>
           <div className='container container--left'>
             <h2>Order</h2>
           </div>
           <CategorySection
-            categories={categories}
+            categories={newCategories}
             numberSection={1}
             setActiveCategory={setActiveCategory}
             activeCategoryName={activeCategoryName}
@@ -55,6 +57,7 @@ export const CustomerHomeView = ({
       : <Loader absoluteCenter />}
       <BarStatusContainer />
     </div>
-)
+  )
+}
 
 export default CustomerHomeView

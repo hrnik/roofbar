@@ -23,7 +23,7 @@ Category.propTypes = {
   img     : PropTypes.string,
   drinked : PropTypes.number,
   active  : PropTypes.bool,
-  limit   : PropTypes.number
+  limit   : PropTypes.object
 }
 
 const enchance = compose(
