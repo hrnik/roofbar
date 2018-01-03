@@ -252,7 +252,7 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   isFetchingDrinks: false,
-  activeCategoryName: '',
+  activeCategoryName: 'Juices',
   activeDrinkID: undefined,
   categories: [],
   drinks: [],
